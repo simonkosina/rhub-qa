@@ -1,4 +1,4 @@
-@web @ciandt
+@web 
 Feature: Login page
     As a user i want to login in the website http://automationpractice.com/index.php,
     User login "allan.barroso@outlook.com" and password newstar1541,

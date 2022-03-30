@@ -1,4 +1,4 @@
-@web @ciandt
+@web
 Feature: Reorder 
 
    As an user logged i want to navigate to Order History page

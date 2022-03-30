@@ -2,7 +2,6 @@ from asyncio import sleep
 from behave import *
 from selenium.webdriver.common.keys import Keys
 import time
-#from base_pages import pages_base
 
 MYSTORE_HOME = 'http://automationpractice.com/index.php'
 
@@ -14,7 +13,6 @@ def step_impl(context):
 def step_impl(context):
     context.browser.maximize_window()
     context.browser.find_element_by_link_text("Sign in").click()
-    #context.pages_base.login_elements().sing_btn.click()
     context.browser.find_element_by_id("email").click()
     context.browser.find_element_by_id("email").clear()
     context.browser.find_element_by_id("email").send_keys("allan.barroso@outlook.com")
@@ -26,11 +24,11 @@ def step_impl(context):
 @when(u'i press the sing in button')
 def step_impl(context):
     context.browser.find_element_by_xpath("//button[@id='SubmitLogin']/span").click()
-    time.sleep(2)
+    time.sleep(1)
 
 @then(u'the site should show my account page and user name')
 def step_impl(context):
-    time.sleep(3)
+    time.sleep(1)
     name=context.browser.find_element_by_xpath("//header[@id='header']/div[2]/div/div/nav/div/a/span").text
     assert (name == "Allan Barroso")
     

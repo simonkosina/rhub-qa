@@ -1,21 +1,17 @@
 from selenium import webdriver
-
-
+import time
 
 #def before_all():
-      
+    # ./../tools/cm selenoid start
+    # ./../tools/cm selenoid-ui start  
+
 
 def before_scenario(context, scenario):
-
+  t = time.localtime()
+  vname = context.scenario.name + str(time.strftime("%H:%M:%S", t))
 
   if 'web' in context.tags:
-  #   chrome_options = webdriver.ChromeOptions()
-  #   chrome_options.add_argument('--headless')
-  #   chrome_options.add_argument('--no-sandbox')
-  #   context.browser = webdriver.Chrome(chrome_options=chrome_options,
-  #                             executable_path='../drivers/chromedriver')
-
-  #   context.browser.implicitly_wait(10)
+      
 
       capabilities = {
         "browserName": "chrome",
@@ -23,6 +19,7 @@ def before_scenario(context, scenario):
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True,
+            "videoName": vname + ".mp4", 
             "startMaximized": True
                         }
                             }
@@ -36,5 +33,10 @@ def before_scenario(context, scenario):
 def after_scenario(context, scenario):
   if 'web' in context.tags:
     context.browser.quit()
+    
 
+#def after_all():
+    #actual videos folder .aerokube/selenoid/video 
+    #the basic idea is move the reports and the video evidences to a folder or a host that
+    #can be managed or latter acceced 
 

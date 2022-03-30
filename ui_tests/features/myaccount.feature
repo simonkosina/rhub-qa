@@ -1,4 +1,4 @@
-@web @ciandt
+@web
 Feature: My account page
 
    As an user logged i want to navigate to My account page
