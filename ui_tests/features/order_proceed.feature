@@ -1,4 +1,4 @@
-@web @ciandt
+@web
 Feature: Buying a dress
     As an user previously singed in, i want to add a dress to the cart
     I want to proceed with the order

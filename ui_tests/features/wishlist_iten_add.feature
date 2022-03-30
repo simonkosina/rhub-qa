@@ -1,4 +1,4 @@
-@web @ciandt
+@web
 Feature: Wishlist
     As a user i want to create a Wishlist
     Acceptance criteria I should able to create a wishlist

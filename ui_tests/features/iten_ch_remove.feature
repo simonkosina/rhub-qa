@@ -1,4 +1,4 @@
-@web @ciandt
+@web 
 Feature: Buying a dress remove item
     As an user previously singed in, i want to add some dresses to the cart
     I want to remove one of then from the cart
