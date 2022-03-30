@@ -8,4 +8,4 @@ setup(
     license='',
     author='Allan Barroso',
     author_email='abarroso@redhat.com',
-    description='RRHUB-Automation tests POC', install_requires=['selenium', 'behave']
+    description='RRHUB-Automation tests POC', install_requires=['selenium', 'behave', 'requests', 're', 'json']
