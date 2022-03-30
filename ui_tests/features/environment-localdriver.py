@@ -6,14 +6,15 @@ from selenium import webdriver
 
 
 #def before_all():
-     # ./../tools/cm selenoid start
-     # ./../tools/cm selenoid-ui
+   #reserved for test preparation
 
 def before_scenario(context, scenario):
 
 
   if 'web' in context.tags:
         
+ #__________________Chromedriver automated lattest version aquisition_________________
+ #WIP
     # get the latest chrome driver version number
     # url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
     # response = requests.get(url)
@@ -30,30 +31,17 @@ def before_scenario(context, scenario):
     #     zip_ref.extractall() # you can specify the destination folder path here
     # # delete the zip file downloaded above
     # os.remove(latest_driver_zip)
-  #   chrome_options = webdriver.ChromeOptions()
-  #   chrome_options.add_argument('--headless')
-  #   chrome_options.add_argument('--no-sandbox')
-  #   context.browser = webdriver.Chrome(chrome_options=chrome_options,
-  #                             executable_path='../drivers/chromedriver')
+#___________________________________________________________________
 
-  #   context.browser.implicitly_wait(10)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    context.browser = webdriver.Chrome(chrome_options=chrome_options,
+                               executable_path='../drivers/chromedriver')
 
-      capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "98.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True,
-            "startMaximized": True
-                        }
-                            }
+    context.browser.implicitly_wait(10)
 
-      context.browser = webdriver.Remote(
-      command_executor="http://localhost:4444/wd/hub",
-      desired_capabilities=capabilities)
-
-
- 
+      
 def after_scenario(context, scenario):
   if 'web' in context.tags:
     context.browser.quit()

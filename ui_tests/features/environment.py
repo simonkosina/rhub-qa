@@ -39,4 +39,5 @@ def after_scenario(context, scenario):
     #actual videos folder .aerokube/selenoid/video 
     #the basic idea is move the reports and the video evidences to a folder or a host that
     #can be managed or latter acceced 
+    #the script isn't done by permissions issues.
 
