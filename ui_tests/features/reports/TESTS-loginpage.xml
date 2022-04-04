@@ -1,0 +1,13 @@
+<testsuite errors="0" failures="0" hostname="abarroso.remote.csb" name="loginpage.Login page" skipped="0" tests="1" time="20.884132" timestamp="2022-03-30T10:25:55.941759"><testcase classname="loginpage.Login page" name="Login" status="passed" time="20.884132"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Login
+    Given web address "http://automationpractice.com/index.php" ... passed in 4.054s
+    Given login name "allan.barroso@outlook.com" and password newstar1541 ... passed in 11.629s
+    When i press the sing in button ... passed in 3.991s
+    Then the site should show my account page and user name ... passed in 1.210s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
