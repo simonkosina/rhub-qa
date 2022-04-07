@@ -16,7 +16,7 @@ def before_scenario(context, scenario):
 
       capabilities = {
         "browserName": "chrome",
-        "browserVersion": "98.0",
+        "browserVersion": "99.0",
         "acceptInsecureCerts": True,
         "selenoid:options": {
             "enableVNC": True,
