@@ -1,10 +1,11 @@
 from selenium import webdriver
 import time
+#import os
 
-#def before_all():
-    # ./../tools/cm selenoid start
-    # ./../tools/cm selenoid-ui start  
-
+# # def before_all(context):
+# #   os.system('./../tools/cm selenoid start')
+# #   os.system('./../tools/cm selenoid-ui start')  
+# #   time.sleep(5)
 
 def before_scenario(context, scenario):
   t = time.localtime()
