@@ -43,7 +43,7 @@ def after_all(context):
     os.system('./../tools/cm selenoid-ui stop')
     os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Vídeos/')
     
-    #os.system('rm -rf ~/.aerokube/selenoid/video/*.mp4') file permission issues
+    #os.system('rm -rf ~/.aerokube/selenoid/video/*.mp4') #file permission issues
      
 
     #actual videos folder .aerokube/selenoid/video 
