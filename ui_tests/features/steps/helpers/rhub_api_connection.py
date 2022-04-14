@@ -43,11 +43,13 @@ def request_token(auth):
         if i % 250 == 0:
             url = f"{HOSTNAME}:{PORT}{PATH}/auth/token/create"
             try:
-                print(f"Getting refreshed token... {url}")
+#                print(f"Getting refreshed token... {url}")
+#                print("_______________________________________________________________________________________")
                 token_r = requests.post(url, auth=auth, timeout=2, verify=False)
                 token_o = json.loads(token_r.content.decode('utf8').replace("'", '"'))
                 token = token_o['refresh_token']
-                print(token)
+#                print(token)
+#                print("_______________________________________________________________________________________")
                 return token    
                 
             except Exception as e:
@@ -61,9 +63,10 @@ def request_response(context, token):
     
     url = f"{HOSTNAME}:{PORT}{PATH}/"
     target = random.choice(endpoints)
-    print(f"Accessing endpoint... {url}{target}")
+#    print(f"Accessing endpoint... {url}{target}")
+#    print("_______________________________________________________________________________________")
     resp = requests.get(f"{url}{target}", timeout=1, headers = {'Authorization': 'Bearer ' + token}, verify=False)
  
-    print(resp.status_code)
+#   print(resp.status_code)
     
     return resp.status_code
