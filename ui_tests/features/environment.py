@@ -2,16 +2,18 @@ from selenium import webdriver
 import time
 import os
 
-def before_all(context):
-   os.system('./../tools/cm selenoid start')
-   os.system('./../tools/cm selenoid-ui start')  
-   time.sleep(5)
+ 
+t = time.localtime()     
 
 def before_scenario(context, scenario):
-  t = time.localtime()
+  
   vname = context.scenario.name + str(time.strftime("%H:%M:%S", t))
 
   if 'web' in context.tags:
+      os.system('./../tools/cm selenoid start')
+      os.system('./../tools/cm selenoid-ui start')  
+      time.sleep(5)
+      
       
 
       capabilities = {
@@ -29,7 +31,8 @@ def before_scenario(context, scenario):
       context.browser = webdriver.Remote(
       command_executor="http://localhost:4444/wd/hub",
       desired_capabilities=capabilities)
-
+  
+     
 
  
 def after_scenario(context, scenario):
@@ -38,16 +41,10 @@ def after_scenario(context, scenario):
     
 
 def after_all(context):
-    time.sleep(5)
-    os.system('./../tools/cm selenoid stop')
-    os.system('./../tools/cm selenoid-ui stop')
-    os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Vídeos/')
-    
-    #os.system('rm -rf ~/.aerokube/selenoid/video/*.mp4') #file permission issues
-     
 
-    #actual videos folder .aerokube/selenoid/video 
-    #the basic idea is move the reports and the video evidences to a folder or a host that
-    #can be managed or latter acceced 
-    #the script isn't done by permissions issues.
+      time.sleep(5)
+      os.system('./../tools/cm selenoid stop')
+      os.system('./../tools/cm selenoid-ui stop')
+      os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Vídeos/')
+     
 
