@@ -41,9 +41,15 @@ def after_scenario(context, scenario):
     
 
 def after_all(context):
+      
       time.sleep(5)
       os.system('./../tools/cm selenoid stop')
       os.system('./../tools/cm selenoid-ui stop')
       os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Vídeos/')
+      
+      print("--------------------------------------------")
+      print(" ")
+      print("Tests results: ")
+      print("    ")
      
 
