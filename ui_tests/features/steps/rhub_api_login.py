@@ -1,4 +1,3 @@
-from lib2to3.pgen2 import token
 from helpers import rhub_api_connection
 
 auth = AUTH_USER = ('testuser1', 'testuser1')
