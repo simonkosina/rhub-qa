@@ -47,6 +47,7 @@ def after_all(context):
       os.system('./../tools/cm selenoid-ui stop')
       os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Vídeos/')
       
+      print(" ")
       print("--------------------------------------------")
       print(" ")
       print("Tests results: ")
