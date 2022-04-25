@@ -52,5 +52,3 @@ def after_all(context):
       print(" ")
       print("Tests results: ")
       print("    ")
-     
-
