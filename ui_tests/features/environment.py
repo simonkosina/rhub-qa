@@ -40,7 +40,7 @@ def after_scenario(context, scenario):
     context.browser.quit()
     
 
-def after_all():
+def after_all(context):
       time.sleep(5)
       os.system('./../tools/cm selenoid stop')
       os.system('./../tools/cm selenoid-ui stop')
