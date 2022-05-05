@@ -1,29 +1,31 @@
 import time
 
-@given(u'web address "https://rhub-app-resource-hub-dev.apps.ocp4.prod.psi.redhat.com"')
-def step_impl(context):
-    context.browser.get("https://rhub-app-resource-hub-dev.apps.ocp4.prod.psi.redhat.com")
+from helpers.login_page import LoginPage
+from helpers.main_page import MainPage
+from behave import *
 
+@given(u'web address "{url}"')
+def step_impl(context, url):
+    login_page = LoginPage(context)
+    login_page.visit(url)
 
-@given(u'login name "testuser1" and password "testuser1"')
-def step_impl(context):
-    time.sleep(2)
-    context.browser.maximize_window()
-    context.browser.find_element_by_xpath("/html/body/div/div/main/div/div[1]/div[2]/button").click()
-    context.browser.find_element_by_id("username").click()
-    context.browser.find_element_by_id("username").clear()
-    context.browser.find_element_by_id("username").send_keys("testuser1")
-    context.browser.find_element_by_id("password").click()
-    context.browser.find_element_by_id("password").clear()
-    context.browser.find_element_by_id("password").send_keys("testuser1")
+@given(u'login name "{name:w}" and password "{password:w}"')
+def step_impl(context, name, password):
+    login_page = LoginPage(context)
+    login_page.login_btn.click()
+    login_page.input(login_page.username, name)
+    login_page.input(login_page.password, password)
+
 
 @when(u'i confirm pressing the sing in button')
 def step_impl(context):
-    context.browser.find_element_by_id("kc-login").click()
+    login_page = LoginPage(context)
+    login_page.sign_in_btn.click()
 
 
 @then(u'the application should show the welcome message')
 def step_impl(context):
-    time.sleep(1)
-    name=context.browser.find_element_by_xpath('/html/body/div/div/div/div/nav/ul/li/button').text
-    assert (name == "QuickCluster")
+
+    main_page = MainPage(context)
+    
+    assert(main_page.quickcluster_btn.text == "QuickCluster")
