@@ -2,10 +2,6 @@ from helpers.login_page import LoginPage
 from helpers.main_page import MainPage
 from behave import *
 
-from helpers.login_page import LoginPage
-from helpers.main_page import MainPage
-from behave import *
-
 @given(u'web address "{url}"')
 def step_impl(context, url):
     login_page = LoginPage(context)
