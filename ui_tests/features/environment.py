@@ -31,6 +31,8 @@ def before_scenario(context, scenario):
       context.browser = webdriver.Remote(
       command_executor="http://localhost:4444/wd/hub",
       desired_capabilities=capabilities)
+
+      context.browser.implicitly_wait(10)
   
      
 
