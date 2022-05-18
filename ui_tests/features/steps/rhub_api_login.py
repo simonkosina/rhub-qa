@@ -1,26 +1,26 @@
-from helpers import rhub_api_connection
+from helpers.api import API
 
 auth = AUTH_USER = ('testuser1', 'testuser1')
 
-token_f = rhub_api_connection.request_token(auth)
-
-
 @given(u'I request the token')
 def step_impl(context):
-    
+    context.api = API()
+
+    token_f = context.api.auth.create_token(auth)
+    context.token = token_f
+
     assert(token_f != '')
 
+    context.api.update_token(token_f)
 
     
 @when(u'I execute the authentication')
 def step_impl(context):
-    resp = rhub_api_connection.request_response(context, token_f)
-    assert(resp != '')
+    # use token with random endpoint
+    context.api.tower.list_jobs()
 
 
 @then(u'I must have access in the system')
 def step_impl(context):
-
-    recal = rhub_api_connection.request_response(context, token_f)
-    print(recal)
-    assert(recal == 200)
+    # should not throw status error
+    context.api.tower.list_jobs()
