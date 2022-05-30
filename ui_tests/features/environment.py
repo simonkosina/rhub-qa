@@ -1,5 +1,6 @@
 import time
 import os
+import requests
 
 from selenium import webdriver
 
@@ -11,13 +12,15 @@ def before_scenario(context, scenario):
     vname = context.scenario.name + str(time.strftime("%H:%M:%S", t))
 
     if 'web' in context.tags:
-        os.system('./../tools/cm selenoid start')
+
+        os.system(
+            './../tools/cm selenoid start --browsers-json ./../tools/browsers.json')
         os.system('./../tools/cm selenoid-ui start')
         time.sleep(5)
 
         capabilities = {
             "browserName": "chrome",
-            "browserVersion": "99.0",
+            "browserVersion": "latest",
             "acceptInsecureCerts": True,
             "selenoid:options": {
                 "enableVNC": True,
@@ -40,7 +43,7 @@ def after_scenario(context, scenario):
 
 
 def after_all(context):
-    
+
     time.sleep(5)
     os.system('./../tools/cm selenoid stop')
     os.system('./../tools/cm selenoid-ui stop')
