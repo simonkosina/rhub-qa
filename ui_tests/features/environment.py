@@ -14,6 +14,9 @@ def before_scenario(context, scenario):
     if 'web' in context.tags:
 
         os.system(
+            './../tools/cm selenoid update --browsers-json ./../tools/browsers.json'
+        )
+        os.system(
             './../tools/cm selenoid start --browsers-json ./../tools/browsers.json')
         os.system('./../tools/cm selenoid-ui start')
         time.sleep(5)
