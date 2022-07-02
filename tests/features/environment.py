@@ -1,10 +1,20 @@
 import time
 import os
-import requests
+import fixtures
 
+from behave.fixture import use_fixture_by_tag
 from selenium import webdriver
 
 t = time.localtime()
+
+fixture_registry = {
+    "fixture.cli": fixtures.rhub_cli
+}
+
+
+def before_tag(context, tag):
+    if tag.startswith('fixture.'):
+        use_fixture_by_tag(tag, context, fixture_registry)
 
 
 def before_scenario(context, scenario):
@@ -19,6 +29,7 @@ def before_scenario(context, scenario):
         os.system(
             './../tools/cm selenoid start --browsers-json ./../tools/browsers.json')
         os.system('./../tools/cm selenoid-ui start')
+
         time.sleep(5)
 
         capabilities = {

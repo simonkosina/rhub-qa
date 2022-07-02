@@ -1,12 +1,16 @@
 import json
 
-from api.base_endpoint import BaseEndpoint
+from api.base_endpoint import BaseEndpoint, log_call
 
 
 class TowerEndpoint(BaseEndpoint):
     """
     Represents the tower API endpoint.
     """
+
+    UNVERIFIABLE_ITEMS = {
+        "list_jobs": {}
+    }
 
     def tower_url(self, suffix: str):
         """
@@ -25,6 +29,7 @@ class TowerEndpoint(BaseEndpoint):
 
         return f"{self.base_url}/tower/{suffix}"
 
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["list_jobs"])
     def list_jobs(self, filter: dict = None, page: int = None, limit: int = None):
         """
         List tower jobs.
@@ -58,4 +63,4 @@ class TowerEndpoint(BaseEndpoint):
         url = self.tower_url(suffix='job')
         response = self.get(url, params=params)
 
-        return response.json()
+        return response

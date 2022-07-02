@@ -1,10 +1,14 @@
-from api.base_endpoint import BaseEndpoint
+from api.base_endpoint import BaseEndpoint, log_call
 
 
 class AuthEndpoint(BaseEndpoint):
     """
     Represents the auth API endpoint.
     """
+
+    UNVERIFIABLE_ITEMS = {
+        "create_token": {}
+    }
 
     def auth_url(self, suffix: str):
         """
@@ -20,9 +24,10 @@ class AuthEndpoint(BaseEndpoint):
         str
             Created url.
         """
-        
+
         return f"{self.base_url}/auth/{suffix}"
 
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["create_token"])
     def create_token(self, auth: tuple):
         """
         Login and get access token.
@@ -34,12 +39,11 @@ class AuthEndpoint(BaseEndpoint):
 
         Returns 
         -------
-        str
-            Refresh token.
+        Response
+            API response.
         """
 
         url = self.auth_url(suffix='token/create')
         response = self.post(url, auth=auth)
-        token = response.json()['refresh_token']
 
-        return token
+        return response
