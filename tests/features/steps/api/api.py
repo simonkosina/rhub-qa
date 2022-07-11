@@ -1,7 +1,7 @@
 import requests
 
-from helpers.auth_endpoint_api import AuthEndpointAPI
-from helpers.tower_endpoint_api import TowerEndpointAPI
+from api.auth_endpoint import AuthEndpoint
+from api.tower_endpoint import TowerEndpoint
 
 
 class API(object):
@@ -15,8 +15,8 @@ class API(object):
         """
 
         self.session = requests.Session()
-        self.auth = AuthEndpointAPI(self.session)
-        self.tower = TowerEndpointAPI(self.session)
+        self.auth = AuthEndpoint(self.session)
+        self.tower = TowerEndpoint(self.session)
 
     def update_token(self, token):
         """

@@ -1,12 +1,15 @@
-HOSTNAME = 'https://rhub-api-resource-hub-qe.apps.ocp-c1.prod.psi.redhat.com'
-PORT = 443
+# HOSTNAME = 'https://rhub-api-resource-hub-qe.apps.ocp-c1.prod.psi.redhat.com'
+HOSTNAME = 'http://localhost'
+# PORT = 443
+PORT = '8081'
+
 PATH = '/v0'
 
 TIMEOUT = 10
 VERIFY = False
 
 
-class BaseAPI(object):
+class BaseEndpoint(object):
     """
     Base object providing some basic functions for all the inheriting API endoints.
     """

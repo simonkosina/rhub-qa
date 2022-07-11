@@ -1,7 +1,7 @@
-from helpers.base_api import BaseAPI
+from api.base_endpoint import BaseEndpoint
 
 
-class AuthEndpointAPI(BaseAPI):
+class AuthEndpoint(BaseEndpoint):
     """
     Represents the auth API endpoint.
     """
