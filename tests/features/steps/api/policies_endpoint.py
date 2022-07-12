@@ -19,7 +19,7 @@ class PoliciesEndpoint(BaseEndpoint):
         return f"{self.base_url}/policies{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["create"])
-    def create(self, name, department, constraint=None) -> requests.Response:
+    def create(self, name: str, department: str, constraint: dict = None) -> requests.Response:
         """
         Create a new policy.
         """
@@ -40,7 +40,7 @@ class PoliciesEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["get_list"])
-    def get_list(self):
+    def get_list(self) -> requests.Response:
         """
         Get a list of all policies.
         """

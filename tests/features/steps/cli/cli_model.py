@@ -12,10 +12,7 @@ class ResourceHubCLI:
     API_PASS = 'testuser1'
 
     # TODO: API needs to be on the same version as the CLI code being tested
-    # TODO: switch back to official repo
-    # PIP_CLONE_URL = 'git+ssh://git@github.com/resource-hub-dev/rhub-cli.git'
-    PIP_CLONE_URL = 'git+ssh://git@github.com/guioliveirabh/rhub-cli@test_generation'
-    # PIP_CLONE_URL = 'git+ssh://git@github.com/simonkosina/rhub-cli@format-fix'
+    PIP_CLONE_URL = 'git+ssh://git@github.com/resource-hub-dev/rhub-cli.git'
 
     def __init__(self, virtual_environment_path: Path):
         self.entrypoint = str(virtual_environment_path / 'bin/rhub-cli')

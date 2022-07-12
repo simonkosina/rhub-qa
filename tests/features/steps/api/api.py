@@ -25,7 +25,7 @@ class API(object):
         self.ping = PingEndpoint(self.session)
         self.cowsay = CowsayEndpoint(self.session)
 
-    def update_token(self, token):
+    def update_token(self, token: str):
         """
         Updates headers with the provided token.
         """

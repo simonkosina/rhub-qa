@@ -63,21 +63,9 @@ class BaseEndpoint(object):
         self.base_url = f"{self.HOSTNAME}:{self.PORT}{self.PATH}"
         self.session = session
 
-    def delete(self, url: str, **kwargs):
+    def delete(self, url: str, **kwargs) -> requests.Response:
         """
         Send a DELETE request.
-
-        Arguments
-        ---------
-        url: str
-            Url to send the request to.
-        **kwargs
-            Optional arguments that request takes.
-
-        Returns
-        -------
-        Response
-            Response object.
         """
 
         r = self.session.delete(url, timeout=self.TIMEOUT,
@@ -86,21 +74,9 @@ class BaseEndpoint(object):
 
         return r
 
-    def get(self, url: str, **kwargs):
+    def get(self, url: str, **kwargs) -> requests.Response:
         """
         Send a GET request.
-
-        Arguments
-        ---------
-        url: str
-            Url to send the request to.
-        **kwargs
-            Optional arguments that request takes.
-
-        Returns
-        -------
-        Response
-            Response object.
         """
 
         r = self.session.get(url, timeout=self.TIMEOUT,
@@ -109,21 +85,9 @@ class BaseEndpoint(object):
 
         return r
 
-    def post(self, url: str, **kwargs):
+    def post(self, url: str, **kwargs) -> requests.Response:
         """
         Send a POST request.
-
-        Arguments
-        ---------
-        url: str
-            Url to send the request to.
-        **kwargs
-            Optional arguments that request takes.
-
-        Returns
-        -------
-        Response
-            Response object.
         """
 
         r = self.session.post(url, timeout=self.TIMEOUT,
@@ -132,21 +96,9 @@ class BaseEndpoint(object):
 
         return r
 
-    def patch(self, url: str, **kwargs):
+    def patch(self, url: str, **kwargs) -> requests.Response:
         """
         Send a PATCH request.
-
-        Arguments
-        ---------
-        url: str
-            Url to send the request to.
-        **kwargs
-            Optional arguments that request takes.
-
-        Returns
-        -------
-        Response
-            Response object.
         """
 
         r = self.session.patch(url, timeout=self.TIMEOUT,

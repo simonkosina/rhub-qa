@@ -1,4 +1,5 @@
 import json
+import requests
 
 from api.base_endpoint import BaseEndpoint, log_call
 
@@ -12,41 +13,17 @@ class TowerEndpoint(BaseEndpoint):
         "list_jobs": {}
     }
 
-    def tower_url(self, suffix: str):
+    def tower_url(self, suffix: str) -> str:
         """
         Create an URL for the tower endpoint.
-
-        Arguments
-        ---------
-        suffix: str
-            String appended at the end of the url.
-
-        Returns
-        -------
-        str
-            Created url.
         """
 
-        return f"{self.base_url}/tower/{suffix}"
+        return f"{self.base_url}/tower{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["list_jobs"])
-    def list_jobs(self, filter: dict = None, page: int = None, limit: int = None):
+    def list_jobs(self, filter: dict = None, page: str = None, limit: str = None) -> requests.Response:
         """
         List tower jobs.
-
-        Arguments
-        ---------
-        filter: dict
-            Filter jobs by attributes.
-        page: int
-            Page number.
-        limit: int
-            Limit.
-
-        Returns
-        -------
-        dict
-            Tower jobs.
         """
 
         params = {}
@@ -60,7 +37,7 @@ class TowerEndpoint(BaseEndpoint):
         if limit:
             params["limit"] = limit
 
-        url = self.tower_url(suffix='job')
+        url = self.tower_url(suffix='/job')
         response = self.get(url, params=params)
 
         return response
