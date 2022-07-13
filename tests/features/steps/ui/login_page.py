@@ -1,4 +1,4 @@
-from helpers.base_page import BasePage
+from ui.base_page import BasePage
 from selenium.webdriver.common.by import By
 
 class LoginPage(BasePage):

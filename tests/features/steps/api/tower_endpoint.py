@@ -1,9 +1,9 @@
 import json
 
-from helpers.base_api import BaseAPI
+from api.base_endpoint import BaseEndpoint
 
 
-class TowerEndpointAPI(BaseAPI):
+class TowerEndpoint(BaseEndpoint):
     """
     Represents the tower API endpoint.
     """

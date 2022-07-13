@@ -1,4 +1,5 @@
-from helpers.api import API
+from behave import given, when, then
+from api.api import API
 
 auth = AUTH_USER = ('testuser1', 'testuser1')
 

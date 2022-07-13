@@ -1,5 +1,5 @@
-from helpers.login_page import LoginPage
-from helpers.main_page import MainPage
+from ui.login_page import LoginPage
+from ui.main_page import MainPage
 from behave import *
 
 @given(u'web address "{url}"')
