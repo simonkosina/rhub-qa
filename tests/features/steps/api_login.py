@@ -8,8 +8,8 @@ auth = AUTH_USER = ('testuser1', 'testuser1')
 def step_impl(context):
     context.api = API()
 
-    response = context.api.auth.create_token(auth)
-    context.token = response.json()['refresh_token']
+    response = context.api.auth.token.create(auth)
+    context.token = response.json()['access_token']
 
     assert(context.token != '')
 
@@ -27,10 +27,10 @@ def step_impl(context):
 @when(u'I execute the authentication')
 def step_impl(context):
     # use token with random endpoint
-    context.api.tower.list_jobs()
+    context.api.tower.job.get_list()
 
 
 @then(u'I must have access in the system')
 def step_impl(context):
     # should not throw status error
-    context.api.tower.list_jobs()
+    context.api.tower.job.get_list()
