@@ -3,9 +3,9 @@ import requests
 from api.base_endpoint import BaseEndpoint, log_call
 
 
-class PingEndpoint(BaseEndpoint):
+class MeEndpoint(BaseEndpoint):
     """
-    Represents the ping API endpoint.
+    Represents the me API endpoint.
     """
 
     UNVERIFIABLE_ITEMS = {
@@ -13,11 +13,10 @@ class PingEndpoint(BaseEndpoint):
     }
 
     def url(self, suffix: str = '') -> str:
-        return f"{self.base_url}/ping{suffix}"
+        return f"{self.base_url}/me{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
     def get(self) -> requests.Response:
-        url = self.url()
-        response = super().get(url)
+        response = super().get(self.url())
 
         return response

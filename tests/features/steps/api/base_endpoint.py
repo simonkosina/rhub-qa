@@ -1,5 +1,6 @@
 import functools
 import requests
+import copy
 
 
 class APILogger(object):
@@ -70,7 +71,7 @@ class BaseEndpoint(object):
 
         r = self.session.delete(url, timeout=self.TIMEOUT,
                                 verify=self.VERIFY, **kwargs)
-        r.raise_for_status()
+        # r.raise_for_status()
 
         return r
 
@@ -81,7 +82,7 @@ class BaseEndpoint(object):
 
         r = self.session.get(url, timeout=self.TIMEOUT,
                              verify=self.VERIFY, **kwargs)
-        r.raise_for_status()
+        # r.raise_for_status()
 
         return r
 
@@ -92,7 +93,7 @@ class BaseEndpoint(object):
 
         r = self.session.post(url, timeout=self.TIMEOUT,
                               verify=self.VERIFY, **kwargs)
-        r.raise_for_status()
+        # r.raise_for_status()
 
         return r
 
@@ -103,6 +104,33 @@ class BaseEndpoint(object):
 
         r = self.session.patch(url, timeout=self.TIMEOUT,
                                verify=self.VERIFY, **kwargs)
-        r.raise_for_status()
+        # r.raise_for_status()
 
         return r
+
+    def get_function_arguments(self, local_vars: dict, skip_args: list[str] = []) -> dict:
+        """
+        Returns a dictionary containing the arguments that the function was called with.
+        `local_vars` is expected to be a result of calling `locals()` at the beginning of a function.
+        """
+
+        args = copy.deepcopy(local_vars)
+
+        for key in skip_args:
+            del args[key]
+
+        return args
+
+    def create_body(self, args: dict) -> dict:
+        """
+        Takes arguments that the function's been called with and creates a request
+        body.
+        """
+
+        body = {}
+
+        for key, value in args.items():
+            if value is not None:
+                body[key] = value
+
+        return body

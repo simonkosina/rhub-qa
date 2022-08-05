@@ -9,15 +9,15 @@ class CowsayEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        "cowsay": {}
+        'get': {}
     }
 
-    def cowsay_url(self, suffix: str = '') -> str:
+    def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/cowsay{suffix}"
 
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS["cowsay"])
-    def cowsay(self) -> requests.Response:
-        url = self.cowsay_url()
-        response = self.get(url)
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
+    def get(self) -> requests.Response:
+        url = self.url()
+        response = super().get(url)
 
         return response
