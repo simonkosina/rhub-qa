@@ -31,10 +31,10 @@ class AuthGroupEndpoint(BaseEndpoint):
         name: str,
         access: dict = None,
         attributes: dict = None,
-        client_roles: dict = None,
+        clientRoles: dict = None,
         path: str = None,
-        realm_roles: list[str] = None,
-        sub_groups: list[dict] = None
+        realmRoles: list[str] = None,
+        subGroups: list[dict] = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -64,10 +64,10 @@ class AuthGroupEndpoint(BaseEndpoint):
         name: str = None,
         access: dict = None,
         attributes: dict = None,
-        client_roles: dict = None,
+        clientRoles: dict = None,
         path: str = None,
-        realm_roles: list[str] = None,
-        sub_groups: list[dict] = None
+        realmRoles: list[str] = None,
+        subGroups: list[dict] = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
