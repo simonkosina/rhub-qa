@@ -31,10 +31,10 @@ class AuthRoleEndpoint(BaseEndpoint):
         self,
         name: str,
         attributes: dict = None,
-        client_role: bool = None,
+        clientRole: bool = None,
         composite: bool = None,
         composites: dict = None,
-        container_id: str = None,
+        containerId: str = None,
         description: str = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
@@ -62,10 +62,10 @@ class AuthRoleEndpoint(BaseEndpoint):
         id: str,
         name: str = None,
         attributes: dict = None,
-        client_role: bool = None,
+        clientRole: bool = None,
         composite: bool = None,
         composites: dict = None,
-        container_id: str = None,
+        containerId: str = None,
         description: str = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
