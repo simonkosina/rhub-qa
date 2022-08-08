@@ -7,6 +7,7 @@ from api.policies_endpoint import PoliciesEndpoint
 from api.ping_endpoint import PingEndpoint
 from api.cowsay_endpoint import CowsayEndpoint
 from api.lab_endpoint import LabEndpoint
+from api.openstack_endpoint import OpenstackEndpoint
 
 
 class API(object):
@@ -22,6 +23,7 @@ class API(object):
         self.session = requests.Session()
         self.auth = AuthEndpoint(self.session)
         self.lab = LabEndpoint(self.session)
+        self.openstack = OpenstackEndpoint(self.session)
         self.tower = TowerEndpoint(self.session)
         self.policies = PoliciesEndpoint(self.session)
         self.ping = PingEndpoint(self.session)
