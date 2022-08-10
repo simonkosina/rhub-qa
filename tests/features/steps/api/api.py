@@ -2,11 +2,12 @@ import requests
 
 from api.auth_endpoint import AuthEndpoint
 from api.me_endpoint import MeEndpoint
+from api.baremetal_endpoint import BaremetalEndpoint
+from api.lab_endpoint import LabEndpoint
 from api.tower_endpoint import TowerEndpoint
 from api.policies_endpoint import PoliciesEndpoint
 from api.ping_endpoint import PingEndpoint
 from api.cowsay_endpoint import CowsayEndpoint
-from api.lab_endpoint import LabEndpoint
 from api.openstack_endpoint import OpenstackEndpoint
 
 
@@ -22,6 +23,7 @@ class API(object):
 
         self.session = requests.Session()
         self.auth = AuthEndpoint(self.session)
+        self.bare_metal = BaremetalEndpoint(self.session)
         self.lab = LabEndpoint(self.session)
         self.openstack = OpenstackEndpoint(self.session)
         self.tower = TowerEndpoint(self.session)
