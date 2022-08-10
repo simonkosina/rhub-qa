@@ -11,7 +11,10 @@ class TowerJobEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get_list': {}
+        'get_list': {},
+        'get': {},
+        'relaunch': {},
+        'stdout': {},
     }
 
     def url(self, suffix: str = '') -> str:
@@ -19,18 +22,30 @@ class TowerJobEndpoint(BaseEndpoint):
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(self, filter: dict = None, page: str = None, limit: str = None) -> requests.Response:
-        params = {}
+        args = self.get_function_arguments(
+            locals(), skip_args=['self', '__class__'])
+        body = self.create_body(args)
+        response = super().get(self.url(), json=body)
 
-        if filter:
-            params['filter'] = json.dumps(filter)
+        return response
 
-        if page:
-            params['page'] = page
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
+    def get(self, id: int) -> requests.Response:
+        url = self.url(suffix=f"/{id}")
+        response = super().get(url)
 
-        if limit:
-            params['limit'] = limit
+        return response
 
-        url = self.url()
-        response = self.get(url, params=params)
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['relaunch'])
+    def relaunch(self, id: int) -> requests.Response:
+        url = self.url(suffix=f"/{id}/relaunch")
+        response = self.post(url)
+
+        return response
+
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['stdout'])
+    def get_stdout(self, id: int) -> requests.Response:
+        url = self.url(suffix=f"/{id}/stdout")
+        response = self.get(url)
 
         return response
