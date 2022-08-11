@@ -1,4 +1,5 @@
 import functools
+import json
 import requests
 import copy
 
@@ -134,3 +135,39 @@ class BaseEndpoint(object):
                 body[key] = value
 
         return body
+
+    def create_params(self, args: dict) -> dict:
+        """
+        Takes arguments that the function's been called with and creates request parameters.
+        """
+
+        if 'filter' in args and args['filter'] is not None:
+            args['filter'] = self.serialize_filter(args['filter'])
+
+        params = {}
+
+        for key, value in args.items():
+            if value is not None:
+                params[key] = value
+
+        return params
+
+    def serialize_filter(self, filter: dict) -> str:
+        """
+        Serializes the provided filter dictionary into a string that can be used
+        as a parameter when creating a request.
+        """
+
+        parts = []
+
+        for key, value in filter.items():
+            parts.append(key)
+
+            if type(value) is bool:
+                value = str(value).lower()
+
+            parts.append(value)
+
+        res = ','.join(parts)
+
+        return res
