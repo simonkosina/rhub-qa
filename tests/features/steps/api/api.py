@@ -10,6 +10,9 @@ from api.ping_endpoint import PingEndpoint
 from api.cowsay_endpoint import CowsayEndpoint
 from api.openstack_endpoint import OpenstackEndpoint
 from api.monitor_endpoint import MonitorEndpoint
+from api.dns_endpoint import DNSEndpoint
+from api.satellite_endpoint import SatelliteEndpoint
+from api.scheduler_endpoint import SchedulerEndpoint
 
 
 class API(object):
@@ -33,6 +36,9 @@ class API(object):
         self.ping = PingEndpoint(self.session)
         self.cowsay = CowsayEndpoint(self.session)
         self.me = MeEndpoint(self.session)
+        self.dns = DNSEndpoint(self.session)
+        self.satellite = SatelliteEndpoint(self.session)
+        self.scheduler = SchedulerEndpoint(self.session)
 
     def update_token(self, access_token: str):
         """

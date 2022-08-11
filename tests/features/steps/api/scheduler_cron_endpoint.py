@@ -3,9 +3,9 @@ import requests
 from api.base_endpoint import BaseEndpoint, log_call
 
 
-class PoliciesEndpoint(BaseEndpoint):
+class SchedulerCronEndpoint(BaseEndpoint):
     """
-    Represents the policies API endpoint.
+    Represents the /scheduler/cron API endpoint.
     """
 
     UNVERIFIABLE_ITEMS = {
@@ -17,20 +17,32 @@ class PoliciesEndpoint(BaseEndpoint):
     }
 
     def url(self, suffix: str = '') -> str:
-        return f"{self.base_url}/policies{suffix}"
+        return f"{self.base_url}/scheduler/cron{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
-    def get_list(self) -> requests.Response:
-        response = self.get(self.url())
+    def get_list(
+        self,
+        filter: dict = None,
+        sort: str = None,
+        page: int = None,
+        limit: int = None
+    ) -> requests.Response:
+        args = self.get_function_arguments(
+            locals(), skip_args=['self', '__class__'])
+        body = self.create_body(args)
+        response = super().get(self.url(), json=body)
 
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['create'])
     def create(
         self,
+        job_name: str,
         name: str,
-        department: str,
-        constraint: dict = None
+        time_expr: str,
+        description: str = None,
+        enabled: bool = None,
+        job_params: dict = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -55,14 +67,16 @@ class PoliciesEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['update'])
     def update(
         self,
-        id: str,
+        id: int,
+        job_name: str = None,
         name: str = None,
-        department: str = None,
-        constraint: dict = None
+        time_expr: str = None,
+        description: str = None,
+        enabled: bool = None,
+        job_params: dict = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-        url = self.url(suffix=f"/{id}")
-        response = self.patch(url, json=body)
+        response = self.patch(self.url(f"/{id}"), json=body)
 
         return response
