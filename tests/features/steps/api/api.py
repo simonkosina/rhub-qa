@@ -9,6 +9,7 @@ from api.policies_endpoint import PoliciesEndpoint
 from api.ping_endpoint import PingEndpoint
 from api.cowsay_endpoint import CowsayEndpoint
 from api.openstack_endpoint import OpenstackEndpoint
+from api.monitor_endpoint import MonitorEndpoint
 from api.dns_endpoint import DNSEndpoint
 from api.satellite_endpoint import SatelliteEndpoint
 from api.scheduler_endpoint import SchedulerEndpoint
@@ -29,6 +30,7 @@ class API(object):
         self.bare_metal = BaremetalEndpoint(self.session)
         self.lab = LabEndpoint(self.session)
         self.openstack = OpenstackEndpoint(self.session)
+        self.monitor = MonitorEndpoint(self.session)
         self.tower = TowerEndpoint(self.session)
         self.policies = PoliciesEndpoint(self.session)
         self.ping = PingEndpoint(self.session)
