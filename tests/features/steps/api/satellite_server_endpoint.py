@@ -3,34 +3,37 @@ import requests
 from api.base_endpoint import BaseEndpoint, log_call
 
 
-class PoliciesEndpoint(BaseEndpoint):
+class SatelliteServerEndpoint(BaseEndpoint):
     """
-    Represents the policies API endpoint.
+    Represents the /satellite/server API endpoint.
     """
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': True},
+        'create': {},
         'delete': {},
         'get': {},
         'update': {}
     }
 
     def url(self, suffix: str = '') -> str:
-        return f"{self.base_url}/policies{suffix}"
+        return f"{self.base_url}/satellite/server{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(self) -> requests.Response:
-        response = self.get(self.url())
+        response = super().get(self.url())
 
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['create'])
     def create(
         self,
+        credentials: str | dict,
+        hostname: str,
         name: str,
-        department: str,
-        constraint: dict = None
+        description: str = None,
+        insecure: bool = None,
+        owner_group_id: str = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -40,29 +43,29 @@ class PoliciesEndpoint(BaseEndpoint):
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['delete'])
     def delete(self, id: int) -> requests.Response:
-        url = self.url(suffix=f"/{id}")
-        response = super().delete(url)
+        response = super().delete(self.url(suffix=f"/{id}"))
 
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
     def get(self, id: int) -> requests.Response:
-        url = self.url(suffix=f"/{id}")
-        response = super().get(url)
+        response = super().get(self.url(suffix=f"/{id}"))
 
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['update'])
     def update(
         self,
-        id: str,
+        id: int,
+        credentials: str | dict = None,
+        hostname: str = None,
         name: str = None,
-        department: str = None,
-        constraint: dict = None
+        description: str = None,
+        insecure: bool = None,
+        owner_group_id: str = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-        url = self.url(suffix=f"/{id}")
-        response = self.patch(url, json=body)
+        response = self.patch(self.url(f"/{id}"), json=body)
 
         return response
