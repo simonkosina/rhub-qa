@@ -29,8 +29,8 @@ class SchedulerCronEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
-        body = self.create_body(args)
-        response = super().get(self.url(), json=body)
+        params = self.create_params(args)
+        response = super().get(self.url(), params=params)
 
         return response
 

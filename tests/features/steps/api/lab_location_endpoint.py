@@ -1,3 +1,4 @@
+from sqlite3 import paramstyle
 import requests
 
 from api.base_endpoint import BaseEndpoint, log_call
@@ -21,8 +22,16 @@ class LabLocationEndpoint(BaseEndpoint):
         return f"{self.base_url}/lab/location{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
-    def get_list(self) -> requests.Response:
-        response = super().get(url=self.url())
+    def get_list(
+        self,
+        sort: str = None,
+        page: int = None,
+        limit: int = None
+    ) -> requests.Response:
+        args = self.get_function_arguments(
+            locals(), skip_args=['self', '__class__'])
+        params = self.create_params(args)
+        response = super().get(url=self.url(), params=params)
 
         return response
 
@@ -75,9 +84,9 @@ class LabLocationEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'id', '__class__'])
-        body = self.create_body(args)
+        params = self.create_params(args)
 
         url = self.url(suffix=f"/{id}/regions")
-        response = super().get(url, json=body)
+        response = super().get(url, params=params)
 
         return response
