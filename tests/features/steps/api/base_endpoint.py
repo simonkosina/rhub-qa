@@ -71,7 +71,6 @@ class BaseEndpoint(object):
 
         r = self.session.delete(url, timeout=self.TIMEOUT,
                                 verify=self.VERIFY, **kwargs)
-        # r.raise_for_status()
 
         return r
 
@@ -82,7 +81,6 @@ class BaseEndpoint(object):
 
         r = self.session.get(url, timeout=self.TIMEOUT,
                              verify=self.VERIFY, **kwargs)
-        # r.raise_for_status()
 
         return r
 
@@ -93,7 +91,6 @@ class BaseEndpoint(object):
 
         r = self.session.post(url, timeout=self.TIMEOUT,
                               verify=self.VERIFY, **kwargs)
-        # r.raise_for_status()
 
         return r
 
@@ -104,7 +101,6 @@ class BaseEndpoint(object):
 
         r = self.session.patch(url, timeout=self.TIMEOUT,
                                verify=self.VERIFY, **kwargs)
-        # r.raise_for_status()
 
         return r
 
