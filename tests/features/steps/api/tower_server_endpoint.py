@@ -1,7 +1,7 @@
 
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call
 
 
 class TowerServerEndpoint(BaseEndpoint):

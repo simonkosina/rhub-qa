@@ -1,8 +1,6 @@
-from lib2to3.pytree import Base
-from types import NotImplementedType
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call
 
 
 class AuthUserEndpoint(BaseEndpoint):

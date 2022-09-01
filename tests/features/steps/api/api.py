@@ -1,18 +1,18 @@
 import requests
 
-from api.auth_endpoint import AuthEndpoint
-from api.me_endpoint import MeEndpoint
-from api.baremetal_endpoint import BaremetalEndpoint
-from api.lab_endpoint import LabEndpoint
-from api.tower_endpoint import TowerEndpoint
-from api.policies_endpoint import PoliciesEndpoint
-from api.ping_endpoint import PingEndpoint
-from api.cowsay_endpoint import CowsayEndpoint
-from api.openstack_endpoint import OpenstackEndpoint
-from api.monitor_endpoint import MonitorEndpoint
-from api.dns_endpoint import DNSEndpoint
-from api.satellite_endpoint import SatelliteEndpoint
-from api.scheduler_endpoint import SchedulerEndpoint
+from steps.api.auth_endpoint import AuthEndpoint
+from steps.api.me_endpoint import MeEndpoint
+from steps.api.baremetal_endpoint import BaremetalEndpoint
+from steps.api.lab_endpoint import LabEndpoint
+from steps.api.tower_endpoint import TowerEndpoint
+from steps.api.policies_endpoint import PoliciesEndpoint
+from steps.api.ping_endpoint import PingEndpoint
+from steps.api.cowsay_endpoint import CowsayEndpoint
+from steps.api.openstack_endpoint import OpenstackEndpoint
+from steps.api.monitor_endpoint import MonitorEndpoint
+from steps.api.dns_endpoint import DNSEndpoint
+from steps.api.satellite_endpoint import SatelliteEndpoint
+from steps.api.scheduler_endpoint import SchedulerEndpoint
 
 
 class API(object):

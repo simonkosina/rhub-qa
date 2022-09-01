@@ -1,7 +1,7 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.satellite_server_endpoint import SatelliteServerEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.satellite_server_endpoint import SatelliteServerEndpoint
 
 
 class SatelliteEndpoint(BaseEndpoint):

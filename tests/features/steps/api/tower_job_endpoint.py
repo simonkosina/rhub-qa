@@ -1,8 +1,6 @@
-import json
-from lib2to3.pytree import Base
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call
 
 
 class TowerJobEndpoint(BaseEndpoint):

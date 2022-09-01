@@ -1,10 +1,10 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.baremetal_handler_endpoint import BaremetalHandlerEndpoint
-from api.baremetal_host_endpoint import BaremetalHostEndpoint
-from api.baremetal_image_endpoint import BaremetalImageEndpoint
-from api.baremetal_provision_endpoint import BaremetalProvisionEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.baremetal_handler_endpoint import BaremetalHandlerEndpoint
+from steps.api.baremetal_host_endpoint import BaremetalHostEndpoint
+from steps.api.baremetal_image_endpoint import BaremetalImageEndpoint
+from steps.api.baremetal_provision_endpoint import BaremetalProvisionEndpoint
 
 
 class BaremetalEndpoint(BaseEndpoint):

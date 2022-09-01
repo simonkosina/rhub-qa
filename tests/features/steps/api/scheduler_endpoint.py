@@ -1,7 +1,7 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.scheduler_cron_endpoint import SchedulerCronEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.scheduler_cron_endpoint import SchedulerCronEndpoint
 
 
 class SchedulerEndpoint(BaseEndpoint):

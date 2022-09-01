@@ -1,7 +1,7 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.dns_server_endpoint import DNSServerEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.dns_server_endpoint import DNSServerEndpoint
 
 
 class DNSEndpoint(BaseEndpoint):

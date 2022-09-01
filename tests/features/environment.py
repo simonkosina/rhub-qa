@@ -8,7 +8,8 @@ from selenium import webdriver
 t = time.localtime()
 
 fixture_registry = {
-    "fixture.cli": fixtures.rhub_cli
+    "fixture.cli": fixtures.rhub_cli,
+    "fixture.api": fixtures.rhub_api
 }
 
 

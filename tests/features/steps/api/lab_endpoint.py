@@ -1,11 +1,11 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
-from api.lab_cluster_endpoint import LabClusterEndpoint
-from api.lab_cluster_event_endpoint import LabClusterEventEndpoint
-from api.lab_location_endpoint import LabLocationEndpoint
-from api.lab_region_endpoint import LabRegionEndpoint
-from api.lab_product_endpoint import LabProductEndpoint
+from steps.api.base_endpoint import BaseEndpoint, log_call
+from steps.api.lab_cluster_endpoint import LabClusterEndpoint
+from steps.api.lab_cluster_event_endpoint import LabClusterEventEndpoint
+from steps.api.lab_location_endpoint import LabLocationEndpoint
+from steps.api.lab_region_endpoint import LabRegionEndpoint
+from steps.api.lab_product_endpoint import LabProductEndpoint
 
 
 class LabEndpoint(BaseEndpoint):

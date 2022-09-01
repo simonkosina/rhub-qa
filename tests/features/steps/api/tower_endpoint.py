@@ -1,10 +1,10 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.tower_job_endpoint import TowerJobEndpoint
-from api.tower_server_endpoint import TowerServerEndpoint
-from api.tower_template_endpoint import TowerTemplateEndpoint
-from api.tower_webhook_notification_endpoint import TowerWebhookNotification
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.tower_job_endpoint import TowerJobEndpoint
+from steps.api.tower_server_endpoint import TowerServerEndpoint
+from steps.api.tower_template_endpoint import TowerTemplateEndpoint
+from steps.api.tower_webhook_notification_endpoint import TowerWebhookNotification
 
 
 class TowerEndpoint(BaseEndpoint):

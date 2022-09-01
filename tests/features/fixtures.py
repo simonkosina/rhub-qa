@@ -1,11 +1,17 @@
 import sys
 import subprocess
 
+from steps.api.api import API
 from steps.cli.cli_model import ResourceHubCLI
 from tempfile import TemporaryDirectory
 from behave import fixture
 from pathlib import Path
 
+@fixture
+def rhub_api(context):
+    context.api = API()
+
+    yield context.api
 
 @fixture
 def rhub_cli(context):

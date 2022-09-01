@@ -1,8 +1,8 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.openstack_cloud_endpoint import OpenstackCloudEndpoint
-from api.openstack_project_endpoint import OpenstackProjectEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.openstack_cloud_endpoint import OpenstackCloudEndpoint
+from steps.api.openstack_project_endpoint import OpenstackProjectEndpoint
 
 
 class OpenstackEndpoint(BaseEndpoint):

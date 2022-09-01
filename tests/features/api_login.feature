@@ -1,4 +1,4 @@
-@api
+@fixture.api
 Feature: Login execution for rhub api
     In order to access the system throught the api
     As a given of user I want to be able to acces the system by the api 

@@ -1,13 +1,10 @@
 from behave import given, when, then
-from api.api import API
 
 auth = AUTH_USER = ('testuser1', 'testuser1')
 
 
 @given(u'I request the token')
 def step_impl(context):
-    context.api = API()
-
     response = context.api.auth.token.create(auth)
     context.token = response.json()['access_token']
 
