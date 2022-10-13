@@ -1,0 +1,15 @@
+{
+  "username": "testuser1",
+  "password": "testuser1",
+  "prod_selec": "generic",
+  "region_select": "rdu",
+  "cluster_id": "test_e2e",
+  "image_selec": "rhel7.9",
+  "node_count": "1",
+  "node_flavor": "smal",
+  "aditionalvhd": "0",
+  "aditionalvhdsz": "1",
+  "reservationdz": "1",
+  "yumupdate": "no",
+  "reg_method": "se"
+}
