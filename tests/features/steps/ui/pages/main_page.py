@@ -7,36 +7,16 @@ class MainPage(BasePage):
     """
 
     locators = {
-        """
-        ----------------------------------------------------------------------------------------------------------------------------
-        Page headers components.
-        """
         "rhub_navbar": (By.XPATH, '/html/body/div/div/header/div[1]/a'),
         "resources_navbar": (By.XPATH, '/html/body/div/div/header/div[2]/nav/ul/li[1]/a'),
         "admin_navbar": (By.XPATH, '/html/body/div/div/header/div[2]/nav/ul/li[2]/a'),
         "guide_navbar": (By.XPATH, '/html/body/div/div/header/div[3]/button[1]'),
         "logout_btn": (By.XPATH, '/html/body/div/div/header/div[3]/button[4]'),
-
-        """
-        ----------------------------------------------------------------------------------------------------------------------------
-        Quick Cluster components.
-        """
         "quickcluster_btn": (By.XPATH, '/html/body/div/div/div/div/nav/ul/li/button'),
         "sharedclusters_mn": (By.XPATH,'/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[2]/button'),
-        "mycluster_mn": (By.XPATH, '/html/body/div/div/div/div/nav/ul/li/section/ul/li[1]/a'),
+        "mycluster_mn": (By.XPATH, '/html/body/div[1]/div/div/div/nav/ul/li/section/ul/li[2]/a'),
         "myactivity_mn": (By.XPATH, '/html/body/div/div/div/div/nav/ul/li/section/ul/li[3]/a'),
-
-        """
-        ----------------------------------------------------------------------------------------------------------------------------
-        Shared Clusters menu, page components.
-        Not available yet, scenario needed.
-        """
-
-        """
-        ----------------------------------------------------------------------------------------------------------------------------
-        My Clusters menu, page components.
-        """
-        "newcluster_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[1]/a/button'),
+        "newcluster_btn": (By.XPATH, '/html/body/div[1]/div/main/section/article/div[1]/a/button'),
         "mcnamesorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[2]/button/div/span[2]'),
         "mcownersorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[3]/button'),
         "mctemplatesorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[4]/button'),
@@ -45,12 +25,6 @@ class MainPage(BasePage):
         "mcstatussorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[7]/button'),
         "mcreservexpsorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[8]/button'),
         "mclifespanexpsorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[9]/button'),
-
-
-        """
-        ----------------------------------------------------------------------------------------------------------------------------
-        My Activity menu, page components.
-        """
         "manamesorting_btn": (By.XPATH, '/html/body/div/div/main/section[2]/div/div[2]/article/div[2]/table/thead/tr/th[2]/button'),
         "malocationsorting_btn": (By.XPATH, '/html/body/div/div/main/section[2]/div/div[2]/article/div[2]/table/thead/tr/th[3]/button'),
         "maclusterssorting_btn": (By.XPATH, '/html/body/div/div/main/section[2]/div/div[2]/article/div[2]/table/thead/tr/th[4]/button'),
