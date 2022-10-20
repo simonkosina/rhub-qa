@@ -138,7 +138,7 @@ def step_impl(context):
 
     qc_form.finish_btn.click()
 
-    time.sleep(10)
+    time.sleep(6)
 
 @then(u'the cluster must be provisioned and available at main page')
 def step_impl(context):
@@ -147,10 +147,11 @@ def step_impl(context):
     cluster_name = dt_request.get_data("cluster_id")
  
     for i in range (2, 100, +1):
-
-        path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody["+i+"]/tr[1]/td[2]/a')
+        pos_ph = str(i)
+        path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
         name_in_table = path_table_name.text
         if (name_in_table == cluster_name):
             assert True
             break
             
+    time.sleep(6)
