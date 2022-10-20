@@ -138,20 +138,31 @@ def step_impl(context):
 
     qc_form.finish_btn.click()
 
-    time.sleep(6)
+    time.sleep(10)
 
 @then(u'the cluster must be provisioned and available at main page')
 def step_impl(context):
     dt_request = GetAttribute()
    
     cluster_name = dt_request.get_data("cluster_id")
- 
+    
+    time.sleep(10)
+
     for i in range (2, 100, +1):
         pos_ph = str(i)
         path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
+        path_table_status = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[7]')
+
         name_in_table = path_table_name.text
+        status_in_table = path_table_status.text
+
         if (name_in_table == cluster_name):
-            assert True
             break
-            
-    time.sleep(6)
+
+    else:
+        print ("Cluster "+cluster_name+" not found")
+        assert False
+
+    assert status_in_table == "Active", print("The "+name_in_table+"Cluster was not provisioned or is not active. The actual status is: "+status_in_table)
+
+    time.sleep(10)
