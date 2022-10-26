@@ -1,5 +1,5 @@
 @web @region
-Feature: Unavailable or unselected region
+Feature: Region validation
 
 	Scenario: Region validation unavailable or unselected region
 	    Given I am logged into the system with a valid user and password
