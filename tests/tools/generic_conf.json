@@ -1,0 +1,16 @@
+    {
+        "url": "",
+        "username": "",
+        "password": "",
+        "prod_select": "Generic",
+        "region_select": "osp_lab-rdu2-b",
+        "cluster_id": "test02e2e",
+        "image_select": "RHEL7.9",
+        "node_count": "1",
+        "node_flavor": "quicklab.m1.small",
+        "aditionalvhd": "0",
+        "aditionalvhdsz": "1",
+        "reservationdz": "1",
+        "yumupdate": "No",
+        "reg_method": "satellite6"
+    }

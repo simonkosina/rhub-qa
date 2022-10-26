@@ -19,7 +19,7 @@ def before_tag(context, tag):
 
 def before_scenario(context, scenario):
 
-    vname = context.scenario.name + str(time.strftime("%H:%M:%S", t))
+    vname = context.scenario.name + " - " + str(time.strftime("%H:%M:%S", t))
 
     if 'web' in context.tags:
 
