@@ -30,7 +30,7 @@ You can choose run one by one (behave test_name.feature) or just type behave at 
 Another option is to setup tags into the .feature files, it allows that only the .feature files that have the choosen tags will be trigged.
 As an example:
  
- $bash#: behave --tags="@tag"
+ $bash#: behave --tags="tag"
  
 
  
