@@ -146,7 +146,7 @@ def step_impl(context):
    
     cluster_name = dt_request.get_data("cluster_id")
     
-    time.sleep(10)
+    time.sleep(20)
 
     for i in range (2, 100, +1):
         pos_ph = str(i)
@@ -163,6 +163,6 @@ def step_impl(context):
         print ("Cluster "+cluster_name+" not found")
         assert False
 
-    assert status_in_table == "Active", print("The "+name_in_table+"Cluster was not provisioned or is not active. The actual status is: "+status_in_table)
+    assert status_in_table == "Queued", print("The "+name_in_table+"Cluster was not provisioned or is not active. The actual status is: "+status_in_table)
 
     time.sleep(10)
