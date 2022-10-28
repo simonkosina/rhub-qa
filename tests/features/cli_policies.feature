@@ -1,3 +1,4 @@
+# FIXME: Use the new API steps
 @fixture.cli
 Feature: Policies
 
