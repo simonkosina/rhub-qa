@@ -11,10 +11,10 @@ class SchedulerEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {}
 
-    def __init__(self, session: requests.Session):
-        super().__init__(session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
+        super().__init__(session, admin_session)
 
-        self.cron = SchedulerCronEndpoint(self.session)
+        self.cron = SchedulerCronEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/scheduler{suffix}"

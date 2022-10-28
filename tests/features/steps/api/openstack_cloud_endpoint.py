@@ -1,6 +1,7 @@
+# TODO: log cleanups, find unverifiable items
 import requests
 
-from steps.api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class OpenstackCloudEndpoint(BaseEndpoint):
@@ -10,7 +11,7 @@ class OpenstackCloudEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': True},
+        'create': {'id': IsVerifiable.NO},
         'delete': {},
         'get': {},
         'update': {}

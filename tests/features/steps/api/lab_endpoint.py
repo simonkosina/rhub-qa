@@ -15,14 +15,14 @@ class LabEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {}
 
-    def __init__(self, session: requests.Session):
-        super().__init__(session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
+        super().__init__(session, admin_session)
 
-        self.cluster = LabClusterEndpoint(self.session)
-        self.cluster_event = LabClusterEventEndpoint(self.session)
-        self.location = LabLocationEndpoint(self.session)
-        self.region = LabRegionEndpoint(self.session)
-        self.product = LabProductEndpoint(self.session)
+        self.cluster = LabClusterEndpoint(session, admin_session)
+        self.cluster_event = LabClusterEventEndpoint(session, admin_session)
+        self.location = LabLocationEndpoint(self.session, admin_session)
+        self.region = LabRegionEndpoint(session, admin_session)
+        self.product = LabProductEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/lab{suffix}"

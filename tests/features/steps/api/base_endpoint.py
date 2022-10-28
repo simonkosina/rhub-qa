@@ -1,6 +1,13 @@
 import functools
-import requests
 import copy
+import requests
+
+from pyclbr import Function
+from enum import Enum, auto
+
+class IsVerifiable(Enum):
+    NO = auto()
+    NOT_REQUIRED = auto()
 
 
 class APILogger(object):
@@ -11,12 +18,26 @@ class APILogger(object):
     def __init__(self):
         self.responses = []
         self.unverifiable_items = []
+        self.__cleanups = []
 
     def log_response(self, response: requests.Response):
         self.responses.append(response)
 
     def log_unverfiable_items(self, item: dict):
         self.unverifiable_items.append(item)
+
+    def log_cleanup(self, method: Function, **kwargs):
+        self.__cleanups.append({
+            'method': method,
+            'kwargs': kwargs
+        })
+
+    def reset_cleanups(self):
+        self.__cleanups = []
+
+    @property
+    def cleanups(self) -> list:
+        return self.__cleanups[::-1]
 
     @property
     def last_response(self) -> requests.Response | None:
@@ -56,13 +77,15 @@ class BaseEndpoint(object):
 
     TIMEOUT = 10
     VERIFY = False
-    AUTH = ('testuser1', 'testuser1')
 
     LOGGER = APILogger()
 
-    def __init__(self, session: requests.Session):
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
         self.base_url = f"{self.HOSTNAME}:{self.PORT}{self.PATH}"
         self.session = session
+        self.__admin_session = admin_session
+        self.__test_session = None
+        self.__is_admin = False
 
     def delete(self, url: str, **kwargs) -> requests.Response:
         """
@@ -147,6 +170,29 @@ class BaseEndpoint(object):
 
         return params
 
+    def get_values_before_update(self, method: Function, id: str, update_args: dict) -> dict:
+        """
+        Call the provided method with the given id to retrieve current data and filter it 
+        to contain only the items that will be updated. Function returns the current 
+        keys and value pairs for the to be updated items.
+        """
+
+        self.execute_as_admin()
+
+        response = method(id=id)
+        response.raise_for_status()
+
+        self.execute_as_test()
+
+        data = response.json()
+        res = {}
+
+        for key, value in update_args.items():
+            if key not in {'self', 'id'} and value:
+                res[key] = data[key]
+
+        return res
+
     def serialize_filter(self, filter: dict) -> str:
         """
         Serializes the provided filter dictionary into a string that can be used
@@ -166,3 +212,22 @@ class BaseEndpoint(object):
         res = ','.join(parts)
 
         return res
+
+    def execute_as_admin(self):
+        """
+        Authorize as an admin.
+        """
+
+        if not self.__is_admin:
+            self.__is_admin = True
+            self.__test_session = self.session
+            self.session = self.__admin_session
+
+    def execute_as_test(self):
+        """
+        Authorize as the user in the tests.
+        """
+
+        if self.__is_admin:
+            self.__is_admin = False
+            self.session = self.__test_session

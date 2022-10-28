@@ -10,11 +10,11 @@ class OpenstackEndpoint(BaseEndpoint):
     Represents the OpenStack API endpoint.
     """
 
-    def __init__(self, session: requests.Session):
-        super().__init__(session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
+        super().__init__(session, admin_session)
 
-        self.cloud = OpenstackCloudEndpoint(self.session)
-        self.project = OpenstackProjectEndpoint(self.session)
+        self.cloud = OpenstackCloudEndpoint(session, admin_session)
+        self.project = OpenstackProjectEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/openstack{suffix}"
