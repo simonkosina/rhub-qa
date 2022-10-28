@@ -1,3 +1,4 @@
+# FIXME: Remove this file and use the steps in the CLI tests
 from behave import given, when, then
 
 
