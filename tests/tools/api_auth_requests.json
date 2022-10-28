@@ -1,0 +1,55 @@
+{
+  "auth": {
+    "user": {
+      "create": {
+        "username": "alice",
+        "email": "alice@example.com",
+        "firstName": "Alice",
+        "lastName": "Example",
+        "password": "p4ssw0rd"
+      },
+      "update": {
+        "email": "new-email@example.com",
+        "lastName": "New"
+      }
+    },
+    "group": {
+      "create": {
+        "name": "new-group",
+        "attributes": {
+          "mailing-list": [
+            "new-group-list@example.com"
+          ]
+        }
+      },
+      "update": {
+        "name": "updated-group",
+        "attributes": {
+          "mailing-list": [
+            "updated-list@example.com"
+          ]
+        }
+      }
+    },
+    "role": {
+      "create": {
+        "name": "new-role",
+        "description": "new-role description"
+      },
+      "update": {
+        "name": "updated-role",
+        "description": "updated description"
+      }
+    },
+    "token": {
+      "create_valid": {
+        "username": "testuser1",
+        "password": "testuser1"
+      },
+      "create_invalid": {
+        "username": "wrong_username",
+        "password": "wrong_password"
+      }
+    }
+  }
+}
