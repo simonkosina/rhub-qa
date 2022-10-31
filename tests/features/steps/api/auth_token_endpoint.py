@@ -1,6 +1,6 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class AuthTokenEndpoint(BaseEndpoint):
@@ -9,9 +9,9 @@ class AuthTokenEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get': {'exp': True, 'iat': True, 'jti': True, 'session_state': True, 'sid': True},
-        'create': {'access_token': True, 'session_state': True, 'refresh_token': True},
-        'refresh': {'access_token': True, 'session_state': True, 'refresh_token': True}
+        'get': {'exp': IsVerifiable.NOT_REQUIRED, 'iat': IsVerifiable.NOT_REQUIRED, 'jti': IsVerifiable.NOT_REQUIRED, 'session_state': IsVerifiable.NOT_REQUIRED, 'sid': IsVerifiable.NO},
+        'create': {'access_token': IsVerifiable.NO, 'session_state': IsVerifiable.NO, 'refresh_token': IsVerifiable.NO},
+        'refresh': {'access_token': IsVerifiable.NO, 'session_state': IsVerifiable.NO, 'refresh_token': IsVerifiable.NO}
     }
 
     def url(self, suffix: str = '') -> str:
@@ -24,7 +24,8 @@ class AuthTokenEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['create'])
-    def create(self, auth: tuple) -> requests.Response:
+    def create(self, username: str, password: str) -> requests.Response:
+        auth = (username, password)
         url = self.url(suffix='/create')
         response = self.post(url, auth=auth)
 

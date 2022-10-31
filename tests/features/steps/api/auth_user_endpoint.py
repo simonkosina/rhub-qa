@@ -1,8 +1,6 @@
-from lib2to3.pytree import Base
-from types import NotImplementedType
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class AuthUserEndpoint(BaseEndpoint):
@@ -12,10 +10,10 @@ class AuthUserEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': True, 'createdTimestamp': True},
+        'create': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
         'delete': {},
-        'get': {},
-        'update': {},
+        'get': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
+        'update': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
         'remove_from_group': {},
         'get_groups': {},
         'add_to_group': {}
@@ -59,6 +57,13 @@ class AuthUserEndpoint(BaseEndpoint):
         body = self.create_body(args)
 
         response = self.post(url=self.url(), json=body)
+
+        try:
+            response.raise_for_status()
+            id = response.json()['id']
+            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=id)
+        except requests.HTTPError:
+            pass
 
         return response
 
@@ -105,9 +110,16 @@ class AuthUserEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-
+        cleanup_args = self.get_values_before_update(self.get, id, args)
+        
         url = self.url(suffix=f"/{id}")
         response = self.patch(url, json=body)
+
+        try:
+            response.raise_for_status()
+            BaseEndpoint.LOGGER.log_cleanup(self.update, id=id, **cleanup_args)
+        except requests.HTTPError:
+            pass
 
         return response
 
@@ -116,13 +128,12 @@ class AuthUserEndpoint(BaseEndpoint):
         url = self.url(suffix=f"/{user_id}/groups")
         body = {'id': group_id}
 
-        print(url)
         response = super().delete(url, json=body)
 
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_groups'])
-    def get_groups(self, id) -> requests.Response:
+    def get_groups(self, id: str) -> requests.Response:
         url = self.url(suffix=f"/{id}/groups")
         response = super().get(url)
 
@@ -135,17 +146,24 @@ class AuthUserEndpoint(BaseEndpoint):
 
         response = self.post(url, json=body)
 
+        try:
+            response.raise_for_status()
+            BaseEndpoint.LOGGER.log_cleanup(self.remove_from_group, user_id=user_id, group_id=group_id)
+        except requests.HTTPError:
+            pass
+
         return response
 
     # TODO:
     # following function are not yet implemented in the API itself
     # https://github.com/resource-hub-dev/rhub-api/blob/master/src/rhub/api/auth/user.py
 
-    def remove_from_role(self):
+    def remove_from_role(self, user_id: str, role_id: str):
         raise NotImplementedError
 
-    def get_roles(self):
+    def get_roles(self, id: str):
         raise NotImplementedError
 
-    def add_to_role(self):
+    def add_to_role(self, user_id: str, role_id: str):
+        # TODO: add remove_from_group to log_cleanups
         raise NotImplementedError

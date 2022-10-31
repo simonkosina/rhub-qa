@@ -11,6 +11,7 @@ def step_impl(context, cmd):
 
 @then('API and CLI outputs match')
 def step_impl(context):
-    logger = BaseEndpoint.LOGGER
+    last_response = context.api.logger.last_response
+    last_unverifiable_items = context.api.logger.last_unverifiable_items
 
-    assert(context.cli.verify(logger.last_response, logger.last_unverifiable_items))
+    assert(context.cli.verify(last_response, last_unverifiable_items))

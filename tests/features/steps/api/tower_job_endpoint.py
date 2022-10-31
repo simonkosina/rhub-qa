@@ -1,8 +1,7 @@
-import json
-from lib2to3.pytree import Base
+# TODO: log cleanups, find unverifiable items
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class TowerJobEndpoint(BaseEndpoint):

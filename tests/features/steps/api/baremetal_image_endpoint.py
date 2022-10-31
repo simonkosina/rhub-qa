@@ -1,7 +1,7 @@
-from lib2to3.pytree import Base
+# TODO: log cleanups, find unverifiable items
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class BaremetalImageEndpoint(BaseEndpoint):
@@ -11,7 +11,7 @@ class BaremetalImageEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': True},
+        'create': {'id': IsVerifiable.NO},
         'get': {}
     }
 

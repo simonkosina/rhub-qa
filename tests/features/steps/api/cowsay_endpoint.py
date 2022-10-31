@@ -1,6 +1,6 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class CowsayEndpoint(BaseEndpoint):

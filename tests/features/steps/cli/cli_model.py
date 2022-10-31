@@ -4,6 +4,7 @@ import requests
 import json
 
 from pathlib import Path
+from steps.api.api import filter_dict
 
 
 class ResourceHubCLI:
@@ -67,17 +68,7 @@ class ResourceHubCLI:
         except json.JSONDecodeError:
             return response.content.rstrip()
 
-    def _prepare_dict(self, dictionary: dict, keys_to_remove: dict) -> dict:
-        """
-        Removes keys from the original dictionary which are not compared during verification.
-        """
 
-        for k, v in keys_to_remove.items():
-            if type(v) is dict:
-                # recursively remove nested fields
-                self._prepare_dict(dictionary[k], v)
-            elif v is True:
-                del dictionary[k]
 
     def verify(self, api_response: requests.Response, unverifiable_items: dict) -> bool:
         """
@@ -92,7 +83,7 @@ class ResourceHubCLI:
             return False
 
         if type(api_output) is dict:
-            self._prepare_dict(api_output, unverifiable_items)
-            self._prepare_dict(cli_output, unverifiable_items)
+            api_output = filter_dict(api_output, unverifiable_items)
+            cli_output = filter_dict(cli_output, unverifiable_items)
 
         return api_output == cli_output

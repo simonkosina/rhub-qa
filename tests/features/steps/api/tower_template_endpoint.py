@@ -1,6 +1,7 @@
+# TODO: log cleanups, find unverifiable items
 import requests
 
-from api.base_endpoint import BaseEndpoint, log_call
+from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
 
 class TowerTemplateEndpoint(BaseEndpoint):
@@ -10,12 +11,12 @@ class TowerTemplateEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': True},
+        'create': {'id': IsVerifiable.NO},
         'delete': {},
         'get': {},
         'update': {},
         'get_jobs': {},
-        'launch': {'created_at': True, 'started_at': True, 'finished_at': True}
+        'launch': {'created_at': IsVerifiable.NO, 'started_at': IsVerifiable.NO, 'finished_at': IsVerifiable.NO}
     }
 
     def url(self, suffix: str = '') -> str:

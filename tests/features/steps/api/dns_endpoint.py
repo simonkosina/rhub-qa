@@ -1,7 +1,7 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.dns_server_endpoint import DNSServerEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.dns_server_endpoint import DNSServerEndpoint
 
 
 class DNSEndpoint(BaseEndpoint):
@@ -11,10 +11,10 @@ class DNSEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {}
 
-    def __init__(self, session: requests.Session):
-        super().__init__(session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
+        super().__init__(session, admin_session)
 
-        self.server = DNSServerEndpoint(self.session)
+        self.server = DNSServerEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/dns{suffix}"

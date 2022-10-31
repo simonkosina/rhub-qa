@@ -1,7 +1,7 @@
 import requests
 
-from api.base_endpoint import BaseEndpoint
-from api.scheduler_cron_endpoint import SchedulerCronEndpoint
+from steps.api.base_endpoint import BaseEndpoint
+from steps.api.scheduler_cron_endpoint import SchedulerCronEndpoint
 
 
 class SchedulerEndpoint(BaseEndpoint):
@@ -11,10 +11,10 @@ class SchedulerEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {}
 
-    def __init__(self, session: requests.Session):
-        super().__init__(session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session):
+        super().__init__(session, admin_session)
 
-        self.cron = SchedulerCronEndpoint(self.session)
+        self.cron = SchedulerCronEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/scheduler{suffix}"

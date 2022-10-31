@@ -1,0 +1,316 @@
+{
+  "auth": {
+    "user": {
+      "get": {
+        "_href": {
+          "user": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b",
+          "user_groups": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/groups",
+          "user_roles": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/roles"
+        },
+        "access": {
+          "impersonate": true,
+          "manage": true,
+          "manageGroupMembership": true,
+          "mapRoles": true,
+          "view": true
+        },
+        "createdTimestamp": 1614717256570,
+        "disableableCredentialTypes": [],
+        "email": "alice@example.com",
+        "emailVerified": false,
+        "enabled": true,
+        "firstName": "Alice",
+        "id": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "lastName": "Example",
+        "notBefore": 0,
+        "requiredActions": [],
+        "totp": false,
+        "username": "alice"
+      },
+      "get_list": {
+        "_href": {
+          "user": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b",
+          "user_groups": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/groups",
+          "user_roles": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/roles"
+        },
+        "access": {
+          "impersonate": true,
+          "manage": true,
+          "manageGroupMembership": true,
+          "mapRoles": true,
+          "view": true
+        },
+        "createdTimestamp": 1614717256570,
+        "disableableCredentialTypes": [],
+        "email": "testuser1@example.com",
+        "emailVerified": false,
+        "enabled": true,
+        "firstName": "test",
+        "id": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "lastName": "user1",
+        "notBefore": 0,
+        "requiredActions": [],
+        "totp": false,
+        "username": "testuser1"
+      },
+      "create": {
+        "_href": {
+          "user": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b",
+          "user_groups": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/groups",
+          "user_roles": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/roles"
+        },
+        "access": {
+          "impersonate": true,
+          "manage": true,
+          "manageGroupMembership": true,
+          "mapRoles": true,
+          "view": true
+        },
+        "createdTimestamp": 1614717256570,
+        "disableableCredentialTypes": [],
+        "email": "alice@example.com",
+        "emailVerified": false,
+        "enabled": true,
+        "firstName": "Alice",
+        "id": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "lastName": "Example",
+        "notBefore": 0,
+        "requiredActions": [],
+        "totp": false,
+        "username": "alice"
+      },
+      "update": {
+        "_href": {
+          "user": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b",
+          "user_groups": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/groups",
+          "user_roles": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/roles"
+        },
+        "access": {
+          "impersonate": true,
+          "manage": true,
+          "manageGroupMembership": true,
+          "mapRoles": true,
+          "view": true
+        },
+        "createdTimestamp": 1614717256570,
+        "disableableCredentialTypes": [],
+        "email": "new-email@example.com",
+        "emailVerified": false,
+        "enabled": true,
+        "firstName": "Alice",
+        "id": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "lastName": "New",
+        "notBefore": 0,
+        "requiredActions": [],
+        "totp": false,
+        "username": "alice"
+      },
+      "get_groups": {
+        "_href": {
+          "group": "/v0/auth/group/c9b9f221-b0bd-4e39-96e7-83037173d241",
+          "group_roles": "/v0/auth/group/c9b9f221-b0bd-4e39-96e7-83037173d241/roles",
+          "group_users": "/v0/auth/group/c9b9f221-b0bd-4e39-96e7-83037173d241/users"
+        },
+        "id": "ccbaf231-b1dd-5e78-98d4-79434283d412",
+        "name": "rhub-admin",
+        "path": "/rhub-admin"
+      },
+      "get_roles": {
+        "description": "adminRole",
+        "id": "fa831aa3-7a5a-4667-9c3f-bf20465058f6",
+        "name": "admin"
+      }
+    },
+    "group": {
+      "get_list": {
+        "_href": {
+          "group": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655",
+          "group_roles": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655/roles",
+          "group_users": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655/users"
+        },
+        "id": "f787b83c-d3c9-459c-994a-adcd5d3ea655",
+        "name": "rhub-admin",
+        "path": "/rhub-admin",
+        "subGroups": []
+      },
+      "get": {
+        "_href": {
+          "group": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655",
+          "group_roles": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655/roles",
+          "group_users": "/v0/auth/group/f787b83c-d3c9-459c-994a-adcd5d3ea655/users"
+        },
+        "access": {
+          "manage": true,
+          "manageMembership": true,
+          "view": true
+        },
+        "attributes": {"mailing-list": ["new-group-list@example.com"]},
+        "clientRoles": {},
+        "id": "f787b83c-d3c9-459c-994a-adcd5d3ea655",
+        "name": "new-group",
+        "path": "/new-group",
+        "realmRoles": [],
+        "subGroups": []
+      },
+      "create": {
+        "_href": {
+          "group": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a",
+          "group_roles": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a/roles",
+          "group_users": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a/users"
+        },
+        "access": {
+          "manage": true,
+          "manageMembership": true,
+          "view": true
+        },
+        "attributes": {
+          "mailing-list": [
+            "new-group-list@example.com"
+          ]
+        },
+        "clientRoles": {},
+        "id": "7bc2950e-be98-441a-ba72-0fdc66e8db1a",
+        "name": "new-group",
+        "path": "/new-group",
+        "realmRoles": [],
+        "subGroups": []
+      },
+      "update": {
+        "_href": {
+          "group": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a",
+          "group_roles": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a/roles",
+          "group_users": "/v0/auth/group/7bc2950e-be98-441a-ba72-0fdc66e8db1a/users"
+        },
+        "access": {
+          "manage": true,
+          "manageMembership": true,
+          "view": true
+        },
+        "attributes": {
+          "mailing-list": [
+            "updated-list@example.com"
+          ]
+        },
+        "clientRoles": {},
+        "id": "7bc2950e-be98-441a-ba72-0fdc66e8db1a",
+        "name": "updated-group",
+        "path": "/updated-group",
+        "realmRoles": [],
+        "subGroups": []
+      },
+      "get_users": {
+        "_href": {
+          "user": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b",
+          "user_groups": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/groups",
+          "user_roles": "/v0/auth/user/743a5375-3513-4749-acb9-1cde1e159e3b/roles"
+        },
+        "createdTimestamp": 1614717256570,
+        "disableableCredentialTypes": [],
+        "email": "testuser1@example.com",
+        "emailVerified": false,
+        "enabled": true,
+        "firstName": "test",
+        "id": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "lastName": "user1",
+        "notBefore": 0,
+        "requiredActions": [],
+        "totp": false,
+        "username": "testuser1"
+      },
+      "get_roles": {
+        "description": "adminRole",
+        "id": "fa831aa3-7a5a-4667-9c3f-bf20465058f6",
+        "name": "admin"
+      }
+    },
+    "role": {
+      "get": {
+        "_href": {
+          "role": "/v0/auth/role/2155cb06-f001-46c1-bf38-1b3d7faf60b1"
+        },
+        "clientRole": false,
+        "composite": false,
+        "attributes": {},
+        "containerId": "rhub",
+        "id": "2155cb06-f001-46c1-bf38-1b3d7faf60b1",
+        "name": "new-role",
+        "description": "new-role description"
+      },
+      "get_list": {
+        "_href": {
+          "role": "/v0/auth/role/6f2ab622-b29c-4f08-b3cf-8b8b1f8b0dc1"
+        },
+        "attributes": {},
+        "clientRole": false,
+        "composite": true,
+        "containerId": "rhub",
+        "id": "6f2ab622-b29c-4f08-b3cf-8b8b1f8b0dc1",
+        "name": "new-role",
+        "description": "new-role description"
+      },
+      "create": {
+        "_href": {
+          "role": "/v0/auth/role/aeabe329-517a-4433-8571-de172efcf2a4"
+        },
+        "attributes": {},
+        "clientRole": false,
+        "composite": false,
+        "containerId": "rhub",
+        "description": "new-role description",
+        "id": "fa831aa3-7a5a-4667-9c3f-bf20465058f6",
+        "name": "new-role"
+      },
+      "update": {
+        "_href": {
+          "role": "/v0/auth/role/aeabe329-517a-4433-8571-de172efcf2a4"
+        },
+        "attributes": {},
+        "clientRole": false,
+        "composite": false,
+        "containerId": "rhub",
+        "description": "updated description",
+        "id": "fa831aa3-7a5a-4667-9c3f-bf20465058f6",
+        "name": "updated-role"
+      }
+    },
+    "token": {
+      "get": {
+        "acr": "1",
+        "active": true,
+        "aud": "account",
+        "azp": "rhub-api",
+        "client_id": "rhub-api",
+        "email": "testuser1@example.com",
+        "email_verified": false,
+        "family_name": "user1",
+        "given_name": "test",
+        "iss": "http://localhost:8080/auth/realms/rhub",
+        "name": "test user1",
+        "preferred_username": "testuser1",
+        "realm_access": {
+          "roles": [
+            "sharedclusters",
+            "offline_access",
+            "rhub-admin",
+            "uma_authorization",
+            "cluster-admin"
+          ]
+        },
+        "resource_access": {
+          "account": {
+            "roles": [
+              "manage-account",
+              "manage-account-links",
+              "view-profile"
+            ]
+          }
+        },
+        "scope": "profile email",
+        "sid": "847e177c-3d3d-438f-9c80-0a4c2832d99f",
+        "sub": "743a5375-3513-4749-acb9-1cde1e159e3b",
+        "typ": "Bearer",
+        "username": "testuser1"
+      }
+    }
+  }
+}
