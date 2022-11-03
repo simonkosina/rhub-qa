@@ -1,0 +1,51 @@
+{
+  "policies": {
+    "get_list": {
+      "id": 1,
+      "name": "string",
+      "department": "string"
+    },
+    "create": {
+      "constraint": {
+        "cost": null,
+        "density": "Very Dense",
+        "limit": null,
+        "location_id": null,
+        "sched_avail": null,
+        "serv_avail": null,
+        "tag": null
+      },
+      "department": "Test Department",
+      "id": 7,
+      "name": "Test User"
+    },
+    "get": {
+      "constraint": {
+        "cost": null,
+        "density": "Very Dense",
+        "limit": null,
+        "location_id": null,
+        "sched_avail": null,
+        "serv_avail": null,
+        "tag": null
+      },
+      "department": "Test Department",
+      "id": 7,
+      "name": "Test User"
+    },
+    "update": {
+      "constraint": {
+        "cost": null,
+        "density": "Not So Dense",
+        "limit": null,
+        "location_id": null,
+        "sched_avail": null,
+        "serv_avail": null,
+        "tag": ["tag"]
+      },
+      "department": "New Department",
+      "id": 7,
+      "name": "Test User"
+    }
+  }
+}

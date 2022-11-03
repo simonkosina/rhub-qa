@@ -226,6 +226,11 @@ def step_impl(context, data_key: str):
         response.raise_for_status()
 
         data = response.json()
+
+        # some responses return the list directly, other contain it in the 'data' item
+        if type(data) is dict:
+            data = data['data']
+
         expected = get_nested(context.api.response_data, data_key.split('.'))
 
         expected_filtered = filter_dict(
