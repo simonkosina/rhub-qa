@@ -1,0 +1,18 @@
+{
+  "policies": {
+    "create": {
+      "department": "Test Department",
+      "name": "Test User",
+      "constraint": {
+        "density": "Very Dense"
+      }
+    },
+    "update": {
+      "constraint": {
+        "tag": ["tag"],
+        "density": "Not So Dense"
+      },
+      "department": "New Department"
+    }
+  }
+}

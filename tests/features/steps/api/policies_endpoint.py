@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -13,8 +12,8 @@ class PoliciesEndpoint(BaseEndpoint):
         'get_list': {},
         'create': {'id': IsVerifiable.NO},
         'delete': {},
-        'get': {},
-        'update': {}
+        'get': {'id': IsVerifiable.NO},
+        'update': {'id': IsVerifiable.NO}
     }
 
     def url(self, suffix: str = '') -> str:
@@ -46,6 +45,13 @@ class PoliciesEndpoint(BaseEndpoint):
         body = self.create_body(args)
         response = self.post(self.url(), json=body)
 
+        try:
+            response.raise_for_status()
+            id = response.json()['id']
+            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=id)
+        except requests.HTTPError:
+            pass
+
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['delete'])
@@ -72,7 +78,15 @@ class PoliciesEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
+        cleanup_args = self.get_values_before_update(self.get, id, args)
+
         url = self.url(suffix=f"/{id}")
         response = self.patch(url, json=body)
+
+        try:
+            response.raise_for_status()
+            BaseEndpoint.LOGGER.log_cleanup(self.update, id=id, **cleanup_args)
+        except requests.HTTPError:
+            pass
 
         return response
