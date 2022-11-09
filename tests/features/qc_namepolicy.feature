@@ -1,4 +1,4 @@
-@web @qc_namepolicy
+@web @qc_namepolicy @qc
 Feature: Name policy
 
 	Scenario: Name policy not satisfied

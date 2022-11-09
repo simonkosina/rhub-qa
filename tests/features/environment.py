@@ -77,10 +77,10 @@ def after_scenario(context, scenario):
 def after_all(context):
 
     # TODO: Use only for web tests
-    # time.sleep(5)
-    # os.system('./../tools/cm selenoid stop')
-    # os.system('./../tools/cm selenoid-ui stop')
-    # os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Videos/')
+    time.sleep(5)
+    os.system('./../tools/cm selenoid stop')
+    os.system('./../tools/cm selenoid-ui stop')
+    os.system('cp ~/.aerokube/selenoid/video/*.mp4 ~/Videos/')
 
     print()
     print("--------------------------------------------------")

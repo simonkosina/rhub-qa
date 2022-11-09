@@ -1,4 +1,4 @@
-@web @region
+@web @region @qc
 Feature: Region validation
 
 	Scenario: Region validation unavailable or unselected region

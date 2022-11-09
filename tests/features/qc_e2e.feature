@@ -1,4 +1,4 @@
-@web @ui @e2e
+@web @ui @e2e @qc
 Feature: Basic e2e test using default configuration
 
 Scenario: Quick Cluster full provisioning
