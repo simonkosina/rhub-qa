@@ -41,13 +41,14 @@ def step_impl(context):
     
     list_cl = clusters
     for i in range(1, 100, +1):
-        try:
-            cluster_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+str(i)+']/tr[1]/td[2]/a').text
-            sorted_cl.append(cluster_name)
+         try:
+             cluster_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+str(i)+']/tr[1]/td[2]/a').text
+             sorted_cl.append(cluster_name)
 
-        except NoSuchElementException:
-            break
-
-    assert ([i for i, j in zip(sorted_cl, list_cl) if i != j])
+         except NoSuchElementException:
+             break
     
+    new_list = sorted(list_cl, key=str.lower)
+
+    assert ([i for i, j in zip(sorted_cl, new_list) if i == j])    
 
