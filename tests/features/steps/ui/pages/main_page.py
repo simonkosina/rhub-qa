@@ -18,7 +18,7 @@ class MainPage(BasePage):
         "myactivity_mn": (By.XPATH, '/html/body/div/div/div/div/nav/ul/li/section/ul/li[3]/a'),
         "newcluster_btn": (By.XPATH, '/html/body/div[1]/div/main/section/article/div[1]/a/button'),
         "mctable": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table'),
-        "mcnamesorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[2]/button/div/span[2]'),
+        "mcnamesorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[2]/button'),
         "mcownersorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[3]/button'),
         "mctemplatesorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[4]/button'),
         "mcgroupsorting_btn": (By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/thead/tr/th[5]/button'),

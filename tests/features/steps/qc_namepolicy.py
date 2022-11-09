@@ -3,7 +3,7 @@ from steps.get_attribute import GetAttribute
 from behave import *
 import time
 
-@when(u'I start the quick cluster provisioning but not satisfy the cluster name policy')
+@when(u'I start the QuickCluster provisioning but not satisfy the cluster name policy')
 def step_impl(context):
     dt_request = GetAttribute()
     qc_form = QCCreation_form(context)
@@ -45,7 +45,7 @@ def step_impl(context):
     qc_form.qcform_body.click()
     
 
-@when(u'I start the quick cluster provisioning and satisfy the cluster name policy')
+@when(u'I start the QuickCluster provisioning and satisfy the cluster name policy')
 def step_impl(context):
     dt_request = GetAttribute()
     qc_form = QCCreation_form(context)

@@ -1,5 +1,3 @@
-from ui.pages.login_page import LoginPage
-from ui.pages.main_page import MainPage
 from ui.pages.qccreation_form import QCCreation_form
 from steps.get_attribute import GetAttribute
 from selenium.webdriver.support.ui import Select
@@ -8,43 +6,11 @@ from selenium.webdriver.common.by import By
 from behave import *
 import time
 
-
-@given(u'I am logged into the system with a valid user and password')
+@when(u'I validate the cluster information and it matches')
 def step_impl(context):
-
-    dt_request = GetAttribute()
-    login_page = LoginPage(context)
-    login_page.visit(dt_request.get_data("url"))
-    login_page = LoginPage(context)
-    login_page.login_btn.click()
-    login_page.input(login_page.username, dt_request.get_data("username"))
-    login_page.input(login_page.password, dt_request.get_data("password"))
-    login_page = LoginPage(context)
-    login_page.sign_in_btn.click()
-    main_page = MainPage(context)
-    
-    time.sleep(3)
-    
-    qc_menu = main_page.quickcluster_btn.text
-
-    assert(qc_menu == "QuickCluster")
-
-
-@when(u'I navigate to the QuickCluster provisioning system')
-def step_impl(context):
-    main_page = MainPage(context)
-    main_page.quickcluster_btn.click()
-    time.sleep(1)
-    main_page.mycluster_mn.click()
-    time.sleep(3)
-    main_page.newcluster_btn.click()
-    time.sleep(5)
-
-@when(u'I start the QuickCluster provisioning using default configuration')
-def step_impl(context):
-
     dt_request = GetAttribute()
     qc_form = QCCreation_form(context)
+
 
     prd_slc = dt_request.get_data("prod_select")
     
@@ -118,7 +84,7 @@ def step_impl(context):
     reg_method.select_by_visible_text(dt_request.get_data("reg_method"))
 
     time.sleep(2)
-    
+
     qc_form.qcnext_btn.click()
 
     time.sleep(5)
@@ -136,36 +102,11 @@ def step_impl(context):
     assert qc_form.execyumupdt_txt.text == dt_request.get_data("yumupdate")
     assert qc_form.regsrc_txt.text == dt_request.get_data("reg_method")
 
-    qc_form.finish_btn.click()
 
-    time.sleep(10)
-
-@then(u'the cluster must be provisioned and available at main page')
+@then(u'I should be able to finish the provisioning')
 def step_impl(context):
-    dt_request = GetAttribute()
-   
-    cluster_name = dt_request.get_data("cluster_id")
+    qc_form = QCCreation_form(context)
     
-    name_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[2]/a').text
-    status_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[7]').text
-
-    if (name_in_table != cluster_name):
+    assert qc_form.finish_btn.is_enabled() == True
     
-        for i in range (1, 100, +1):
-            pos_ph = str(i)
-            path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
-            path_table_status = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[7]')
-
-            name_in_table = path_table_name.text
-            status_in_table = path_table_status.text
-
-            if (name_in_table == cluster_name):
-                break
-
-    else:
-        print ("Cluster "+cluster_name+" not found")
-        assert False
-
-    assert status_in_table == "Queued", print("The "+name_in_table+"Cluster was not provisioned or is not active. The actual status is: "+status_in_table)
-
-    time.sleep(10)
+    time.sleep(3)
