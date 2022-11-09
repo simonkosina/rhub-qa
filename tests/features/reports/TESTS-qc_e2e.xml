@@ -1,0 +1,54 @@
+<testsuite name="qc_e2e.Basic e2e test using default configuration" tests="1" errors="1" failures="0" skipped="0" time="165.812695" timestamp="2022-11-09T15:35:47.016131" hostname="dreamland"><testcase classname="qc_e2e.Basic e2e test using default configuration" name="Quick Cluster full provisioning" status="failed" time="165.812695"><error type="NoSuchElementException" message="Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/div/div/main/section/article/div[2]/table/tbody[2]/tr[1]/td[2]/a&quot;}&#10;  (Session info: chrome=107.0.5304.87)&#10;Stacktrace:&#10;#0 0x55b66adbc463 &lt;unknown&gt;&#10;#1 0x55b66ab808d8 &lt;unknown&gt;&#10;#2 0x55b66abbe43a &lt;unknown&gt;&#10;#3 0x55b66abbe651 &lt;unknown&gt;&#10;#4 0x55b66abfa7a4 &lt;unknown&gt;&#10;#5 0x55b66abdf64d &lt;unknown&gt;&#10;#6 0x55b66abf830f &lt;unknown&gt;&#10;#7 0x55b66abdf443 &lt;unknown&gt;&#10;#8 0x55b66abb03c5 &lt;unknown&gt;&#10;#9 0x55b66abb1531 &lt;unknown&gt;&#10;#10 0x55b66ae0edce &lt;unknown&gt;&#10;#11 0x55b66ae12192 &lt;unknown&gt;&#10;#12 0x55b66adf393e &lt;unknown&gt;&#10;#13 0x55b66ae13103 &lt;unknown&gt;&#10;#14 0x55b66ade6d85 &lt;unknown&gt;&#10;#15 0x55b66ae340a8 &lt;unknown&gt;&#10;#16 0x55b66ae34239 &lt;unknown&gt;&#10;#17 0x55b66ae4f492 &lt;unknown&gt;&#10;#18 0x7fa966e94b43 &lt;unknown&gt;&#10;">
+<![CDATA[
+Failing step: Then the cluster must be provisioned and available at main page ... failed in 33.071s
+Location: qc_e2e.feature:8
+Traceback (most recent call last):
+  File "/home/abarroso/.local/lib/python3.10/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/home/abarroso/.local/lib/python3.10/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "steps/qc_e2e.py", line 153, in step_impl
+    path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
+  File "/home/abarroso/.local/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 857, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/home/abarroso/.local/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 435, in execute
+    self.error_handler.check_response(response)
+  File "/home/abarroso/.local/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div/div/main/section/article/div[2]/table/tbody[2]/tr[1]/td[2]/a"}
+  (Session info: chrome=107.0.5304.87)
+Stacktrace:
+#0 0x55b66adbc463 <unknown>
+#1 0x55b66ab808d8 <unknown>
+#2 0x55b66abbe43a <unknown>
+#3 0x55b66abbe651 <unknown>
+#4 0x55b66abfa7a4 <unknown>
+#5 0x55b66abdf64d <unknown>
+#6 0x55b66abf830f <unknown>
+#7 0x55b66abdf443 <unknown>
+#8 0x55b66abb03c5 <unknown>
+#9 0x55b66abb1531 <unknown>
+#10 0x55b66ae0edce <unknown>
+#11 0x55b66ae12192 <unknown>
+#12 0x55b66adf393e <unknown>
+#13 0x55b66ae13103 <unknown>
+#14 0x55b66ade6d85 <unknown>
+#15 0x55b66ae340a8 <unknown>
+#16 0x55b66ae34239 <unknown>
+#17 0x55b66ae4f492 <unknown>
+#18 0x7fa966e94b43 <unknown>
+
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Quick Cluster full provisioning
+    Given I am logged into the system with a valid user and password ... passed in 21.549s
+    When I navigate to the quick cluster provisioning system ... passed in 9.191s
+    When I start the quick cluster provisioning using default configuration ... passed in 102.001s
+    Then the cluster must be provisioned and available at main page ... failed in 33.071s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -30,7 +30,7 @@ def step_impl(context):
     assert(qc_menu == "QuickCluster")
 
 
-@when(u'I navigate to the quick cluster provisioning system')
+@when(u'I navigate to the QuickCluster provisioning system')
 def step_impl(context):
     main_page = MainPage(context)
     main_page.quickcluster_btn.click()
@@ -40,7 +40,7 @@ def step_impl(context):
     main_page.newcluster_btn.click()
     time.sleep(5)
 
-@when(u'I start the quick cluster provisioning using default configuration')
+@when(u'I start the QuickCluster provisioning using default configuration')
 def step_impl(context):
 
     dt_request = GetAttribute()
@@ -146,18 +146,21 @@ def step_impl(context):
    
     cluster_name = dt_request.get_data("cluster_id")
     
-    time.sleep(20)
+    name_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[2]/a').text
+    status_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[7]').text
 
-    for i in range (2, 100, +1):
-        pos_ph = str(i)
-        path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
-        path_table_status = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[7]')
+    if (name_in_table != cluster_name):
+    
+        for i in range (1, 100, +1):
+            pos_ph = str(i)
+            path_table_name = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[2]/a')
+            path_table_status = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody['+pos_ph+']/tr[1]/td[7]')
 
-        name_in_table = path_table_name.text
-        status_in_table = path_table_status.text
+            name_in_table = path_table_name.text
+            status_in_table = path_table_status.text
 
-        if (name_in_table == cluster_name):
-            break
+            if (name_in_table == cluster_name):
+                break
 
     else:
         print ("Cluster "+cluster_name+" not found")

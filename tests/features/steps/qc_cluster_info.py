@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from behave import *
 import time
 
-@when(u'I validate the cluster information and it match')
+@when(u'I validate the cluster information and it matches')
 def step_impl(context):
     dt_request = GetAttribute()
     qc_form = QCCreation_form(context)

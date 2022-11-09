@@ -36,7 +36,7 @@ def step_impl(context):
 
     return clusters
 
-@then(u'the clusters should be alphabetical arranged by their names')
+@then(u'the clusters should be alphabetically arranged by their names')
 def step_impl(context):
     
     list_cl = clusters

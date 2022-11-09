@@ -83,4 +83,6 @@ def step_impl(context):
     reg_method = Select(qc_form.registrationmethod_slct)
     reg_method.select_by_visible_text(dt_request.get_data("reg_method"))
 
+    qc_form.qcform_body.click()
+
     time.sleep(2)
