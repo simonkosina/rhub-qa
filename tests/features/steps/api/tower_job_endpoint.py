@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -45,6 +44,6 @@ class TowerJobEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['stdout'])
     def get_stdout(self, id: int) -> requests.Response:
         url = self.url(suffix=f"/{id}/stdout")
-        response = self.get(url)
+        response = super().get(url)
 
         return response
