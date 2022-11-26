@@ -5,6 +5,7 @@ import requests
 from pyclbr import Function
 from enum import Enum, auto
 
+
 class IsVerifiable(Enum):
     NO = auto()
     NOT_REQUIRED = auto()
@@ -231,3 +232,28 @@ class BaseEndpoint(object):
         if self.__is_admin:
             self.__is_admin = False
             self.session = self.__test_session
+
+    def log_cleanup(
+        self,
+        response: requests.Response,
+        method: callable,
+        method_args: dict = {},
+        find_id: bool = True,
+        id_kw: str = 'id'
+    ):
+        """
+        Log the apropriate cleanup call based
+        on the provided arguments.
+        """
+
+        try:
+            response.raise_for_status()
+
+            if find_id:
+                id = response.json()[id_kw]
+                BaseEndpoint.LOGGER.log_cleanup(method, id=id, **method_args)
+            else:
+                BaseEndpoint.LOGGER.log_cleanup(method, **method_args)
+
+        except requests.HTTPError:
+            pass

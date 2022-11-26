@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -48,13 +47,7 @@ class TowerServerEndpoint(BaseEndpoint):
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
         response = self.post(self.url(), json=body)
-
-        try:
-            response.raise_for_status()
-            id = response.json()['id']
-            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=id)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -84,13 +77,8 @@ class TowerServerEndpoint(BaseEndpoint):
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
         cleanup_args = self.get_values_before_update(self.get, id, args)
-
         response = self.patch(self.url(f"/{id}"), json=body)
-
-        try:
-            response.raise_for_status()
-            BaseEndpoint.LOGGER.log_cleanup(self.update, id=id, **cleanup_args)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.update,
+                         method_args=cleanup_args)
 
         return response

@@ -49,6 +49,13 @@ class DNSServerEndpoint(BaseEndpoint):
         body = self.create_body(args)
         response = self.post(self.url(), json=body)
 
+        try:
+            response.raise_for_status()
+            id = response.json()['id']
+            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=id)
+        except requests.HTTPError:
+            pass
+
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['delete'])
