@@ -2,6 +2,7 @@ import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
 
+
 class AuthRoleEndpoint(BaseEndpoint):
     """
     Represents the auth/role API endpoint.
@@ -37,15 +38,8 @@ class AuthRoleEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(url=self.url(), json=body)
-
-        try:
-            response.raise_for_status()
-            name = response.json()['name']
-            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=name)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.delete, id_kw='name')
 
         return response
 
@@ -76,18 +70,8 @@ class AuthRoleEndpoint(BaseEndpoint):
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
         cleanup_args = self.get_values_before_update(self.get, id, args)
-
         response = self.patch(url=self.url(suffix=f"/{id}"), json=body)
-
-        if name:
-            new_id = name
-        else:
-            new_id = cleanup_args['id'] 
-
-        try:
-            response.raise_for_status()
-            BaseEndpoint.LOGGER.log_cleanup(self.update, id=new_id, **cleanup_args)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.update,
+                         method_args=cleanup_args, id_kw='name')
 
         return response

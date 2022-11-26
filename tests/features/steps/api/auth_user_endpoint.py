@@ -55,15 +55,8 @@ class AuthUserEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(url=self.url(), json=body)
-
-        try:
-            response.raise_for_status()
-            id = response.json()['id']
-            BaseEndpoint.LOGGER.log_cleanup(self.delete, id=id)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -111,15 +104,10 @@ class AuthUserEndpoint(BaseEndpoint):
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
         cleanup_args = self.get_values_before_update(self.get, id, args)
-        
         url = self.url(suffix=f"/{id}")
         response = self.patch(url, json=body)
-
-        try:
-            response.raise_for_status()
-            BaseEndpoint.LOGGER.log_cleanup(self.update, id=id, **cleanup_args)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(response, method=self.update,
+                         method_args=cleanup_args)
 
         return response
 
@@ -143,14 +131,16 @@ class AuthUserEndpoint(BaseEndpoint):
     def add_to_group(self, user_id: str, group_id: str) -> requests.Response:
         url = self.url(suffix=f"/{user_id}/groups")
         body = {'id': group_id}
-
         response = self.post(url, json=body)
-
-        try:
-            response.raise_for_status()
-            BaseEndpoint.LOGGER.log_cleanup(self.remove_from_group, user_id=user_id, group_id=group_id)
-        except requests.HTTPError:
-            pass
+        self.log_cleanup(
+            response,
+            method=self.remove_from_group,
+            method_args={
+                'user_id': user_id,
+                'group_id': group_id
+            },
+            find_id=False
+        )
 
         return response
 
