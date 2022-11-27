@@ -1,0 +1,17 @@
+{
+  "scheduler": {
+    "cron": {
+      "create": {
+        "description": "string",
+        "enabled": false,
+        "job_name": "example",
+        "job_params": {},
+        "name": "name",
+        "time_expr": "0 */2 * * *"
+      },
+      "update": {
+        "name": "new-name"
+      }
+    }
+  }
+}
