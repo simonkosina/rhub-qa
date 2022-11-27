@@ -1,0 +1,58 @@
+{
+  "satellite": {
+    "server": {
+      "get_list": {
+        "_href": {
+          "server": "/v0/satellite/server/1"
+        },
+        "credentials": "kv/satellite/satellite-rdu",
+        "description": "Satellite server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "insecure": true,
+        "name": "satellite-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group"
+      },
+      "create": {
+        "_href": {
+          "server": "/v0/satellite/server/1"
+        },
+        "credentials": "kv/satellite/satellite-rdu",
+        "description": "Satellite server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "insecure": true,
+        "name": "satellite-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group"
+      },
+      "get": {
+        "_href": {
+          "server": "/v0/satellite/server/1"
+        },
+        "credentials": "kv/satellite/satellite-rdu",
+        "description": "Satellite server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "insecure": true,
+        "name": "satellite-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group"
+      },
+      "update": {
+        "_href": {
+          "server": "/v0/satellite/server/1"
+        },
+        "credentials": "kv/satellite/satellite-rdu",
+        "description": "Satellite server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "insecure": true,
+        "name": "new-name",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group"
+      }
+    }
+  }
+}

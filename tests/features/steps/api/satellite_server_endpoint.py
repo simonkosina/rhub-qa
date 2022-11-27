@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -10,11 +9,11 @@ class SatelliteServerEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get_list': {},
-        'create': {},
+        'get_list': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'owner_group_id': IsVerifiable.NO},
+        'create': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'owner_group_id': IsVerifiable.NO},
         'delete': {},
-        'get': {},
-        'update': {}
+        'get': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'owner_group_id': IsVerifiable.NO},
+        'update': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'owner_group_id': IsVerifiable.NO}
     }
 
     def url(self, suffix: str = '') -> str:
@@ -48,6 +47,7 @@ class SatelliteServerEndpoint(BaseEndpoint):
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
         response = self.post(self.url(), json=body)
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -76,6 +76,9 @@ class SatelliteServerEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
+        cleanup_args = self.get_values_before_update(self.get, id, args)
         response = self.patch(self.url(f"/{id}"), json=body)
+        self.log_cleanup(response, method=self.update,
+                         method_args=cleanup_args)
 
         return response
