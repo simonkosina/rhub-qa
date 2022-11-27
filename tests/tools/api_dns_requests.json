@@ -1,0 +1,20 @@
+{
+  "dns": {
+    "server": {
+      "create": {
+        "credentials": {
+          "name": "string",
+          "secret": "string"
+        },
+        "description": "DNS server for RDU site.",
+        "hostname": "string",
+        "name": "dns-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "zone": "string"
+      },
+      "update": {
+        "name": "new-name"
+      }
+    }
+  }
+}

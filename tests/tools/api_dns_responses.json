@@ -1,0 +1,57 @@
+{
+  "dns": {
+    "server": {
+      "get_list": {
+        "_href": {
+          "server": "/v0/dns/server/1"
+        },
+        "credentials": "kv/dns/dns-rdu",
+        "description": "DNS server for RDU site.",
+        "id": 1,
+        "hostname": "string",
+        "name": "dns-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "zone": "string"
+      },
+      "get": {
+        "_href": { 
+          "server": "/v0/dns/server/1"
+        },
+        "credentials": "kv/dns/dns-rdu",
+        "description": "DNS server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "name": "dns-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group",
+        "zone": "string"
+      },
+      "create": {
+        "_href": { 
+          "server": "/v0/dns/server/1"
+        },
+        "credentials": "kv/dns/dns-rdu",
+        "description": "DNS server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "name": "dns-rdu",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group",
+        "zone": "string"
+      },
+      "update": {
+        "_href": {
+          "server": "/v0/dns/server/1"
+        },
+        "credentials": "kv/dns/dns-rdu",
+        "description": "DNS server for RDU site.",
+        "hostname": "string",
+        "id": 1,
+        "name": "new-name",
+        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_name": "new-group",
+        "zone": "string"
+      }
+    }
+  }
+}

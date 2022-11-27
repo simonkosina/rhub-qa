@@ -138,7 +138,6 @@ def step_impl(context, method: str, url: str, data_key: str):
 
 @when(u'I send a "{method}" request to "{url}" endpoint with body "{data_key}" using the saved "{id_key}" id')
 def step_impl(context, method: str, url: str, data_key: str, id_key: str):
-    id = context.saved_ids[id_key]
     fn = find_function_from_url(
         context,
         url,
@@ -147,10 +146,13 @@ def step_impl(context, method: str, url: str, data_key: str, id_key: str):
 
     kwargs = get_nested(context.api.request_data, data_key.split('.'))
 
-    if id:
-        fn(id=id, **kwargs)
-    else:
-        fn(**kwargs)
+    fn(id=context.saved_ids[id_key], **kwargs)
+
+
+@when(u'I update the "{item_key}" item in "{data_key}" using the saved "{id_key}" id')
+def step_impl(context, item_key: str, data_key: str, id_key: str):
+    kwargs = get_nested(context.api.request_data, data_key.split('.'))
+    kwargs[item_key] = context.saved_ids[id_key]
 
 
 @when(u'I send a "{method}" request to "{url}" endpoint using the saved "{id_key}" id')
