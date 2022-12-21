@@ -62,7 +62,58 @@ def step_impl(context):
     
     new_list = sorted(list_cl, key=str.lower)
 
-    assert ([i for i, j in zip(sorted_cl, new_list) if i == j])    
+    assert ([i for i, j in zip(sorted_cl, new_list) if i == j])
+
+
+
+@when(u'I sort the clusters in the list by owner')
+def step_impl(context):
+    helper_page = Helpers_Page
+    main_page = MainPage(context)
+    name_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[3]/a')
+
+    name_sr = "owner"
+
+    cluster_name = name_in_table.text
+    clusters.append(cluster_name)
+
+    for i in range(2, 100, +1):
+        line = str(i)
+        try:
+            cl_name = helper_page().sort_map(context, name_sr, line)
+            clusters.append(cl_name)
+
+        except NoSuchElementException:
+            break
+    
+
+    main_page.mcownersorting_btn.click()
+
+    return clusters
+
+
+
+@then(u'the clusters should be alphabetically arranged by their owner')
+def step_impl(context):
+    helper_page = Helpers_Page
+    name_in_table = context.browser.find_element(By.XPATH, '/html/body/div/div/main/section/article/div[2]/table/tbody/tr[1]/td[3]/a')
+
+    cl_name = name_in_table.text
+    clusters.append(cl_name)
+    list_cl = clusters
+
+    for i in range(2, 100, +1):
+        line = str(i)
+        try:
+            cl_name = helper_page().sort_map(context, "owner", line)
+            sorted_cl.append(cl_name)
+
+        except NoSuchElementException:
+             break
+    
+    new_list = sorted(list_cl, key=str.lower)
+
+    assert ([i for i, j in zip(sorted_cl, new_list) if i == j])     
 
 
 @when(u'I sort the clusters in the list by template')
