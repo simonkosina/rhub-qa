@@ -1,0 +1,46 @@
+{
+  "scheduler": {
+    "cron": {
+      "create": {
+        "description": "string",
+        "enabled": false,
+        "job_name": "example",
+        "job_params": {},
+        "last_run": null,
+        "name": "name",
+        "id": 1,
+        "time_expr": "0 */2 * * *"
+      },
+      "get_list": {
+        "description": "string",
+        "enabled": false,
+        "job_name": "example",
+        "job_params": {},
+        "last_run": null,
+        "name": "name",
+        "id": 1,
+        "time_expr": "0 */2 * * *"
+      },
+      "get": {
+        "description": "string",
+        "enabled": false,
+        "job_name": "example",
+        "job_params": {},
+        "last_run": null,
+        "name": "name",
+        "id": 1,
+        "time_expr": "0 */2 * * *"
+      },
+      "update": {
+        "description": "string",
+        "enabled": false,
+        "job_name": "example",
+        "job_params": {},
+        "last_run": null,
+        "name": "new-name",
+        "id": 1,
+        "time_expr": "0 */2 * * *"
+      }
+    }
+  }
+}
