@@ -17,9 +17,7 @@ class AuthEndpoint(BaseEndpoint):
     def __init__(self, session: requests.Session, admin_session: requests.Session):
         super().__init__(session, admin_session)
 
-        self.token = AuthTokenEndpoint(session, admin_session)
         self.group = AuthGroupEndpoint(session, admin_session)
-        self.role = AuthRoleEndpoint(session, admin_session)
         self.user = AuthUserEndpoint(session, admin_session)
 
     def url(self, suffix: str = '') -> str:

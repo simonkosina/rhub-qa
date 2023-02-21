@@ -28,10 +28,10 @@ class LabRegionEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -47,18 +47,18 @@ class LabRegionEndpoint(BaseEndpoint):
         openstack_id: int,
         owner_group_id: str,
         tower_id: int,
-        banner: str = None,
-        description: str = None,
-        enabled: bool = None,
-        lifespan_length: int = None,
-        location_id: int = None,
-        openstack_keyname: str = None,
-        reservation_expiration_max: int = None,
-        reservations_enabled: bool = None,
-        satellite_id: int = None,
-        total_quota: dict = None,
-        user_quota: dict = None,
-        users_group_id: str = None
+        banner: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        lifespan_length: int | None = None,
+        location_id: int | None = None,
+        openstack_keyname: str | None = None,
+        reservation_expiration_max: int | None = None,
+        reservations_enabled: bool | None = None,
+        satellite_id: int | None = None,
+        total_quota: dict | None = None,
+        user_quota: dict | None = None,
+        users_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -93,22 +93,22 @@ class LabRegionEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        openstack_id: int = None,
-        owner_group_id: str = None,
-        tower_id: int = None,
-        banner: str = None,
-        description: str = None,
-        enabled: bool = None,
-        lifespan_length: int = None,
-        location_id: int = None,
-        openstack_keyname: str = None,
-        reservation_expiration_max: int = None,
-        reservations_enabled: bool = None,
-        satellite_id: int = None,
-        total_quota: dict = None,
-        user_quota: dict = None,
-        users_group_id: str = None
+        name: str | None = None,
+        openstack_id: int | None = None,
+        owner_group_id: str | None = None,
+        tower_id: int | None = None,
+        banner: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        lifespan_length: int | None = None,
+        location_id: int | None = None,
+        openstack_keyname: str | None = None,
+        reservation_expiration_max: int | None = None,
+        reservations_enabled: bool | None = None,
+        satellite_id: int | None = None,
+        total_quota: dict | None = None,
+        user_quota: dict | None = None,
+        users_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
@@ -127,7 +127,7 @@ class LabRegionEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_products'])
-    def get_products(self, id: int, filter: dict = None) -> requests.Response:
+    def get_products(self, id: int, filter: dict | None = None) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'id', '__class__'])
         params = self.create_params(args)
@@ -142,7 +142,7 @@ class LabRegionEndpoint(BaseEndpoint):
         self,
         region_id: int,
         product_id: int,
-        enabled: bool = None
+        enabled: bool | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'region_id'])

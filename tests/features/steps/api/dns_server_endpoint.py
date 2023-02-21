@@ -22,10 +22,10 @@ class DNSServerEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -39,10 +39,10 @@ class DNSServerEndpoint(BaseEndpoint):
         self,
         credentials: str | dict,
         hostname: str,
-        description: str = None,
-        name: str = None,
-        owner_group_id: str = None,
-        zone: str = None,
+        description: str | None = None,
+        name: str | None = None,
+        owner_group_id: str | None = None,
+        zone: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -69,12 +69,12 @@ class DNSServerEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        credentials: str | dict = None,
-        hostname: str = None,
-        description: str = None,
-        name: str = None,
-        owner_group_id: str = None,
-        zone: str = None,
+        credentials: str | dict | None = None,
+        hostname: str | None = None,
+        description: str | None = None,
+        name: str | None = None,
+        owner_group_id: str | None = None,
+        zone: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)

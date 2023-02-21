@@ -22,10 +22,10 @@ class PoliciesEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -39,7 +39,7 @@ class PoliciesEndpoint(BaseEndpoint):
         self,
         name: str,
         department: str,
-        constraint: dict = None
+        constraint: dict | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -66,9 +66,9 @@ class PoliciesEndpoint(BaseEndpoint):
     def update(
         self,
         id: str,
-        name: str = None,
-        department: str = None,
-        constraint: dict = None
+        name: str | None = None,
+        department: str | None = None,
+        constraint: dict | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)

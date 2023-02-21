@@ -68,10 +68,10 @@ class BaremetalHostEndpoint(BaseEndpoint):
         ipmi_username: str,
         mac: str,
         name: str,
-        ipxe_support: bool = None,
-        legacy_bios: bool = None,
-        uefi: bool = None,
-        uefi_secure_boot: bool = None
+        ipxe_support: bool | None = None,
+        legacy_bios: bool | None = None,
+        uefi: bool | None = None,
+        uefi_secure_boot: bool | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -95,10 +95,10 @@ class BaremetalHostEndpoint(BaseEndpoint):
         redfish_system_id: str,
         redfish_username: str,
         redfish_verify_ca: bool,
-        ipxe_support: bool = None,
-        legacy_bios: bool = None,
-        uefi: bool = None,
-        uefi_secure_boot: bool = None
+        ipxe_support: bool | None = None,
+        legacy_bios: bool | None = None,
+        uefi: bool | None = None,
+        uefi_secure_boot: bool | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)

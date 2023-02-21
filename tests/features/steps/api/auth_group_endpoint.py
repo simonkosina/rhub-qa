@@ -30,12 +30,12 @@ class AuthGroupEndpoint(BaseEndpoint):
     def create(
         self,
         name: str,
-        access: dict = None,
-        attributes: dict = None,
-        clientRoles: dict = None,
-        path: str = None,
-        realmRoles: list[str] = None,
-        subGroups: list[dict] = None
+        access: dict | None = None,
+        attributes: dict | None = None,
+        clientRoles: dict | None = None,
+        path: str | None = None,
+        realmRoles: list[str] | None = None,
+        subGroups: list[dict] | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -62,13 +62,13 @@ class AuthGroupEndpoint(BaseEndpoint):
     def update(
         self,
         id: str,
-        name: str = None,
-        access: dict = None,
-        attributes: dict = None,
-        clientRoles: dict = None,
-        path: str = None,
-        realmRoles: list[str] = None,
-        subGroups: list[dict] = None
+        name: str | None = None,
+        access: dict | None = None,
+        attributes: dict | None = None,
+        clientRoles: dict | None = None,
+        path: str | None = None,
+        realmRoles: list[str] | None = None,
+        subGroups: list[dict] | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)

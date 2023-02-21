@@ -24,10 +24,10 @@ class LabProductEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -43,9 +43,9 @@ class LabProductEndpoint(BaseEndpoint):
         parameters: list[dict],
         tower_template_name_create: str,
         tower_template_name_delete: str,
-        description: str = None,
-        enabled: bool = None,
-        flavors: dict = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        flavors: dict | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -70,13 +70,13 @@ class LabProductEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        parameters: list[dict] = None,
-        tower_template_name_create: str = None,
-        tower_template_name_delete: str = None,
-        description: str = None,
-        enabled: bool = None,
-        flavors: dict = None,
+        name: str | None = None,
+        parameters: list[dict] | None = None,
+        tower_template_name_create: str | None = None,
+        tower_template_name_delete: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        flavors: dict | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
@@ -90,9 +90,9 @@ class LabProductEndpoint(BaseEndpoint):
     def get_regions(
         self,
         id: int,
-        filter: dict = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'id', '__class__'])

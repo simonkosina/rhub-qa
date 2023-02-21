@@ -23,10 +23,10 @@ class OpenstackCloudEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -45,7 +45,7 @@ class OpenstackCloudEndpoint(BaseEndpoint):
         networks: list[str],
         owner_group_id: str,
         url: str,
-        description: str = None,
+        description: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -72,14 +72,14 @@ class OpenstackCloudEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        credentials: str | dict = None,
-        domain_id: str = None,
-        domain_name: str = None,
-        name: str = None,
-        networks: list[str] = None,
-        owner_group_id: str = None,
-        url: str = None,
-        description: str = None,
+        credentials: str | dict | None = None,
+        domain_id: str | None = None,
+        domain_name: str | None = None,
+        name: str | None = None,
+        networks: list[str] | None = None,
+        owner_group_id: str | None = None,
+        url: str | None = None,
+        description: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['id', 'self'])
         body = self.create_body(args)

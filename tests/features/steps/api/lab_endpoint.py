@@ -20,7 +20,7 @@ class LabEndpoint(BaseEndpoint):
 
         self.cluster = LabClusterEndpoint(session, admin_session)
         self.cluster_event = LabClusterEventEndpoint(session, admin_session)
-        self.location = LabLocationEndpoint(self.session, admin_session)
+        self.location = LabLocationEndpoint(session, admin_session)
         self.region = LabRegionEndpoint(session, admin_session)
         self.product = LabProductEndpoint(session, admin_session)
 

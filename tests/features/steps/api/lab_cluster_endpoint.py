@@ -28,10 +28,10 @@ class LabClusterEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -47,14 +47,14 @@ class LabClusterEndpoint(BaseEndpoint):
         product_id: int,
         product_params: dict,
         region_id: int,
-        description: str = None,
-        lifespan_expiration: str = None,
-        project_id: int = None,
-        quota: dict = None,
-        quota_usage: dict = None,
-        reservation_expiration: str = None,
-        shared: bool = None,
-        status: str = None,
+        description: str | None = None,
+        lifespan_expiration: str | None = None,
+        project_id: int | None = None,
+        quota: dict | None = None,
+        quota_usage: dict | None = None,
+        reservation_expiration: str | None = None,
+        shared: bool | None = None,
+        status: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -79,18 +79,18 @@ class LabClusterEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        product_id: int = None,
-        product_params: dict = None,
-        region_id: int = None,
-        description: str = None,
-        lifespan_expiration: str = None,
-        project_id: int = None,
-        quota: dict = None,
-        quota_usage: dict = None,
-        reservation_expiration: str = None,
-        shared: bool = None,
-        status: str = None,
+        name: str | None = None,
+        product_id: int | None = None,
+        product_params: dict | None = None,
+        region_id: int | None = None,
+        description: str | None = None,
+        lifespan_expiration: str | None = None,
+        project_id: int | None = None,
+        quota: dict | None = None,
+        quota_usage: dict | None = None,
+        reservation_expiration: str | None = None,
+        shared: bool | None = None,
+        status: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
@@ -128,7 +128,7 @@ class LabClusterEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['reboot_hosts'])
-    def reboot_hosts(self, id: int, hosts: str | list[dict] = None, reboot_type: str = None) -> requests.Response:
+    def reboot_hosts(self, id: int, hosts: str | list[dict] | None = None, reboot_type: str | None = None) -> requests.Response:
         body = {}
 
         if hosts is not None:

@@ -24,9 +24,9 @@ class LabLocationEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -64,8 +64,8 @@ class LabLocationEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        description: str = None
+        name: str | None = None,
+        description: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
@@ -78,9 +78,9 @@ class LabLocationEndpoint(BaseEndpoint):
     def get_regions(
         self,
         id: int,
-        filter: dict = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'id', '__class__'])

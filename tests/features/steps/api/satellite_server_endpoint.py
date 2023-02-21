@@ -22,10 +22,10 @@ class SatelliteServerEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -40,9 +40,9 @@ class SatelliteServerEndpoint(BaseEndpoint):
         credentials: str | dict,
         hostname: str,
         name: str,
-        description: str = None,
-        insecure: bool = None,
-        owner_group_id: str = None
+        description: str | None = None,
+        insecure: bool | None = None,
+        owner_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -67,12 +67,12 @@ class SatelliteServerEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        credentials: str | dict = None,
-        hostname: str = None,
-        name: str = None,
-        description: str = None,
-        insecure: bool = None,
-        owner_group_id: str = None
+        credentials: str | dict | None = None,
+        hostname: str | None = None,
+        name: str | None = None,
+        description: str | None = None,
+        insecure: bool | None = None,
+        owner_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)

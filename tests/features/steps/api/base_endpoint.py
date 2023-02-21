@@ -2,7 +2,7 @@ import functools
 import copy
 import requests
 
-from pyclbr import Function
+from collections.abc import Callable
 from enum import Enum, auto
 
 
@@ -27,7 +27,7 @@ class APILogger(object):
     def log_unverfiable_items(self, item: dict):
         self.unverifiable_items.append(item)
 
-    def log_cleanup(self, method: Function, **kwargs):
+    def log_cleanup(self, method: Callable, **kwargs):
         self.__cleanups.append({
             'method': method,
             'kwargs': kwargs
@@ -171,7 +171,7 @@ class BaseEndpoint(object):
 
         return params
 
-    def get_values_before_update(self, method: Function, id: str, update_args: dict) -> dict:
+    def get_values_before_update(self, method: Callable, id: str, update_args: dict) -> dict:
         """
         Call the provided method with the given id to retrieve current data and filter it 
         to contain only the items that will be updated. Function returns the current 
@@ -236,7 +236,7 @@ class BaseEndpoint(object):
     def log_cleanup(
         self,
         response: requests.Response,
-        method: callable,
+        method: Callable,
         method_args: dict = {},
         find_id: bool = True,
         id_kw: str = 'id'

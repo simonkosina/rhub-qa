@@ -24,10 +24,10 @@ class OpenstackProjectEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -42,8 +42,8 @@ class OpenstackProjectEndpoint(BaseEndpoint):
         cloud_id: int,
         name: str,
         owner_id: str,
-        description: str = None,
-        group_id: str = None,
+        description: str | None = None,
+        group_id: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -70,11 +70,11 @@ class OpenstackProjectEndpoint(BaseEndpoint):
     def update(
         self,
         project_id: int,
-        cloud_id: int = None,
-        name: str = None,
-        owner_id: str = None,
-        description: str = None,
-        group_id: str = None
+        cloud_id: int | None = None,
+        name: str | None = None,
+        owner_id: str | None = None,
+        description: str | None = None,
+        group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'project_id'])

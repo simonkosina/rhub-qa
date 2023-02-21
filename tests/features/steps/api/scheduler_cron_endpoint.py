@@ -22,10 +22,10 @@ class SchedulerCronEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -40,9 +40,9 @@ class SchedulerCronEndpoint(BaseEndpoint):
         job_name: str,
         name: str,
         time_expr: str,
-        description: str = None,
-        enabled: bool = None,
-        job_params: dict = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        job_params: dict | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -69,12 +69,12 @@ class SchedulerCronEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        job_name: str = None,
-        name: str = None,
-        time_expr: str = None,
-        description: str = None,
-        enabled: bool = None,
-        job_params: dict = None,
+        job_name: str | None = None,
+        name: str | None = None,
+        time_expr: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        job_params: dict | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
