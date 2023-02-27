@@ -1,22 +1,18 @@
-from behave import given, when, then
+from behave import given
 from copy import deepcopy
 
 
 @given(u'I create a DNS server and save the "{id_key}" id')
 def step_impl(context, id_key: str):
-    # Create an owner group
-    group_req = context.api.request_data["auth"]["group"]["create"]
-
-    context.api.auth.group.execute_as_admin()
-    group_resp = context.api.auth.group.create(**group_req)
-    context.api.auth.group.execute_as_test()
-
-    group_resp.raise_for_status()
-    group_id = group_resp.json()['id']
+    # Find the owner group id
+    context.execute_steps('''
+        Given I am authenticated
+        When I lookup the "group" id from a group named "rhub-admin"
+    ''')
 
     # Create the DNS server and save the id
     dns_req = deepcopy(context.api.request_data["dns"]["server"]["create"])
-    dns_req["owner_group_id"] = group_id
+    dns_req["owner_group_id"] = context.saved_ids['group']
 
     context.api.dns.server.execute_as_admin()
     dns_resp = context.api.dns.server.create(**dns_req)

@@ -80,7 +80,7 @@ def find_function_from_url(context, url: str, method: str, id: str = None) -> Ca
     return fn
 
 
-def get_nested(d: dict, key_list: str):
+def get_nested(d: dict, key_list: list[str]):
     """
     Recursively find the nested value in the provided dictionary
     based on the keys in the list.
@@ -194,6 +194,32 @@ def step_impl(context):
 
     context.api.update_token(response.json()['access_token'])
 
+
+@then(u'I receive the following SSH keys "{data_key}"')
+def step_impl(context, data_key: str):
+    try:
+        response = context.api.logger.last_response
+        response.raise_for_status()
+
+        received = response.text
+        excepted = get_nested(context.api.response_data, data_key.split('.'))
+
+        # from uthorized_keys format to list of SSH keys
+        received = received.splitlines() if received != '\n' else []
+
+        # received.sort()
+        excepted.sort()
+
+        print_vars(
+            ('received', received),
+            ('expected', excepted)
+        )
+
+        assert excepted == received
+
+    except requests.exceptions.RequestException as e:
+        print_request_error(e)
+        raise e
 
 @then(u'I receive the following response "{data_key}"')
 def step_impl(context, data_key: str):

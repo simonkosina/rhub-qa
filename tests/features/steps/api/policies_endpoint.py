@@ -39,6 +39,8 @@ class PoliciesEndpoint(BaseEndpoint):
         self,
         name: str,
         department: str,
+        owner_group_id: int | None = None,
+        owner_group_name: str | None = None,
         constraint: dict | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
@@ -67,6 +69,8 @@ class PoliciesEndpoint(BaseEndpoint):
         self,
         id: str,
         name: str | None = None,
+        owner_group_id: int | None = None,
+        owner_group_name: str | None = None,
         department: str | None = None,
         constraint: dict | None = None
     ) -> requests.Response:

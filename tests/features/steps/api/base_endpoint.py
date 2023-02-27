@@ -70,19 +70,12 @@ class BaseEndpoint(object):
     Base object providing some basic functions for all the inheriting API endoints.
     """
 
-    # HOSTNAME = 'https://rhub-api-resource-hub-qe.apps.ocp-c1.prod.psi.redhat.com'
-    # PORT = 443
-    HOSTNAME = 'http://localhost'
-    PORT = '8081'
-    PATH = '/v0'
-
     TIMEOUT = 10
     VERIFY = False
-
     LOGGER = APILogger()
 
-    def __init__(self, session: requests.Session, admin_session: requests.Session):
-        self.base_url = f"{self.HOSTNAME}:{self.PORT}{self.PATH}"
+    def __init__(self, session: requests.Session, admin_session: requests.Session, base_url: str):
+        self.base_url = base_url
         self.session = session
         self.__admin_session = admin_session
         self.__test_session = None

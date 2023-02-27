@@ -13,32 +13,32 @@
       },
       "create": {
         "_href": { "server": "/v0/tower/server/2" },
-        "credentials": "kv/tower/prod/rhub",
+        "credentials": "kv/tower/aap",
         "enabled": true,
         "description": "",
         "id": 2,
         "name": "default",
-        "url": "https://tower.example.com",
+        "url": "https://aap.corp.redhat.com/",
         "verify_ssl": true
       },
       "get": {
         "_href": { "server": "/v0/tower/server/2" },
-        "credentials": "kv/tower/prod/rhub",
+        "credentials": "kv/tower/aap",
         "enabled": true,
         "description": "",
         "id": 2,
         "name": "default",
-        "url": "https://tower.example.com",
+        "url": "https://aap.corp.redhat.com/",
         "verify_ssl": true
       },
       "update": {
         "_href": { "server": "/v0/tower/server/2" },
-        "credentials": "kv/tower/prod/rhub",
+        "credentials": "kv/tower/aap",
         "enabled": true,
         "description": "updated tower description",
         "id": 2,
         "name": "default",
-        "url": "https://tower.example.com",
+        "url": "https://aap.corp.redhat.com/",
         "verify_ssl": true
       }
     }

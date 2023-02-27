@@ -14,13 +14,13 @@ class BaremetalEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {}
 
-    def __init__(self, session: requests.Session, admin_session: requests.Session):
-        super().__init__(session, admin_session)
+    def __init__(self, session: requests.Session, admin_session: requests.Session, base_url: str):
+        super().__init__(session, admin_session, base_url)
 
-        self.handler = BaremetalHandlerEndpoint(session, admin_session)
-        self.host = BaremetalHostEndpoint(session, admin_session)
-        self.image = BaremetalImageEndpoint(session, admin_session)
-        self.provision = BaremetalProvisionEndpoint(session, admin_session)
+        self.handler = BaremetalHandlerEndpoint(session, admin_session, base_url)
+        self.host = BaremetalHostEndpoint(session, admin_session, base_url)
+        self.image = BaremetalImageEndpoint(session, admin_session, base_url)
+        self.provision = BaremetalProvisionEndpoint(session, admin_session, base_url)
 
     def url(self, suffix: str = '') -> str:
         return f"{self.base_url}/bare_metal{suffix}"

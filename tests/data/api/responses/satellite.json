@@ -7,12 +7,12 @@
         },
         "credentials": "kv/satellite/satellite-rdu",
         "description": "Satellite server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "insecure": true,
         "name": "satellite-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group"
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin"
       },
       "create": {
         "_href": {
@@ -20,12 +20,12 @@
         },
         "credentials": "kv/satellite/satellite-rdu",
         "description": "Satellite server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "insecure": true,
         "name": "satellite-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group"
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin"
       },
       "get": {
         "_href": {
@@ -33,12 +33,12 @@
         },
         "credentials": "kv/satellite/satellite-rdu",
         "description": "Satellite server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "insecure": true,
         "name": "satellite-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group"
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin"
       },
       "update": {
         "_href": {
@@ -46,12 +46,12 @@
         },
         "credentials": "kv/satellite/satellite-rdu",
         "description": "Satellite server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "insecure": true,
         "name": "new-name",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group"
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin"
       }
     }
   }

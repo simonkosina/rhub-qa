@@ -9,7 +9,7 @@ class MeEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get': {}
+        'get': {'created_at': True, 'updated_at': True}
     }
 
     def url(self, suffix: str = '') -> str:
