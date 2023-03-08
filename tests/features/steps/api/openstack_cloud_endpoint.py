@@ -49,8 +49,8 @@ class OpenstackCloudEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(self.url(), json=body)
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -83,7 +83,8 @@ class OpenstackCloudEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['id', 'self'])
         body = self.create_body(args)
-
+        cleanup_args = self.get_values_before_update(self.get, id, args)
         response = self.patch(self.url(suffix=f"/{id}"), json=body)
+        self.log_cleanup(response, method=self.update, method_args=cleanup_args)
 
         return response

@@ -1,0 +1,114 @@
+{
+  "lab": {
+    "region": {
+      "get_list": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/2",
+          "owner_group": "/v0/auth/group/1",
+          "region": "/v0/lab/region/2",
+          "region_products": "/v0/lab/region/2/products",
+          "region_usage": "/v0/lab/region/2/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "banner": "string",
+        "description": "string",
+        "dns": null,
+        "dns_id": 1,
+        "enabled": true,
+        "id": 1,
+        "lifespan_length": 1,
+        "location": {
+          "description": "Raleigh",
+          "id": 1,
+          "name": "RDU"
+        },
+        "location_id": 1,
+        "name": "rdu2-a",
+        "openstack": {
+          "credentials": "kv/openstack/rhub-rdu",
+          "description": "Private cloud for RHub located in RDU.",
+          "domain_id": "default",
+          "domain_name": "Default",
+          "id": 1,
+          "name": "rhub-rdu",
+          "networks": ["provider_net_rhub"],
+          "owner_group_id": 1,
+          "owner_group_name": "string",
+          "url": "https://rhub-cloud.rdu.example.com:13000"
+        },
+        "openstack_id": 1,
+        "owner_group_id": 1,
+        "owner_group_name": "string",
+        "reservation_expiration_max": 0,
+        "reservations_enabled": true,
+        "satellite": {
+          "credentials": {
+            "password": "string",
+            "username": "string"
+          },
+          "description": "Satellite server for RDU site.",
+          "hostname": "string",
+          "id": 1,
+          "insecure": true,
+          "name": "satellite-rdu",
+          "owner_group_id": 1,
+          "owner_group_name": "string"
+        },
+        "satellite_id": 1,
+        "total_quota": {
+          "num_vcpus": 40000,
+          "num_volumes": 40000,
+          "ram_mb": 200000000,
+          "volumes_gb": 540000
+        },
+        "tower_id": 1,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "users_group_id": 1,
+        "users_group_name": "string"
+      }
+    },
+    "location": {
+      "get_list": {
+        "_href": {
+          "location": "/v0/lab/location/12",
+          "location_regions": "/v0/lab/location/12/regions"
+        },
+        "description": "Raleigh",
+        "id": 1,
+        "name": "RDU"
+      },
+      "get": {
+        "_href": {
+          "location": "/v0/lab/location/13",
+          "location_regions": "/v0/lab/location/13/regions"
+        },
+        "description": "description",
+        "name": "name",
+        "id": 1
+      },
+      "create": {
+        "_href": {
+          "location": "/v0/lab/location/13",
+          "location_regions": "/v0/lab/location/13/regions"
+        },
+        "description": "description",
+        "name": "name",
+        "id": 1
+      },
+      "update": {
+        "_href": {
+          "location": "/v0/lab/location/13",
+          "location_regions": "/v0/lab/location/13/regions"
+        },
+        "description": "description",
+        "name": "new-name",
+        "id": 1
+      }
+    }
+  }
+}

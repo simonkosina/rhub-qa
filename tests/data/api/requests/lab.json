@@ -1,0 +1,18 @@
+{
+  "lab": {
+    "region": {
+      "create": {
+
+      }
+    },
+    "location": {
+      "create": {
+        "description": "description",
+        "name": "name"
+      },
+      "update": {
+        "name": "new-name"
+      }
+    }
+  }
+}

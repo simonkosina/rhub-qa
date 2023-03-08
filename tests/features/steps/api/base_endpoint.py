@@ -164,7 +164,7 @@ class BaseEndpoint(object):
 
         return params
 
-    def get_values_before_update(self, method: Callable, id: str, update_args: dict) -> dict:
+    def get_values_before_update(self, method: Callable, id: str | int, update_args: dict) -> dict:
         """
         Call the provided method with the given id to retrieve current data and filter it 
         to contain only the items that will be updated. Function returns the current 
