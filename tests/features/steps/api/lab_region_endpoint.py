@@ -10,7 +10,7 @@ class LabRegionEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get_list': {},
+        'get_list': {'_href': IsVerifiable.NO},
         'create': {},
         'get_usage_all': {},
         'delete': {},
@@ -62,8 +62,8 @@ class LabRegionEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(url=self.url(), json=body)
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -85,7 +85,6 @@ class LabRegionEndpoint(BaseEndpoint):
     def get(self, id: int) -> requests.Response:
         url = self.url(suffix=f"/{id}")
         response = super().get(url)
-        print(url)
 
         return response
 
@@ -112,9 +111,9 @@ class LabRegionEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-
-        url = self.url(suffix=f"/{id}")
-        response = self.patch(url, json=body)
+        cleanup_args = self.get_values_before_update(self.get, id, args)
+        response = self.patch(self.url(f"/{id}"), json=body)
+        self.log_cleanup(response, method=self.delete, method_args=cleanup_args)
 
         return response
 

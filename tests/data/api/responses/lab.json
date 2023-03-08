@@ -109,6 +109,212 @@
         "name": "new-name",
         "id": 1
       }
+    },
+    "product": {
+      "get_list": {
+        "_href": {
+          "product": "/v0/lab/product/1",
+          "product_regions": "/v0/lab/product/1/regions"
+        },
+        "description": "string",
+        "enabled": true,
+        "flavors": {
+          "additionalProp1": {
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        },
+        "id": 1,
+        "name": "OpenShift",
+        "parameters": [
+          {
+            "advanced": false,
+            "default": "4.8.0",
+            "description": "OpenShift version to install.",
+            "enum": ["4.8.0", "4.8.1", "4.8.2"],
+            "name": "Version",
+            "required": true,
+            "type": "string",
+            "variable": "version"
+          }
+        ],
+        "tower_template_name_create": "rhub-openshift-create",
+        "tower_template_name_delete": "rhub-openshift-delete"
+      },
+      "create": {
+        "_href": {
+          "product": "/v0/lab/product/1",
+          "product_regions": "/v0/lab/product/1/regions"
+        },
+        "enabled": true,
+        "flavors": {
+          "additionalProp1": {
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        },
+        "id": 1,
+        "name": "test",
+        "description": "",
+        "parameters": [
+          {
+            "advanced": false,
+            "default": "3.3",
+            "description": "Version to install.",
+            "enum": ["3.1", "3.2", "3.3"],
+            "name": "Version",
+            "required": true,
+            "type": "string",
+            "variable": "version"
+          }
+        ],
+        "tower_template_name_create": "test-create",
+        "tower_template_name_delete": "test-delete"
+      },
+      "get": {
+        "_href": {
+          "product": "/v0/lab/product/1",
+          "product_regions": "/v0/lab/product/1/regions"
+        },
+        "enabled": true,
+        "flavors": {
+          "additionalProp1": {
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        },
+        "id": 1,
+        "name": "test",
+        "description": "",
+        "parameters": [
+          {
+            "advanced": false,
+            "default": "3.3",
+            "description": "Version to install.",
+            "enum": ["3.1", "3.2", "3.3"],
+            "name": "Version",
+            "required": true,
+            "type": "string",
+            "variable": "version"
+          }
+        ],
+        "tower_template_name_create": "test-create",
+        "tower_template_name_delete": "test-delete"
+      },
+      "update": {
+        "_href": {
+          "product": "/v0/lab/product/1",
+          "product_regions": "/v0/lab/product/1/regions"
+        },
+        "enabled": true,
+        "flavors": {
+          "additionalProp1": {
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        },
+        "id": 1,
+        "name": "test",
+        "description": "description",
+        "parameters": [
+          {
+            "advanced": false,
+            "default": "3.3",
+            "description": "Version to install.",
+            "enum": ["3.1", "3.2", "3.3"],
+            "name": "Version",
+            "required": true,
+            "type": "string",
+            "variable": "version"
+          }
+        ],
+        "tower_template_name_create": "test-create",
+        "tower_template_name_delete": "test-delete"
+      },
+      "get_regions": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/1",
+          "owner_group": "/v0/auth/group/1",
+          "product": "/v0/lab/product/1",
+          "product_regions": "/v0/lab/product/1/regions",
+          "region": "/v0/lab/region/1",
+          "region_products": "/v0/lab/region/1/products",
+          "region_usage": "/v0/lab/region/1/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "enabled": true,
+        "product_id": 1,
+        "region": {
+          "banner": "string",
+          "description": "string",
+          "enabled": true,
+          "id": 1,
+          "lifespan_length": 1,
+          "location": {
+            "description": "Raleigh",
+            "id": 1,
+            "name": "RDU"
+          },
+          "location_id": 1,
+          "name": "rdu2-a",
+          "openstack": {
+            "credentials": "kv/openstack/rhub-rdu",
+            "description": "Private cloud for RHub located in RDU.",
+            "domain_id": "default",
+            "domain_name": "Default",
+            "id": 1,
+            "name": "rhub-rdu",
+            "networks": ["provider_net_rhub"],
+            "owner_group_id": 1,
+            "owner_group_name": "string",
+            "url": "https://rhub-cloud.rdu.example.com:13000"
+          },
+          "openstack_id": 1,
+          "openstack_keyname": "string",
+          "owner_group_id": 1,
+          "owner_group_name": "string",
+          "reservation_expiration_max": 0,
+          "reservations_enabled": true,
+          "satellite": {
+            "credentials": {
+              "password": "string",
+              "username": "string"
+            },
+            "description": "Satellite server for RDU site.",
+            "hostname": "string",
+            "id": 1,
+            "insecure": true,
+            "name": "satellite-rdu",
+            "owner_group_id": 1,
+            "owner_group_name": "string"
+          },
+          "satellite_id": 1,
+          "total_quota": {
+            "num_vcpus": 40000,
+            "num_volumes": 40000,
+            "ram_mb": 200000000,
+            "volumes_gb": 540000
+          },
+          "tower_id": 1,
+          "user_quota": {
+            "num_vcpus": 40,
+            "num_volumes": 40,
+            "ram_mb": 200000,
+            "volumes_gb": 540
+          },
+          "users_group_id": 1,
+          "users_group_name": "string"
+        },
+        "region_id": 1
+      }
     }
   }
 }
