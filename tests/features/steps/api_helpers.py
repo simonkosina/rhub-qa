@@ -182,6 +182,26 @@ def step_impl(context, id_key: str):
         context.saved_ids[id_key] = response.json()['id']
 
 
+@when(u'I lookup the "{kw}" "{attrib}" from an object named "{name}" in the last response')
+def step_impl(context, kw, attrib, name):
+    response = context.api.logger.last_response
+
+    assert not response is None
+
+    response.raise_for_status()
+
+    objs = response.json()['data']
+
+    for obj in objs:
+        assert 'name' in obj.keys()
+
+        if obj['name'] == name:
+            context.saved_ids[kw] = obj[attrib]
+            break
+    else:
+        assert False, f"Couldn't find object with name '{name}'."
+
+
 @when(u'I use the received access token')
 def step_impl(context):
     response = context.api.logger.last_response

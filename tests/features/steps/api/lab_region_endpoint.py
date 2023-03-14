@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -11,15 +10,60 @@ class LabRegionEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {'_href': IsVerifiable.NO},
-        'create': {},
+        'create': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
         'get_usage_all': {},
         'delete': {},
-        'get': {},
-        'update': {},
+        'get': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
+        'update': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
         'remove_product': {},
         'get_products': {},
         'update_products': {},
-        'get_region_usage': {}
+        'get_usage': {
+            "total_quota": IsVerifiable.NO, # can be null
+            "total_quota_usage": {
+                "num_vcpus": IsVerifiable.NO,
+                "num_volumes": IsVerifiable.NO,
+                "ram_mb": IsVerifiable.NO,
+                "volumes_gb": IsVerifiable.NO
+            },
+            "user_quota": IsVerifiable.NO, # can be null
+            "user_quota_usage": {
+                "num_vcpus": IsVerifiable.NO,
+                "num_volumes": IsVerifiable.NO,
+                "ram_mb": IsVerifiable.NO,
+                "volumes_gb": IsVerifiable.NO
+            }
+        }
     }
 
     def url(self, suffix: str = '') -> str:
@@ -56,6 +100,7 @@ class LabRegionEndpoint(BaseEndpoint):
         reservation_expiration_max: int | None = None,
         reservations_enabled: bool | None = None,
         satellite_id: int | None = None,
+        dns_id: int | None = None,
         total_quota: dict | None = None,
         user_quota: dict | None = None,
         users_group_id: str | None = None
@@ -113,7 +158,7 @@ class LabRegionEndpoint(BaseEndpoint):
         body = self.create_body(args)
         cleanup_args = self.get_values_before_update(self.get, id, args)
         response = self.patch(self.url(f"/{id}"), json=body)
-        self.log_cleanup(response, method=self.delete, method_args=cleanup_args)
+        self.log_cleanup(response, method=self.update, method_args=cleanup_args)
 
         return response
 
@@ -156,8 +201,8 @@ class LabRegionEndpoint(BaseEndpoint):
 
         return response
 
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_region_usage'])
-    def get_region_usage(self, id: int) -> requests.Response:
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_usage'])
+    def get_usage(self, id: int) -> requests.Response:
         url = self.url(suffix=f"/{id}/usage")
         response = super().get(url)
 

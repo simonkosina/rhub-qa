@@ -7,7 +7,8 @@ def step_impl(context, id_key: str):
     # Find the owner group id
     context.execute_steps('''
         Given I am authenticated
-        When I lookup the "group" id from a group named "rhub-admin"
+        When I send a "get_list" request to "auth/group" endpoint
+        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
     ''')
 
     # Create the DNS server and save the id

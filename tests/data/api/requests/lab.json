@@ -2,6 +2,28 @@
   "lab": {
     "region": {
       "create": {
+        "name": "test-region",
+        "enabled": true,
+        "banner": "",
+        "reservations_enabled": true,
+        "reservation_expiration_max": null,
+        "lifespan_length": null,
+        "tower_id": "{{ item.tower_id }}",
+        "location_id": "{{ item.location_id }}",
+        "total_quota": null,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "openstack_id": "{{ item.openstack_id }}",
+        "dns_id": null,
+        "satellite_id": null,
+        "owner_group_id": "{{ admin_group_id }}"
+      },
+      "update": {
+        "description": "description"
       }
     },
     "location": {

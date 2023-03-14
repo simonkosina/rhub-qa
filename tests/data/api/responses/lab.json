@@ -70,6 +70,246 @@
         },
         "users_group_id": 1,
         "users_group_name": "string"
+      },
+      "create": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/4",
+          "owner_group": "/v0/auth/group/1",
+          "region": "/v0/lab/region/4",
+          "region_products": "/v0/lab/region/4/products",
+          "region_usage": "/v0/lab/region/4/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "banner": "",
+        "description": "",
+        "dns": null,
+        "dns_id": null,
+        "enabled": true,
+        "id": 4,
+        "lifespan_length": null,
+        "location": { "description": "", "id": 14, "name": "PNQ" },
+        "location_id": 14,
+        "name": "test-region",
+        "openstack": {
+          "credentials": "kv/openstack/osp_lab-pnq2-a",
+          "description": "QuickCluster osp_lab-pnq2-a",
+          "domain_id": "default",
+          "domain_name": "Default",
+          "id": 4,
+          "name": "osp_lab-pnq2-a",
+          "networks": ["provider_net_rhub"],
+          "owner_group_id": 1,
+          "owner_group_name": "rhub-admin",
+          "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3"
+        },
+        "openstack_id": 4,
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
+        "reservation_expiration_max": null,
+        "reservations_enabled": true,
+        "satellite": null,
+        "satellite_id": null,
+        "total_quota": null,
+        "tower_id": 1,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "users_group_id": null,
+        "users_group_name": null
+      },
+      "get": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/4",
+          "owner_group": "/v0/auth/group/1",
+          "region": "/v0/lab/region/4",
+          "region_products": "/v0/lab/region/4/products",
+          "region_usage": "/v0/lab/region/4/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "banner": "",
+        "description": "",
+        "dns": null,
+        "dns_id": null,
+        "enabled": true,
+        "id": 4,
+        "lifespan_length": null,
+        "location": { "description": "", "id": 14, "name": "PNQ" },
+        "location_id": 14,
+        "name": "test-region",
+        "openstack": {
+          "credentials": "kv/openstack/osp_lab-pnq2-a",
+          "description": "QuickCluster osp_lab-pnq2-a",
+          "domain_id": "default",
+          "domain_name": "Default",
+          "id": 4,
+          "name": "osp_lab-pnq2-a",
+          "networks": ["provider_net_rhub"],
+          "owner_group_id": 1,
+          "owner_group_name": "rhub-admin",
+          "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3"
+        },
+        "openstack_id": 4,
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
+        "reservation_expiration_max": null,
+        "reservations_enabled": true,
+        "satellite": null,
+        "satellite_id": null,
+        "total_quota": null,
+        "tower_id": 1,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "users_group_id": null,
+        "users_group_name": null
+      },
+      "update": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/4",
+          "owner_group": "/v0/auth/group/1",
+          "region": "/v0/lab/region/4",
+          "region_products": "/v0/lab/region/4/products",
+          "region_usage": "/v0/lab/region/4/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "banner": "",
+        "description": "description",
+        "dns": null,
+        "dns_id": null,
+        "enabled": true,
+        "id": 4,
+        "lifespan_length": null,
+        "location": { "description": "", "id": 14, "name": "PNQ" },
+        "location_id": 14,
+        "name": "test-region",
+        "openstack": {
+          "credentials": "kv/openstack/osp_lab-pnq2-a",
+          "description": "QuickCluster osp_lab-pnq2-a",
+          "domain_id": "default",
+          "domain_name": "Default",
+          "id": 4,
+          "name": "osp_lab-pnq2-a",
+          "networks": ["provider_net_rhub"],
+          "owner_group_id": 1,
+          "owner_group_name": "rhub-admin",
+          "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3"
+        },
+        "openstack_id": 4,
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
+        "reservation_expiration_max": null,
+        "reservations_enabled": true,
+        "satellite": null,
+        "satellite_id": null,
+        "total_quota": null,
+        "tower_id": 1,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "users_group_id": null,
+        "users_group_name": null
+      },
+      "get_usage_all": {
+        "total_quota": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "total_quota_usage": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "user_quota": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "user_quota_usage": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        }
+      },
+      "get_products": {
+        "_href": {
+          "openstack_cloud": "/v0/openstack/cloud/4",
+          "owner_group": "/v0/auth/group/1",
+          "product": "/v0/lab/product/8",
+          "product_regions": "/v0/lab/product/8/regions",
+          "region": "/v0/lab/region/2",
+          "region_products": "/v0/lab/region/2/products",
+          "region_usage": "/v0/lab/region/2/usage",
+          "tower": "/v0/tower/server/1"
+        },
+        "enabled": true,
+        "product": {
+          "description": "string",
+          "enabled": true,
+          "flavors": {
+            "additionalProp1": {
+              "num_vcpus": 0,
+              "num_volumes": 0,
+              "ram_mb": 0,
+              "volumes_gb": 0
+            }
+          },
+          "id": 1,
+          "name": "OpenShift",
+          "parameters": [
+            {
+              "advanced": true,
+              "default": false,
+              "description": "Toggles if bootstrap node will be deleted in post-installation step",
+              "name": "Keep bootstrap node",
+              "type": "boolean",
+              "variable": "keep_boostrap"
+            }
+          ],
+          "tower_template_name_create": "rhub-openshift-create",
+          "tower_template_name_delete": "rhub-openshift-delete"
+        },
+        "product_id": 1,
+        "region_id": 1
+      },
+      "get_usage": {
+        "total_quota": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "total_quota_usage": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "user_quota": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        },
+        "user_quota_usage": {
+          "num_vcpus": 0,
+          "num_volumes": 0,
+          "ram_mb": 0,
+          "volumes_gb": 0
+        }
       }
     },
     "location": {

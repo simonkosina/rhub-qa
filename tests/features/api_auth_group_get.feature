@@ -14,13 +14,15 @@ Feature: API - /auth/group GET requests
 
     Scenario: Retreive group details
         Given I am authenticated
-        When I lookup the "group" id from a group named "rhub-admin"
-        When I send a "get" request to "auth/group" endpoint using the saved "group" id
+        When I send a "get_list" request to "auth/group" endpoint
+        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
+        And I send a "get" request to "auth/group" endpoint using the saved "group" id
         Then I receive the following response "auth.group.get"
 
     Scenario: Retreive group details with an invalid token
         Given I am authenticated
-        When I lookup the "group" id from a group named "rhub-admin"
+        When I send a "get_list" request to "auth/group" endpoint
+        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
         Given I am authenticated with an invalid token
         When I send a "get" request to "auth/group" endpoint using the saved "group" id
         Then I receive an invalid token response
