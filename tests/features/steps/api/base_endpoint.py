@@ -19,6 +19,7 @@ class APILogger(object):
     def __init__(self):
         self.responses = []
         self.unverifiable_items = []
+        self.created_cluster_ids = []
         self.__cleanups = []
 
     def log_response(self, response: requests.Response):
@@ -32,6 +33,9 @@ class APILogger(object):
             'method': method,
             'kwargs': kwargs
         })
+
+    def log_cluster_creation(self, cluster_id: int):
+        self.created_cluster_ids.append(cluster_id)
 
     def reset_cleanups(self):
         self.__cleanups = []
@@ -164,7 +168,7 @@ class BaseEndpoint(object):
 
         return params
 
-    def get_values_before_update(self, method: Callable, id: str | int, update_args: dict) -> dict:
+    def get_values_before_update(self, method: Callable, id: str | int, update_args: dict | None = None) -> dict:
         """
         Call the provided method with the given id to retrieve current data and filter it 
         to contain only the items that will be updated. Function returns the current 
@@ -225,6 +229,19 @@ class BaseEndpoint(object):
         if self.__is_admin:
             self.__is_admin = False
             self.session = self.__test_session
+
+    def log_cluster_creation(self, response: requests.Response):
+        """
+        Log ids of clusters created during the tests.
+        """
+
+        try:
+            response.raise_for_status()
+            cluster_id = int(response.json()['id'])
+            BaseEndpoint.LOGGER.log_cluster_creation(cluster_id=cluster_id)
+
+        except requests.HTTPError:
+            pass
 
     def log_cleanup(
         self,

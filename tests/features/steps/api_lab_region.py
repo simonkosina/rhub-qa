@@ -10,13 +10,13 @@ def step_impl(context, id_key):
     # Find existing tower, location, openstack cloud and group ids and prepare the request
     context.execute_steps('''
         When I send a "get_list" request to "tower/server" endpoint
-        And I lookup the "tower" "id" from an object named "aap" in the last response
+        And I lookup the "tower" "id" from an item named "aap" in the last response
         When I send a "get_list" request to "lab/location" endpoint
-        And I lookup the "location" "id" from an object named "PNQ" in the last response
+        And I lookup the "location" "id" from an item named "PNQ" in the last response
         When I send a "get_list" request to "openstack/cloud" endpoint
-        And I lookup the "openstack" "id" from an object named "osp_lab-pnq2-a" in the last response
+        And I lookup the "openstack" "id" from an item named "osp_lab-pnq2-a" in the last response
         When I send a "get_list" request to "auth/group" endpoint
-        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
+        And I lookup the "group" "id" from an item named "rhub-admin" in the last response
     ''')
 
     lab_req = deepcopy(context.api.request_data["lab"]["region"]["create"])

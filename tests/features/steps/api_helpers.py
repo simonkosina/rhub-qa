@@ -1,5 +1,6 @@
 import re
 import requests
+import random
 
 from steps.api.api import filter_dict
 from pprint import pformat
@@ -182,7 +183,7 @@ def step_impl(context, id_key: str):
         context.saved_ids[id_key] = response.json()['id']
 
 
-@when(u'I lookup the "{kw}" "{attrib}" from an object named "{name}" in the last response')
+@when(u'I lookup the "{kw}" "{attrib}" from an item named "{name}" in the last response')
 def step_impl(context, kw, attrib, name):
     response = context.api.logger.last_response
 
@@ -190,16 +191,40 @@ def step_impl(context, kw, attrib, name):
 
     response.raise_for_status()
 
-    objs = response.json()['data']
+    data = response.json()
 
-    for obj in objs:
-        assert 'name' in obj.keys()
+    if type(data) is dict:
+        data = data['data']
 
-        if obj['name'] == name:
-            context.saved_ids[kw] = obj[attrib]
+    for item in data:
+        assert 'name' in item.keys()
+
+        if item['name'] == name:
+            context.saved_ids[kw] = item[attrib]
             break
     else:
-        assert False, f"Couldn't find object with name '{name}'."
+        assert False, f"Couldn't find an item with name '{name}'."
+
+
+@when(u'I lookup the "{kw}" "{attrib}" from an item in the last response')
+def step_impl(context, kw, attrib):
+    response = context.api.logger.last_response
+
+    assert not response is None
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    if type(data) is dict:
+        data = data['data']
+
+    if len(data) == 0:
+        assert False, f"Last response didn't contain any items."
+
+    item = random.choice(data)
+
+    context.saved_ids[kw] = item[attrib]
 
 
 @when(u'I use the received access token')
@@ -240,6 +265,7 @@ def step_impl(context, data_key: str):
     except requests.exceptions.RequestException as e:
         print_request_error(e)
         raise e
+
 
 @then(u'I receive the following response "{data_key}"')
 def step_impl(context, data_key: str):
@@ -317,11 +343,7 @@ def step_impl(context):
         response = context.api.logger.last_response
         response.raise_for_status()
 
-        data = response.json()
-
-        print_vars(
-            ('received data', data)
-        )
+        print(response.content)
 
         assert False
 

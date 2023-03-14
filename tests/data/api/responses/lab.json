@@ -555,6 +555,299 @@
         },
         "region_id": 1
       }
+    },
+    "cluster": {
+      "get_list": {
+        "_href": {
+          "cluster": "/v0/lab/cluster/18",
+          "cluster_events": "/v0/lab/cluster/18/events",
+          "cluster_hosts": "/v0/lab/cluster/18/hosts",
+          "cluster_reboot_hosts": "/v0/lab/cluster/18/reboot",
+          "openstack": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "product": "/v0/lab/product/3",
+          "project": "/v0/openstack/project/1",
+          "region": "/v0/lab/region/2"
+        },
+        "created": "2023-03-14T13:20:42.270Z",
+        "description": "string",
+        "group_id": 1,
+        "group_name": "string",
+        "hosts": [
+          {
+            "cluster_id": 1,
+            "fqdn": "example.com",
+            "id": 1,
+            "ipaddr": [
+              "198.51.100.42",
+              "2001:0db8:5b96:0000:0000:426f:8e17:642a"
+            ],
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        ],
+        "id": 1,
+        "lifespan_expiration": "2023-03-14T13:20:42.270Z",
+        "name": "string",
+        "owner_id": 1,
+        "owner_name": "string",
+        "product_id": 1,
+        "product_name": "string",
+        "product_params": {},
+        "project_id": 1,
+        "project_name": "string",
+        "quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "quota_usage": {
+          "num_vcpus": 16,
+          "num_volumes": 2,
+          "ram_mb": 64000,
+          "volumes_gb": 256
+        },
+        "region_id": 1,
+        "region_name": "string",
+        "reservation_expiration": "2023-03-14T13:20:42.270Z",
+        "shared": true,
+        "status": "Active",
+        "status_flag": "active"
+      },
+      "get": {
+        "_href": {
+          "cluster": "/v0/lab/cluster/20",
+          "cluster_events": "/v0/lab/cluster/20/events",
+          "cluster_hosts": "/v0/lab/cluster/20/hosts",
+          "cluster_reboot_hosts": "/v0/lab/cluster/20/reboot",
+          "openstack": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "product": "/v0/lab/product/3",
+          "project": "/v0/openstack/project/1",
+          "region": "/v0/lab/region/2"
+        },
+        "created": "2023-03-14T14:50:58.019Z",
+        "description": "",
+        "group_id": null,
+        "group_name": null,
+        "hosts": [
+          {
+            "cluster_id": 1,
+            "fqdn": "example.com",
+            "id": 1,
+            "ipaddr": [
+              "198.51.100.42",
+              "2001:0db8:5b96:0000:0000:426f:8e17:642a"
+            ],
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        ],
+        "id": 1,
+        "lifespan_expiration": null,
+        "name": "qageneric",
+        "owner_id": 1,
+        "owner_name": "string",
+        "product_id": 1,
+        "product_name": "Generic",
+        "product_params": {
+          "image_name": "RHEL7.9",
+          "node_flavor": "g.standard.xs",
+          "num_nodes": 1,
+          "rhsm_method": "satellite6",
+          "virtual_disk_count": 0,
+          "virtual_disk_size": 1,
+          "yum_update": false
+        },
+        "project_id": 1,
+        "project_name": "string",
+        "quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "quota_usage": {
+          "num_vcpus": 16,
+          "num_volumes": 2,
+          "ram_mb": 64000,
+          "volumes_gb": 256
+        },
+        "region_id": 1,
+        "region_name": "osp_lab-pnq2-a",
+        "reservation_expiration": "2023-03-14T14:50:58.019Z",
+        "shared": false,
+        "status": "Active",
+        "status_flag": "active"
+      },
+      "create": {
+        "_href": {
+          "cluster": "/v0/lab/cluster/20",
+          "cluster_events": "/v0/lab/cluster/20/events",
+          "cluster_hosts": "/v0/lab/cluster/20/hosts",
+          "cluster_reboot_hosts": "/v0/lab/cluster/20/reboot",
+          "openstack": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "product": "/v0/lab/product/3",
+          "project": "/v0/openstack/project/1",
+          "region": "/v0/lab/region/2"
+        },
+        "created": "2023-03-14T14:50:58.019Z",
+        "description": "",
+        "group_id": null,
+        "group_name": null,
+        "hosts": [
+          {
+            "cluster_id": 1,
+            "fqdn": "example.com",
+            "id": 1,
+            "ipaddr": [
+              "198.51.100.42",
+              "2001:0db8:5b96:0000:0000:426f:8e17:642a"
+            ],
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        ],
+        "id": 1,
+        "lifespan_expiration": null,
+        "name": "qageneric",
+        "owner_id": 1,
+        "owner_name": "string",
+        "product_id": 1,
+        "product_name": "Generic",
+        "product_params": {
+          "image_name": "RHEL7.9",
+          "node_flavor": "g.standard.xs",
+          "num_nodes": 1,
+          "rhsm_method": "satellite6",
+          "virtual_disk_count": 0,
+          "virtual_disk_size": 1,
+          "yum_update": false
+        },
+        "project_id": 1,
+        "project_name": "string",
+        "quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "quota_usage": {
+          "num_vcpus": 16,
+          "num_volumes": 2,
+          "ram_mb": 64000,
+          "volumes_gb": 256
+        },
+        "region_id": 1,
+        "region_name": "osp_lab-pnq2-a",
+        "reservation_expiration": null,
+        "shared": false,
+        "status": "Active",
+        "status_flag": "active"
+      },
+      "update": {
+        "_href": {
+          "cluster": "/v0/lab/cluster/20",
+          "cluster_events": "/v0/lab/cluster/20/events",
+          "cluster_hosts": "/v0/lab/cluster/20/hosts",
+          "cluster_reboot_hosts": "/v0/lab/cluster/20/reboot",
+          "openstack": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "product": "/v0/lab/product/3",
+          "project": "/v0/openstack/project/1",
+          "region": "/v0/lab/region/2"
+        },
+        "created": "2023-03-14T14:50:58.019Z",
+        "description": "description",
+        "group_id": null,
+        "group_name": null,
+        "hosts": [
+          {
+            "cluster_id": 1,
+            "fqdn": "example.com",
+            "id": 1,
+            "ipaddr": [
+              "198.51.100.42",
+              "2001:0db8:5b96:0000:0000:426f:8e17:642a"
+            ],
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        ],
+        "id": 1,
+        "lifespan_expiration": null,
+        "name": "qageneric",
+        "owner_id": 1,
+        "owner_name": "string",
+        "product_id": 1,
+        "product_name": "Generic",
+        "product_params": {
+          "image_name": "RHEL7.9",
+          "node_flavor": "g.standard.xs",
+          "num_nodes": 1,
+          "rhsm_method": "satellite6",
+          "virtual_disk_count": 0,
+          "virtual_disk_size": 1,
+          "yum_update": false
+        },
+        "project_id": 1,
+        "project_name": "string",
+        "quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "quota_usage": {
+          "num_vcpus": 16,
+          "num_volumes": 2,
+          "ram_mb": 64000,
+          "volumes_gb": 256
+        },
+        "region_id": 1,
+        "region_name": "osp_lab-pnq2-a",
+        "reservation_expiration": "2023-03-14T14:50:58.019Z",
+        "shared": false,
+        "status": "Active",
+        "status_flag": "active"
+      },
+      "get_authorized_keys": [],
+      "update_hosts": {
+        "_href": { "cluster": "/v0/lab/cluster/31" },
+        "fqdn": "localhost",
+        "ipaddr": ["127.0.0.1"],
+        "cluster_id": 1,
+        "id": 1,
+        "num_vcpus": 0,
+        "num_volumes": 0,
+        "ram_mb": 0,
+        "volumes_gb": 0
+      },
+      "get_hosts": {
+        "_href": { "cluster": "/v0/lab/cluster/31" },
+        "fqdn": "localhost",
+        "ipaddr": ["127.0.0.1"],
+        "cluster_id": 1,
+        "id": 1,
+        "num_vcpus": 0,
+        "num_volumes": 0,
+        "ram_mb": 0,
+        "volumes_gb": 0
+      },
+      "reboot_hosts": {
+        "fqdn": "string",
+        "id": 1
+      }
     }
   }
 }

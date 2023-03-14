@@ -5,16 +5,16 @@ Feature: API - /lab/region POST requests
     Scenario: Create a new region
         Given I am authenticated
         When I send a "get_list" request to "tower/server" endpoint
-        And I lookup the "tower" "id" from an object named "aap" in the last response
+        And I lookup the "tower" "id" from an item named "aap" in the last response
         And I update the "tower_id" item in "lab.region.create" using the saved "tower" id
         When I send a "get_list" request to "lab/location" endpoint
-        And I lookup the "location" "id" from an object named "PNQ" in the last response
+        And I lookup the "location" "id" from an item named "PNQ" in the last response
         And I update the "location_id" item in "lab.region.create" using the saved "location" id
         When I send a "get_list" request to "openstack/cloud" endpoint
-        And I lookup the "openstack" "id" from an object named "osp_lab-pnq2-a" in the last response
+        And I lookup the "openstack" "id" from an item named "osp_lab-pnq2-a" in the last response
         And I update the "openstack_id" item in "lab.region.create" using the saved "openstack" id
         When I send a "get_list" request to "auth/group" endpoint
-        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
+        And I lookup the "group" "id" from an item named "rhub-admin" in the last response
         And I update the "owner_group_id" item in "lab.region.create" using the saved "group" id
         When I send a "create" request to "lab/region" endpoint with body "lab.region.create"
         Then I receive the following response "lab.region.create"
@@ -22,16 +22,16 @@ Feature: API - /lab/region POST requests
     Scenario: Create a new region
         Given I am authenticated
         When I send a "get_list" request to "tower/server" endpoint
-        And I lookup the "tower" "id" from an object named "aap" in the last response
+        And I lookup the "tower" "id" from an item named "aap" in the last response
         And I update the "tower_id" item in "lab.region.create" using the saved "tower" id
         When I send a "get_list" request to "lab/location" endpoint
-        And I lookup the "location" "id" from an object named "PNQ" in the last response
+        And I lookup the "location" "id" from an item named "PNQ" in the last response
         And I update the "location_id" item in "lab.region.create" using the saved "location" id
         When I send a "get_list" request to "openstack/cloud" endpoint
-        And I lookup the "openstack" "id" from an object named "osp_lab-pnq2-a" in the last response
+        And I lookup the "openstack" "id" from an item named "osp_lab-pnq2-a" in the last response
         And I update the "openstack_id" item in "lab.region.create" using the saved "openstack" id
         When I send a "get_list" request to "auth/group" endpoint
-        And I lookup the "group" "id" from an object named "rhub-admin" in the last response
+        And I lookup the "group" "id" from an item named "rhub-admin" in the last response
         And I update the "owner_group_id" item in "lab.region.create" using the saved "group" id
         Given I am authenticated with an invalid token
         When I send a "create" request to "lab/region" endpoint with body "lab.region.create"

@@ -3,6 +3,7 @@ import subprocess
 import json
 import glob
 import os
+import time
 
 from steps.api.api import API
 from steps.api.base_endpoint import BaseEndpoint
@@ -40,6 +41,27 @@ def rhub_api(context):
 
     yield context.api
     
+    context.api.lab.cluster.execute_as_admin()
+    
+    # delete clusters between features
+    for cluster_id in context.api.logger.created_cluster_ids:
+        context.api.lab.cluster.delete(cluster_id, as_cleanup=True)
+
+        time.sleep(180)
+
+        while True:
+            resp = context.api.lab.cluster.get(cluster_id)
+            resp.raise_for_status()
+
+            flag = resp.json()['status_flag']
+
+            if flag != 'deleting':
+                break
+
+            time.sleep(15)
+
+    context.api.lab.cluster.execute_as_test()
+
     context.api.cleanup()
 
 
