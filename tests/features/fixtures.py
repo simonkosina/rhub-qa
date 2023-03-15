@@ -2,6 +2,8 @@ import sys
 import subprocess
 import json
 import glob
+import os
+import time
 
 from steps.api.api import API
 from steps.api.base_endpoint import BaseEndpoint
@@ -10,35 +12,57 @@ from tempfile import TemporaryDirectory
 from behave import fixture
 from pathlib import Path
 
-API_REQUESTS_PATTERN = '../tools/api_*_requests.json'
-API_RESPONSE_PATTERN = '../tools/api_*_responses.json'
-API_AUTH = ('testuser1', 'testuser1')
+API_REQUESTS_PATTERN = '../data/api/requests/*.json'
+API_RESPONSE_PATTERN = '../data/api/responses/*.json'
 
 
 @fixture
 def rhub_api(context):
-    try:
-        context.api = API(admin_auth=API_AUTH)
-        context.auth = API_AUTH
-        context.api.logger = BaseEndpoint.LOGGER
-        context.api.request_data = {}
-        context.api.response_data = {}
-        context.saved_ids = {}
+    context.api_addr = os.environ["RHUB_API_ADDR"]
+    context.api_token = os.environ["RHUB_API_TOKEN"]
 
-        request_data_paths = glob.glob(API_REQUESTS_PATTERN)
-        response_data_paths = glob.glob(API_RESPONSE_PATTERN)
+    context.api = API(admin_token=context.api_token, api_url=context.api_addr)
 
-        for path in request_data_paths:
-            with open(path) as f:
-                context.api.request_data.update(json.load(f))
+    context.api.logger = BaseEndpoint.LOGGER
+    context.api.request_data = {}
+    context.api.response_data = {}
+    context.saved_ids = {}
 
-        for path in response_data_paths:
-            with open(path) as f:
-                context.api.response_data.update(json.load(f))
+    request_data_paths = glob.glob(API_REQUESTS_PATTERN)
+    response_data_paths = glob.glob(API_RESPONSE_PATTERN)
 
-        yield context.api
-    finally:
-        context.api.cleanup()
+    for path in request_data_paths:
+        with open(path) as f:
+            context.api.request_data.update(json.load(f))
+
+    for path in response_data_paths:
+        with open(path) as f:
+            context.api.response_data.update(json.load(f))
+
+    yield context.api
+    
+    context.api.lab.cluster.execute_as_admin()
+    
+    # delete clusters between features
+    for cluster_id in context.api.logger.created_cluster_ids:
+        context.api.lab.cluster.delete(cluster_id, as_cleanup=True)
+
+        time.sleep(180)
+
+        while True:
+            resp = context.api.lab.cluster.get(cluster_id)
+            resp.raise_for_status()
+
+            flag = resp.json()['status_flag']
+
+            if flag != 'deleting':
+                break
+
+            time.sleep(15)
+
+    context.api.lab.cluster.execute_as_test()
+
+    context.api.cleanup()
 
 
 @fixture

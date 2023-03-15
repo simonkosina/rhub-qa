@@ -10,13 +10,11 @@ class AuthUserEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
-        'delete': {},
-        'get': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
-        'update': {'id': IsVerifiable.NO, 'createdTimestamp': IsVerifiable.NO, '_href': IsVerifiable.NO},
-        'remove_from_group': {},
-        'get_groups': {},
-        'add_to_group': {}
+        'get': {'created_at': IsVerifiable.NO, 'updated_at': IsVerifiable.NO},
+        'get_ssh_keys': {},
+        'get_tokens': {},
+        'create_token': {'created_at': IsVerifiable.NO, 'id': IsVerifiable.NO, 'token': IsVerifiable.NO},
+        'delete_token': {}
     }
 
     def url(self, suffix: str = '') -> str:
@@ -28,132 +26,61 @@ class AuthUserEndpoint(BaseEndpoint):
 
         return response
 
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['create'])
-    def create(
-        self,
-        username: str,
-        email: str,
-        password: str = None,
-        access: dict = None,
-        attributes: dict = None,
-        clientConsents: list[dict] = None,
-        clientRoles: dict = None,
-        createdTimestamp: int = None,
-        disableableCredentialTypes: list[str] = None,
-        emailVerified: bool = None,
-        enabled: bool = None,
-        federatedIdentities: list[dict] = None,
-        federationLink: str = None,
-        firstName: str = None,
-        groups: list[str] = None,
-        lastName: str = None,
-        notBefore: int = None,
-        origin: str = None,
-        realmRoles: list[str] = None,
-        requiredActions: list[str] = None,
-        serviceAccountClientId: str = None,
-    ) -> requests.Response:
-        args = self.get_function_arguments(locals(), skip_args=['self'])
-        body = self.create_body(args)
-        response = self.post(url=self.url(), json=body)
-        self.log_cleanup(response, method=self.delete)
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
+    def get(self, id: int) -> requests.Response:
+        url = self.url(f"/{id}")
+        response = super().get(url)
 
         return response
 
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['delete'])
-    def delete(self, id) -> requests.Response:
-        url = self.url(suffix=f"/{id}")
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_ssh_keys'])
+    def get_ssh_keys(self, id: int) -> requests.Response:
+        url = self.url(f"/{id}/ssh_keys")
+        response = super().get(url)
+
+        return response
+
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_tokens'])
+    def get_tokens(self, id: int) -> requests.Response:
+        url = self.url(f"/{id}/token")
+        response = super().get(url)
+
+        return response
+    
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['create_token'])
+    def create_token(
+        self,
+        id: int,
+        name: str | None = None,
+        expires_at: str | None = None
+    ) -> requests.Response:
+        args = self.get_function_arguments(locals(), skip_args=['self', 'id', '__class__'])
+        body = self.create_body(args)
+
+        url = self.url(f"/{id}/token")
+        response = super().post(url, json=body)
+        
+        # need to properly log the user_id and token_id for delete_token
+        try:
+            response.raise_for_status()
+            
+            self.log_cleanup(
+                response,
+                method=self.delete_token,
+                method_args={
+                    'user_id': id,
+                    'token_id': response.json()['id']
+                },
+                find_id=False
+            )
+        except requests.HTTPError:
+            pass
+
+        return response
+
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['delete_token'])
+    def delete_token(self, user_id: int, token_id: int) -> requests.Response:
+        url = self.url(f"/{user_id}/token/{token_id}")
         response = super().delete(url)
 
         return response
-
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get'])
-    def get(self, id) -> requests.Response:
-        url = self.url(suffix=f"/{id}")
-        response = super().get(url)
-
-        return response
-
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['update'])
-    def update(
-        self,
-        id: str,
-        username: str = None,
-        email: str = None,
-        password: str = None,
-        access: dict = None,
-        attributes: dict = None,
-        clientConsents: list[dict] = None,
-        clientRoles: dict = None,
-        createdTimestamp: int = None,
-        disableableCredentialTypes: list[str] = None,
-        emailVerified: bool = None,
-        enabled: bool = None,
-        federatedIdentities: list[dict] = None,
-        federationLink: str = None,
-        firstName: str = None,
-        groups: list[str] = None,
-        lastName: str = None,
-        notBefore: int = None,
-        origin: str = None,
-        realmRoles: list[str] = None,
-        requiredActions: list[str] = None,
-        serviceAccountClientId: str = None,
-
-    ) -> requests.Response:
-        args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
-        body = self.create_body(args)
-        cleanup_args = self.get_values_before_update(self.get, id, args)
-        url = self.url(suffix=f"/{id}")
-        response = self.patch(url, json=body)
-        self.log_cleanup(response, method=self.update,
-                         method_args=cleanup_args)
-
-        return response
-
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['remove_from_group'])
-    def remove_from_group(self, user_id: str, group_id: str) -> requests.Response:
-        url = self.url(suffix=f"/{user_id}/groups")
-        body = {'id': group_id}
-
-        response = super().delete(url, json=body)
-
-        return response
-
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_groups'])
-    def get_groups(self, id: str) -> requests.Response:
-        url = self.url(suffix=f"/{id}/groups")
-        response = super().get(url)
-
-        return response
-
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['add_to_group'])
-    def add_to_group(self, user_id: str, group_id: str) -> requests.Response:
-        url = self.url(suffix=f"/{user_id}/groups")
-        body = {'id': group_id}
-        response = self.post(url, json=body)
-        self.log_cleanup(
-            response,
-            method=self.remove_from_group,
-            method_args={
-                'user_id': user_id,
-                'group_id': group_id
-            },
-            find_id=False
-        )
-
-        return response
-
-    # TODO:
-    # following function are not yet implemented in the API itself
-    # https://github.com/resource-hub-dev/rhub-api/blob/master/src/rhub/api/auth/user.py
-
-    def remove_from_role(self, user_id: str, role_id: str):
-        raise NotImplementedError
-
-    def get_roles(self, id: str):
-        raise NotImplementedError
-
-    def add_to_role(self, user_id: str, role_id: str):
-        # TODO: add remove_from_group to log_cleanups
-        raise NotImplementedError

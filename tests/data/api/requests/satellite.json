@@ -7,7 +7,7 @@
           "username": "string"
         },
         "description": "Satellite server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "insecure": true,
         "name": "satellite-rdu",
         "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"

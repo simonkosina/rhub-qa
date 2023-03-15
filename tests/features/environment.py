@@ -61,9 +61,7 @@ def after_scenario(context, scenario):
 
     if 'fixture.api' in context.tags:
         # make sure we have the permissions
-        response = context.api.auth.token.create(context.auth[0], context.auth[1])
-        response.raise_for_status()
-        context.api.update_token(response.json()['access_token'])
+        context.api.update_token(context.api_token)
        
         # restore the environment
         for cleanup in context.api.logger.cleanups:

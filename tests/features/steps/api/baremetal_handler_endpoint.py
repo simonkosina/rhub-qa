@@ -34,7 +34,7 @@ class BaremetalHandlerEndpoint(BaseEndpoint):
         name: str,
         password: str,
         user_name: str,
-        last_check: str = None,
+        last_check: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)

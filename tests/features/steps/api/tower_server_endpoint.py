@@ -22,10 +22,10 @@ class TowerServerEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -40,9 +40,9 @@ class TowerServerEndpoint(BaseEndpoint):
         credentials: str,
         name: str,
         url: str,
-        description: str = None,
-        enabled: bool = None,
-        verify_ssl: bool = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        verify_ssl: bool | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -67,12 +67,12 @@ class TowerServerEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        credentials: str = None,
-        name: str = None,
-        url: str = None,
-        description: str = None,
-        enabled: bool = None,
-        verify_ssl: bool = None,
+        credentials: str | None = None,
+        name: str | None = None,
+        url: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        verify_ssl: bool | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)

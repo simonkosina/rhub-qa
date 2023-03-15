@@ -20,7 +20,7 @@ class TowerJobEndpoint(BaseEndpoint):
         return f"{self.base_url}/tower/job{suffix}"
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
-    def get_list(self, filter: dict = None, page: str = None, limit: str = None) -> requests.Response:
+    def get_list(self, filter: dict | None = None, page: str | None = None, limit: str | None = None) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
         params = self.create_params(args)

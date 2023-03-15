@@ -1,0 +1,936 @@
+[33mcommit 7cfa7a8055baa1a0baee713bd9924bf4a1cb2ef4[m[33m ([m[1;36mHEAD -> [m[1;32mexdrhub1224[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed Mar 8 09:49:59 2023 +0100
+
+    Add tests for /lab/location endpoint
+
+[33mcommit a94d001750fc034acbe873120176c7a6483a38d1[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 28 13:20:08 2023 +0100
+
+    Fix /policies API endpoint
+
+[33mcommit 772fb6afe367cd49fc28ef1dcb130e7068fedadf[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 28 12:38:20 2023 +0100
+
+    Fix /satellite API endpoint
+
+[33mcommit 8348afd390693bc8a55c99066a740983dccc8b4b[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 28 11:14:27 2023 +0100
+
+    Fix /tower API endpoint
+
+[33mcommit 3fa3f3565523e65c530896a66a6928f8ae06f156[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 28 10:51:31 2023 +0100
+
+    Fix /dns API endpoint
+
+[33mcommit f74b87ee17891659ab2516b5193b3ea2434d46fb[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 28 10:38:21 2023 +0100
+
+    Fix /scheduler API endpoint
+
+[33mcommit 9a659f51da8c5175ed406ba4699819d71fd9101a[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon Feb 27 11:30:00 2023 +0100
+
+    Fix /auth API endpoint
+
+[33mcommit 9a11de25e7a6c5a5c50666a890beea181bb60f5e[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Feb 21 14:34:09 2023 +0100
+
+    Fix type hints errors
+
+[33mcommit 22053a8817a932ba045580d37541937a7f8401ec[m[33m ([m[1;31mupstream/master[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 2f6f8a2 a78b2ab
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Tue Jan 17 09:43:50 2023 -0300
+
+    Merge pull request #33 from resource-hub-dev/EXDHUB-1416
+    
+    Reservation days
+
+[33mcommit 2f6f8a27059353eae3c192bdc8d4fa7a73ff4db8[m
+Merge: e98643b 8742f6e
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Tue Jan 17 09:42:39 2023 -0300
+
+    Merge pull request #32 from resource-hub-dev/EXDHUB-1411
+    
+    Consuption  automation
+
+[33mcommit a78b2ab9501484790032658278778134d4ee571f[m[33m ([m[1;31mupstream/EXDHUB-1416[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Tue Jan 17 02:53:26 2023 -0300
+
+    qc_reservationdays.feature, steps/qc_reservationdays.py added into test suite
+
+[33mcommit 8742f6e26630de348773466dfc73110e667a1177[m[33m ([m[1;31mupstream/EXDHUB-1411[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Jan 12 11:31:30 2023 -0300
+
+    files qc_comsuption.py qc_comsuption.features added covering tasks EXDHUB-1411 1413 1414
+
+[33mcommit e98643b04965d848bd1e5ef12ef64b9e1a85137b[m
+Merge: 9ec41bc 5d95716
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Dec 21 04:54:37 2022 -0300
+
+    Merge pull request #31 from resource-hub-dev/EXDRHUB-1423
+    
+    Lifespan expires and Reservation expires scenarios added to qc_arrang…
+
+[33mcommit 9ec41bc21af696fd59f736070df896f11f9df371[m
+Merge: cf3ad2f 724a5fa
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Dec 21 04:53:51 2022 -0300
+
+    Merge pull request #29 from simonkosina/exdrhub1231
+    
+    Add tests for /scheduler API endpoint
+
+[33mcommit cf3ad2fa2f4c19e3930f6957ec7d60e64a78318d[m
+Merge: a5cdb5b cd3de30
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Dec 21 04:53:34 2022 -0300
+
+    Merge pull request #28 from simonkosina/exdrhub1227
+    
+    Add tests for /satellite API endpoint
+
+[33mcommit 5d9571667eace7a036ccb45aef363c261057dc25[m[33m ([m[1;31mupstream/EXDRHUB-1423[m[33m)[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Wed Dec 21 04:28:19 2022 -0300
+
+    Lifespan expires and Reservation expires scenarios added to qc_arranging_clusters.py and qc_arranging_clusters.feature files
+
+[33mcommit a5cdb5b301cc8c12ed18120c8cf0550e5ce00ef1[m
+Merge: 2615781 8b476ef
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Dec 21 03:57:00 2022 -0300
+
+    Merge pull request #30 from resource-hub-dev/EXDRHUB-1537
+    
+    refactor done, auxiliary functions added to helpers_page.py file
+
+[33mcommit 8b476ef59dab1ece8f4d59d3dd85ea174a24500b[m[33m ([m[1;31mupstream/EXDRHUB-1537[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Dec 14 11:50:53 2022 -0300
+
+    refactor done, auxiliary functions added to helpers_page.py file
+
+[33mcommit 724a5faa3ef06433b2ad4b7158878b125ab9f446[m[33m ([m[1;31morigin/exdrhub1231[m[33m, [m[1;32mexdrhub1231[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Sun Nov 27 18:31:27 2022 +0100
+
+    Add tests for /scheduler API endpoint
+
+[33mcommit cd3de3075ebc62c101187178346ca58f77f3a17a[m[33m ([m[1;31morigin/exdrhub1227[m[33m, [m[1;32mexdrhub1227[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Sun Nov 27 15:51:15 2022 +0100
+
+    Add tests for /satellite API endpoint
+
+[33mcommit 2615781fed49e6474496ed5942711a81716132c7[m
+Author: skosina <skosina@redhat.com>
+Date:   Sun Nov 27 14:15:20 2022 +0100
+
+    Add tests for dns/server API endpoint
+
+[33mcommit e405773c6908ab6dea6efd82e22e17155f0dc9bd[m
+Author: skosina <skosina@redhat.com>
+Date:   Sun Nov 27 13:00:13 2022 +0100
+
+    Rename step files to reflect endpoint names
+
+[33mcommit bfb1563b9c6ddf18c093fdc49ce2591f9ccadbf6[m
+Author: skosina <skosina@redhat.com>
+Date:   Sat Nov 26 13:50:56 2022 +0100
+
+    Refactor API cleanups
+
+[33mcommit 9764f5a316a654812eda698c2dd3bd6ccf1af719[m
+Merge: f4a6d47 f5572fd
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Mon Nov 28 11:49:35 2022 -0300
+
+    Merge pull request #26 from resource-hub-dev/EXRHUB-1428-31
+    
+    Tasks from 1428 to 1431, clusters assortment by name, template, group…
+
+[33mcommit f5572fd479a955da99dc1df9de2db0afd1c9044b[m[33m ([m[1;31mupstream/EXRHUB-1428-31[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Tue Nov 22 22:41:55 2022 -0300
+
+    Tasks from 1428 to 1431, clusters assortment by name, template, group, region, satatus, reservation exp, and lifespan exp
+
+[33mcommit f4a6d47d10373439d52e8be980b008d3b7a1a151[m
+Author: skosina <skosina@redhat.com>
+Date:   Sat Nov 5 14:05:37 2022 +0100
+
+    Add tests for the tower/server API endpoint
+
+[33mcommit 102976adce70e0a34d3ab01d5442a346b1396b87[m
+Merge: c040c93 e52d64d
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Nov 9 18:16:44 2022 -0300
+
+    Merge pull request #24 from resource-hub-dev/sprint-22-22
+    
+    Sprint 22 22
+
+[33mcommit e52d64dc703808cb63dc30200938de2217f38615[m[33m ([m[1;31mupstream/sprint-22-22[m[33m)[m
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Nov 9 18:11:21 2022 -0300
+
+    Delete TESTS-qc_e2e.xml
+
+[33mcommit d5216dd6678530fa2b4487a2b87915fe25db5644[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Nov 9 18:09:41 2022 -0300
+
+    Code review changes
+
+[33mcommit 1d04277d8c8283c616ebe3175b5111b25fde53ac[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Nov 9 08:21:56 2022 -0300
+
+    alphabetical sorting
+
+[33mcommit bac8278eed818cd4b087e3ba0b2db8737951ac31[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Nov 9 07:34:06 2022 -0300
+
+    Files refactored
+
+[33mcommit d40117f1fcfdf194bdd3f1dac133034dcc2eea96[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Nov 9 07:33:17 2022 -0300
+
+    Sprint tasks EXDRHUB-1417, EXDRHUB-1423, EXDRHUB-1424, EXDHUB-1425 and EXDHUB-1426.
+
+[33mcommit c040c937f4362072ef75b09bc45b16b469355b2b[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu Nov 3 14:07:34 2022 +0100
+
+    Add API tests for /policies endpoint
+
+[33mcommit e4debb5d2564ffa41ffaaed7869404bbb08d4ce0[m
+Merge: 4515442 43030c0
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Mon Oct 31 17:42:39 2022 -0300
+
+    Merge pull request #22 from simonkosina/api-auth-tests
+    
+    Api auth tests
+
+[33mcommit 43030c03e3781a38aa2f5a17b05481170e39f66c[m[33m ([m[1;31morigin/api-auth-tests[m[33m, [m[1;32mapi-auth-tests[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 16:13:51 2022 +0200
+
+    Implement steps for /auth API tests
+
+[33mcommit b10078d8dfe458723c9f5127503b9a6b760c60c1[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 16:13:07 2022 +0200
+
+    Future work for CLI features
+
+[33mcommit 44957636a971e2613b8407f60430e47c8549c772[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 16:09:15 2022 +0200
+
+    API setup and cleanup
+
+[33mcommit 7452bcf2099bce4d3467f5775af12bdcc51cf233[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 16:08:52 2022 +0200
+
+    Data for API /auth tests
+
+[33mcommit 8aaa11c23d39f2491e391bb6a83f4fb56970f5a0[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 16:02:14 2022 +0200
+
+    Generalize functions in the CLI class
+
+[33mcommit 7da6dafb24af226b0681c775e9d2032b1c7564e3[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 15:57:19 2022 +0200
+
+    Update to use new functions, Future work
+
+[33mcommit a46941cca954cf18075c101fc8389818215239b6[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Oct 28 15:53:02 2022 +0200
+
+    Update API classes
+
+[33mcommit ef300423bf7ece42fa6cd292249135f3af45993d[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu Sep 1 15:23:50 2022 +0200
+
+    Add end-to-end API tests for the /auth endpoint
+
+[33mcommit b9e8f63d5947e52f5343188f290561d072c0a116[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu Sep 1 13:49:09 2022 +0200
+
+    Implement API as fixture
+
+[33mcommit 4515442a65b56d6fb6db7b7d479cba3c932e3e2d[m
+Merge: 921481f 2c007f4
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Oct 26 10:02:19 2022 -0300
+
+    Merge pull request #21 from resource-hub-dev/EXDRHUB-1409
+    
+    Exdrhub 1409 Region selection validation
+
+[33mcommit 921481fbcd663466650134e8ce747f3efd5a132c[m
+Merge: e8974d4 d368400
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Oct 26 10:01:53 2022 -0300
+
+    Merge pull request #20 from resource-hub-dev/EXDRHUB-1407
+    
+    Exdrhub 1407
+
+[33mcommit 2c007f437079e2435c0d9b384bfe8fe9a32c5c6b[m[33m ([m[1;31mupstream/EXDRHUB-1409[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Oct 26 01:10:00 2022 -0300
+
+    README.md refactor
+
+[33mcommit 1ec72d1c2f468a45dc75024f9fe8ce54847288d6[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Oct 26 01:02:41 2022 -0300
+
+    README.md refactor
+
+[33mcommit 0d186c3c6a9973a2c0e20e169614fe6fb7f9c1d5[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Tue Oct 25 21:14:13 2022 -0300
+
+    minor adjustments regrarding validation parameters
+
+[33mcommit db0070da1822268b6242b585ee62e61eed0e903b[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Tue Oct 25 16:11:52 2022 -0300
+
+    Name policy validation
+
+[33mcommit 2930513394e27648828042bbaecf6d4ff133b691[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Mon Oct 24 11:43:22 2022 -0300
+
+    EXDRHUB-1409 validation for region selection - valid and not valid scenarios
+
+[33mcommit 02e32ab3f7d800bb819116351473222c4d78a0aa[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Mon Oct 24 09:37:28 2022 -0300
+
+    qc_regionalvalidation.feature created
+
+[33mcommit d368400baf7a63383d531d56517fab148704fb51[m[33m ([m[1;31mupstream/EXDRHUB-1407[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Oct 20 09:10:12 2022 -0300
+
+    provisioning validation refactor and json file refactor
+
+[33mcommit 3aaa205cb2aa15251979b766a533f129fb4f7e0d[m[33m ([m[1;32mEXDRHUB-1407[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Oct 20 05:29:13 2022 -0300
+
+    provisioning validation refactor
+
+[33mcommit 000dbe7486f7d52fd44456f01f637503d4569993[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Oct 20 04:14:51 2022 -0300
+
+    full cicle cluster provisioning scenario
+
+[33mcommit badd041c9e425f5bf51a19be93c3eb5362d565cb[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Sun Oct 16 22:51:46 2022 -0300
+
+    test conf source
+
+[33mcommit e29fad06654f13dfbeae4ee01da92fd8116f6ac4[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Fri Oct 14 18:23:55 2022 -0300
+
+    EXDRHUB-1407 Automation - crude navigation while creating a new cluster - WIP
+
+[33mcommit 5bf336fb514b3c4325c8bb5939f899a889fe3595[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Oct 13 18:05:02 2022 -0300
+
+    qc_e2e.feature, json data file and qc_e2e.py files creation
+
+[33mcommit e8974d4b6e7a19da88e7171e395da4414e34f86d[m
+Merge: 30ec036 4350c2f
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Oct 12 10:20:55 2022 -0300
+
+    Merge pull request #19 from resource-hub-dev/EXDRHUB-1080
+    
+    quickcluster mapping
+
+[33mcommit 4350c2ff3a512eb81bcea9b0c9289a5c29f6832f[m[33m ([m[1;31mupstream/EXDRHUB-1080[m[33m)[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Oct 12 09:45:53 2022 -0300
+
+    quickcluster mapping
+
+[33mcommit 30ec036257e67351ef10e380343c246bf2c901fd[m
+Merge: 1fc36b0 c105512
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Mon Aug 15 09:19:38 2022 -0300
+
+    Merge pull request #18 from simonkosina/fix-api-params
+    
+    Fix get_list parameters
+
+[33mcommit c10551247c543962ac026b9b34e7a3489df654f7[m[33m ([m[1;31morigin/fix-api-params[m[33m, [m[1;32mfix-api-params[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu Aug 11 09:18:36 2022 +0200
+
+    Fix get_list parameters
+
+[33mcommit 1fc36b02a2c7e90ff837fa26ed2c544b7be30a13[m
+Author: Simon Košina <52234617+simonkosina@users.noreply.github.com>
+Date:   Thu Aug 11 13:54:23 2022 +0200
+
+    Add infrastructure for /monitor API endpoint (#15)
+
+[33mcommit fad0422abfa0716bc5a3e39e667d126d4501435c[m
+Author: Simon Košina <52234617+simonkosina@users.noreply.github.com>
+Date:   Thu Aug 11 13:51:09 2022 +0200
+
+    Add infrastructure for /dns API endpoint (#16)
+
+[33mcommit faeee1b164ca55cc4decf8ba87bf719146cc91aa[m
+Author: Simon Košina <52234617+simonkosina@users.noreply.github.com>
+Date:   Thu Aug 11 13:50:11 2022 +0200
+
+    Add infrastructure for /satellite API endpoint (#14)
+
+[33mcommit c0c25cb68392bbf135ef7096c799b5bbe9d3327e[m
+Merge: 4e2922d 4044938
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Thu Aug 11 08:07:54 2022 -0300
+
+    Merge pull request #13 from simonkosina/api-endpoints-policies
+    
+    Add infrastructure for /policies API endpoint
+
+[33mcommit 4e2922d7f1ba36deca8ae34c2cd974be7325cb69[m
+Merge: c733d02 c752b31
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Thu Aug 11 08:07:36 2022 -0300
+
+    Merge pull request #17 from simonkosina/api-endpoints-scheduler
+    
+    Add infrastructure for /scheduler API endpoint
+
+[33mcommit c752b3161325433ff7ebe2c8617b600adaf931c8[m[33m ([m[1;31morigin/api-endpoints-scheduler[m[33m, [m[1;32mapi-endpoints-scheduler[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu Aug 11 10:00:41 2022 +0200
+
+    Add infrastructure for /scheduler API endpoint
+
+[33mcommit 40449382d67af56d762c7391bcc8b80d12bcd945[m[33m ([m[1;31morigin/api-endpoints-policies[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed Aug 10 13:41:27 2022 +0200
+
+    Add infrastructure for /policies API endpoint
+
+[33mcommit c733d0203d022224e8857b6c0c8bcdcc853ae952[m
+Merge: 2526794 38acf12
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Aug 10 07:27:25 2022 -0300
+
+    Merge pull request #11 from simonkosina/api-endpoints-baremetal
+    
+    Add infrastructure for /bare_metal API endpoint
+
+[33mcommit 2526794f119e193ad9013dbd63bce54ed543f800[m
+Merge: da78ee7 6c057d4
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Aug 10 07:18:02 2022 -0300
+
+    Merge pull request #12 from simonkosina/api-endpoints-tower
+    
+    Add infrastructure for /tower API endpoint
+
+[33mcommit 6c057d416cca9d978f7839c52307104d4279a7be[m[33m ([m[1;31morigin/api-endpoints-tower[m[33m, [m[1;32mapi-endpoints-tower[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed Aug 10 08:23:40 2022 +0200
+
+    Add infrastructure for /tower API endpoint
+
+[33mcommit 38acf123738c99e0b81ef88a35e44e1af6815775[m[33m ([m[1;31morigin/api-endpoints-baremetal[m[33m, [m[1;32mapi-endpoints-baremetal[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Aug 9 14:05:06 2022 +0200
+
+    Add infrastructure for /bare_metal API endpoint
+
+[33mcommit da78ee7b24ca5bb386db6eb34971ae7c616fa389[m
+Merge: 184d2a6 a6bf842
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Mon Aug 8 15:11:06 2022 -0300
+
+    Merge pull request #10 from simonkosina/fix-auth-endpoint
+    
+    Change auth arguments to camel case
+
+[33mcommit 184d2a6da7e21d4bd6adb23abc0ca142c6b48ec9[m
+Merge: d0b2891 0522ce2
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Mon Aug 8 15:10:49 2022 -0300
+
+    Merge pull request #9 from simonkosina/api-endpoints-openstack
+    
+    Add infrastructure for /openstack API endpoint
+
+[33mcommit a6bf842c8c5beab38c86aa84b73b3d35beba7ba7[m[33m ([m[1;31morigin/fix-auth-endpoint[m[33m, [m[1;32mfix-auth-endpoint[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon Aug 8 16:17:16 2022 +0200
+
+    Change auth arguments to camel case
+
+[33mcommit 0522ce2c8443f2b8c92b47c296c67f532efe5bf1[m[33m ([m[1;31morigin/api-endpoints-openstack[m[33m, [m[1;32mapi-endpoints-openstack[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon Aug 8 13:29:43 2022 +0200
+
+    Add infrastructure for /openstack API endpoint
+
+[33mcommit d0b2891fbfcca210765259eeaa3df013383e5920[m
+Merge: 3bb9bf5 aac44be
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Fri Aug 5 13:11:09 2022 -0300
+
+    Merge pull request #8 from simonkosina/api-endpoints-lab
+    
+    Add infrastructure for /lab API endpoint
+
+[33mcommit aac44bef86397b0947fda8c762a7dc97252bc664[m[33m ([m[1;31morigin/api-endpoints-lab[m[33m, [m[1;32mapi-endpoints-lab[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Fri Aug 5 16:39:43 2022 +0200
+
+    Add infrastructure for /lab API endpoint
+
+[33mcommit 3bb9bf52c3e0e2739fb899f5ccdf1296c9efcec6[m
+Merge: a425fb2 0f8641f
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Fri Aug 5 11:15:56 2022 -0300
+
+    Merge pull request #7 from simonkosina/api-endpoints-auth
+    
+    Creating infrastructure for /auth API endpoint
+
+[33mcommit 0f8641f1f2083f6759eb133548c5e1e2678c56e4[m[33m ([m[1;31morigin/api-endpoints-auth[m[33m, [m[1;32mapi-endpoints-auth[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed Aug 3 14:02:33 2022 +0200
+
+    Creates infrastructure for /auth API endpoint
+
+[33mcommit a425fb2aad749bf58470eab88ec9421b6685c29f[m[33m ([m[1;32mfeature-api-endpoints[m[33m)[m
+Merge: 2b724dd 0fce1c3
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Jul 13 16:47:47 2022 -0300
+
+    Merge pull request #6 from simonkosina/cli-infrastructure
+    
+    Adding an infrastructure for creating CLI end-to-end tests.
+
+[33mcommit 0fce1c3d321ce018a034d16a71404221129a9f2b[m[33m ([m[1;31morigin/cli-infrastructure[m[33m, [m[1;32mcli-infrastructure[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Tue Jul 12 16:54:08 2022 +0200
+
+    Removing unnecessary comments and adding type defs
+
+[33mcommit f7d0b4e5cc2d9755056d65ddb40853387be99aca[m
+Author: skosina <skosina@redhat.com>
+Date:   Sat Jul 2 10:05:51 2022 +0200
+
+    Creates a base for CLI end to end tests
+
+[33mcommit 2b724dd48f39adf1b292c430128ab0bf4dac9124[m
+Merge: 21f2119 acb720b
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Jul 13 11:33:15 2022 -0300
+
+    Merge pull request #5 from simonkosina/restructure-tests
+    
+    Reorganize feature and step directories
+
+[33mcommit acb720b4419e98f0f9e4d8fbff7b95861576048d[m[33m ([m[1;31morigin/restructure-tests[m[33m, [m[1;32mrestructure-tests[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon Jul 11 09:42:46 2022 +0200
+
+    Remove the unused api_test directory
+
+[33mcommit a28ed36ec3861e85d1ccffab2208aac060fe240f[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon Jul 11 09:39:22 2022 +0200
+
+    Reorganize directories
+
+[33mcommit 21f2119ba6285f6cd1d6efcac32d3296cb77361c[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon May 30 14:51:07 2022 +0200
+
+    Update Selenoid images
+
+[33mcommit d3c620202a452a589b5061b8c874fc85ec9e36ee[m
+Author: skosina <skosina@redhat.com>
+Date:   Mon May 30 14:22:45 2022 +0200
+
+    Adds custom browser config file
+
+[33mcommit 51055dd61617d60199286255be3b919f9c3e39e4[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 19 09:05:16 2022 +0200
+
+    Fixes indentation
+
+[33mcommit 66e93711497e3fa2b60680454e4c8748ecea41cd[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed May 18 18:09:47 2022 +0200
+
+    Updates API login steps
+
+[33mcommit 450a4549a7b4f558d3d8a94f42c7bfeb7a0f56a6[m
+Author: skosina <skosina@redhat.com>
+Date:   Wed May 18 18:08:21 2022 +0200
+
+    Creates object representing the API endpoints
+
+[33mcommit fe2fa424f41e0de8792d16f245ff9df6460954ac[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:04:43 2022 +0200
+
+    Adds implicit wait time
+
+[33mcommit 4a106d12b7762b92b0523aec49adc03545b7939e[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:04:02 2022 +0200
+
+    Updates tests to use page classes
+
+[33mcommit 9255637ebb5337de034896bfaaf2639ba33004dc[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:03:23 2022 +0200
+
+    Creates page classes
+
+[33mcommit f810402fd1848144aa3d68c9ab7300a4a1b5404f[m[33m ([m[1;31mupstream/rebase-history[m[33m)[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 09:35:07 2022 +0200
+
+    Adds .gitignore
+
+[33mcommit c35317162607412c4f7751ddc193ed95e9ea423c[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 09:25:42 2022 +0200
+
+    Fix requirements
+
+[33mcommit 1ac56f477b02130b50e67ade64fa4ab63551200f[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:04:43 2022 +0200
+
+    Adds implicit wait time
+
+[33mcommit 73164299ea0e3765574799d77f14e91e6674610f[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:04:02 2022 +0200
+
+    Updates tests to use page classes
+
+[33mcommit c02a1ec3a3ed3f4712b6187914e2b57f85e4aeed[m
+Author: skosina <skosina@redhat.com>
+Date:   Thu May 5 10:03:23 2022 +0200
+
+    Creates page classes
+
+[33mcommit 1ee123d760680acc3a53d58da002c0e8394dd3d0[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon Apr 25 18:22:52 2022 -0300
+
+    overlines deletion environment.py
+
+[33mcommit 45c4758cd6aec2c6ef093c82866953af91ac7f5e[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon Apr 25 18:17:12 2022 -0300
+
+    environment adjusts
+
+[33mcommit ddca5af2198779012b891de32b75dedbc95be7f5[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon Apr 25 16:51:12 2022 -0300
+
+    Message fix
+
+[33mcommit e89975d6481cc0f760e4d2e4dffa992c85ad9b03[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon Apr 25 16:11:30 2022 -0300
+
+    environment.py hook fix
+
+[33mcommit b2d452889add988493d6dabf01f373b3399eefec[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon Apr 25 07:40:44 2022 -0300
+
+    Reports structure modification
+
+[33mcommit 49e2d6c5c96e2a41f9aa9b80c6e8fd8312daaf6b[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Thu Apr 14 06:20:59 2022 -0300
+
+    API helpers structure creation
+
+[33mcommit 55961e286ca883244a3756415e7ba9c03f94d825[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Thu Apr 14 05:41:28 2022 -0300
+
+    Login rhub_api
+
+[33mcommit 89f12ff496dbf0a87d86787ebba477573ad3c6d5[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Mon May 16 16:59:53 2022 -0300
+
+    API automation structure creation
+
+[33mcommit 5b849728afad04f10c550a20a45775e9e1726909[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Fri Apr 8 14:16:08 2022 -0300
+
+    environment.py selenoid stop, rhub_api_login.feature
+
+[33mcommit 3798ae29c5254444ffe2353f8c42f420fb4ffd0d[m
+Author: Allan da Silva Barroso <abarroso@redhat.com>
+Date:   Thu Apr 7 17:56:33 2022 -0300
+
+    browser verssion correction
+
+[33mcommit d0261f21159116ce406b45fc7b4e65988c47df57[m
+Author: Allan da Silva Barroso <abarroso@F680V9.0>
+Date:   Thu Apr 7 17:40:51 2022 -0300
+
+    selenoid auto start
+
+[33mcommit c4d9a7f31783f9fc931da9955b6746798cf1de88[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Apr 7 17:38:25 2022 -0300
+
+    Unecessary reports deletion, readme update, helpers update
+
+[33mcommit fa7b2567ccf7c7a86628ae8fd5c5e6b8b5bfd6e1[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Mon Apr 4 09:21:40 2022 -0300
+
+    RHUB Login page automation
+
+[33mcommit 194465d08cabcb9c343711ed1299814a8197402a[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Mar 30 09:30:33 2022 -0300
+
+    api rework
+
+[33mcommit 718ddef78d7160749764b0eb5c2dbdb7e8f84c90[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Mar 30 06:27:48 2022 -0300
+
+    api tests move to the same folder as ui
+
+[33mcommit c288be129d4dcbea5c9dc3243e4e97a2977720f9[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Mar 30 06:06:46 2022 -0300
+
+    Demostration prep, video name at selenoid app
+
+[33mcommit cba7d22ae9c80e60de37e63a832ac2240c55e0af[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Tue Mar 29 10:17:32 2022 -0300
+
+    POC Automation
+
+[33mcommit 899da3ff4b209c081d51149a08691f1a74b7483d[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Mar 10 10:16:02 2022 -0300
+
+    Massive files deletion
+
+[33mcommit e390a31c7801cb70f009f4ab8993fc1714a185ee[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Mar 9 16:49:06 2022 -0300
+
+    selenoid usage application.
+
+[33mcommit 524324f40743bbd8745d20fa60b034f5d6c63c27[m
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Wed Mar 9 16:39:32 2022 -0300
+
+    Update README.md
+
+[33mcommit dd8d9fce2f9d1ed289bc22af629da67aafa57963[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Wed Mar 9 16:44:30 2022 -0300
+
+    selenoid usage
+
+[33mcommit 5d9b384ff14409a0b027fed3ce2afa37113200e3[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Mon Mar 7 08:56:19 2022 -0300
+
+    selenoid configuration
+
+[33mcommit 6f712d91ae260516e56aa7725d61cc8eb1ddf4a3[m
+Author: Allan Barroso <abarroso@redhat.com>
+Date:   Thu Mar 3 16:34:46 2022 -0300
+
+    Massive rename files.
+
+[33mcommit 46079daca14180175d7f061274b55a28cd08b3bc[m
+Author: Allan Barroso <abarroso@abarroso.remote.csb>
+Date:   Thu Mar 3 16:17:33 2022 -0300
+
+    names change
+
+[33mcommit 15bc28a08511bad58b2ba0a3d9c17d89907f9229[m
+Author: Allan da Silva Barroso <abarroso@192.168.1.5>
+Date:   Tue May 4 09:23:52 2021 -0300
+
+    Rename files, helpers update
+
+[33mcommit f9bf5ef2dc78dc8e509d3f119a87df1f5cc1e6ac[m
+Author: Allan da Silva Barroso <abarroso@MMB026001BHZ.local>
+Date:   Tue May 4 00:06:38 2021 -0300
+
+    Ädjustments
+
+[33mcommit cbb918fc3c32308f53e5652a5d364619fdbc2db1[m
+Author: Allan da Silva Barroso <abarroso@MMB026001BHZ.local>
+Date:   Mon May 3 23:54:20 2021 -0300
+
+    Ëmail Fix
+
+[33mcommit f4a790a668aab08b6eb80a7c565c9e14a4dc81d6[m
+Author: ABarroso2 <allan.barroso@outlook.com>
+Date:   Mon May 3 23:15:14 2021 -0300
+
+    Files rename, reademe update
+
+[33mcommit e0ebdc4e3601227c1df419a2fe250d0ed10eae78[m
+Author: Allan da Silva Barroso <abarroso@DESKTOP-PTHPM2N.localdomain>
+Date:   Mon Nov 9 21:17:18 2020 -0300
+
+    Helpers usage, readme update
+
+[33mcommit 96219ac66b3bdb68c818cf1494d0e6349d3748a2[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 23:37:32 2020 -0300
+
+    Finish
+    
+    Not too finished yet
+
+[33mcommit f43c65662bd779f72cd3e2d3b3f5a537b36f8635[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 18:46:34 2020 -0300
+
+    minor corrections, work in the scenario's names
+
+[33mcommit f372c68eca77f1fd54791ae5ab3578ce19429ecb[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 18:11:15 2020 -0300
+
+    wishlist
+    
+    accessing, creating and adding a wishlist.
+
+[33mcommit ad1b36ed2ba5a430774f8203dd98a126dbce29a1[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 16:08:19 2020 -0300
+
+    Reorder
+    
+    reorder automation
+
+[33mcommit aea0dc1ce90dfa853957dbb595e0ecbc13ccf945[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 14:24:31 2020 -0300
+
+    Order access and details
+    
+    order details and access automation
+
+[33mcommit b5b497dc2b1a943ae0e479d0b5d505fa58ea7ebe[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 13:05:30 2020 -0300
+
+    MyAccount  page
+    
+    navigate to my account
+
+[33mcommit f81ec054644f1f533c082b7c4610a42fad951ab7[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 12:30:33 2020 -0300
+
+    order proceed
+    
+    order proceed test
+
+[33mcommit e673b9a900617f5d89bb24e5e77a84a764b8278a[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 9 00:10:47 2020 -0300
+
+    remove item test
+
+[33mcommit f5a96b81e5d638e12da6e38708d3f075e80e28ce[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sat Feb 8 22:57:21 2020 -0300
+
+    Project structure change, files creation and deletion
+
+[33mcommit 9884e71efe4bac3e54d1fd79112abf67d499608c[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sun Feb 2 16:47:05 2020 -0300
+
+    TestModel
+    
+    model
+
+[33mcommit 6aef047e94e4f832d6737e2ed76d2304ceb84f7e[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sat Feb 1 18:35:52 2020 -0300
+
+    Pattern design
+    
+    creating the pattern to start the code
+
+[33mcommit 118c66453abe981429fd032222cc34714be0df24[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sat Feb 1 16:38:57 2020 -0300
+
+    Readme definitions for the RHUB project
+
+[33mcommit f1f459cd4a6ac3fa7d36559461584e4beacedcbd[m
+Author: Allan Barroso <allan.barroso@outlook.com>
+Date:   Sat Feb 1 14:11:57 2020 -0300
+
+    Readme rework to the RHUB.
+
+[33mcommit 9f489ac5410b96f31f76146b0de0db271169a954[m
+Author: Allan da Silva Barroso <50781919+Abarroso2@users.noreply.github.com>
+Date:   Fri Jan 31 23:02:32 2020 -0300
+
+    Initial commit

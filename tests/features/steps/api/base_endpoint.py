@@ -2,7 +2,7 @@ import functools
 import copy
 import requests
 
-from pyclbr import Function
+from collections.abc import Callable
 from enum import Enum, auto
 
 
@@ -19,6 +19,7 @@ class APILogger(object):
     def __init__(self):
         self.responses = []
         self.unverifiable_items = []
+        self.created_cluster_ids = []
         self.__cleanups = []
 
     def log_response(self, response: requests.Response):
@@ -27,11 +28,14 @@ class APILogger(object):
     def log_unverfiable_items(self, item: dict):
         self.unverifiable_items.append(item)
 
-    def log_cleanup(self, method: Function, **kwargs):
+    def log_cleanup(self, method: Callable, **kwargs):
         self.__cleanups.append({
             'method': method,
             'kwargs': kwargs
         })
+
+    def log_cluster_creation(self, cluster_id: int):
+        self.created_cluster_ids.append(cluster_id)
 
     def reset_cleanups(self):
         self.__cleanups = []
@@ -70,19 +74,12 @@ class BaseEndpoint(object):
     Base object providing some basic functions for all the inheriting API endoints.
     """
 
-    # HOSTNAME = 'https://rhub-api-resource-hub-qe.apps.ocp-c1.prod.psi.redhat.com'
-    # PORT = 443
-    HOSTNAME = 'http://localhost'
-    PORT = '8081'
-    PATH = '/v0'
-
     TIMEOUT = 10
     VERIFY = False
-
     LOGGER = APILogger()
 
-    def __init__(self, session: requests.Session, admin_session: requests.Session):
-        self.base_url = f"{self.HOSTNAME}:{self.PORT}{self.PATH}"
+    def __init__(self, session: requests.Session, admin_session: requests.Session, base_url: str):
+        self.base_url = base_url
         self.session = session
         self.__admin_session = admin_session
         self.__test_session = None
@@ -171,7 +168,7 @@ class BaseEndpoint(object):
 
         return params
 
-    def get_values_before_update(self, method: Function, id: str, update_args: dict) -> dict:
+    def get_values_before_update(self, method: Callable, id: str | int, update_args: dict | None = None) -> dict:
         """
         Call the provided method with the given id to retrieve current data and filter it 
         to contain only the items that will be updated. Function returns the current 
@@ -233,10 +230,23 @@ class BaseEndpoint(object):
             self.__is_admin = False
             self.session = self.__test_session
 
+    def log_cluster_creation(self, response: requests.Response):
+        """
+        Log ids of clusters created during the tests.
+        """
+
+        try:
+            response.raise_for_status()
+            cluster_id = int(response.json()['id'])
+            BaseEndpoint.LOGGER.log_cluster_creation(cluster_id=cluster_id)
+
+        except requests.HTTPError:
+            pass
+
     def log_cleanup(
         self,
         response: requests.Response,
-        method: callable,
+        method: Callable,
         method_args: dict = {},
         find_id: bool = True,
         id_kw: str = 'id'

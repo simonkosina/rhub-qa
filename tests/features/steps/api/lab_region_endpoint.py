@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -10,16 +9,61 @@ class LabRegionEndpoint(BaseEndpoint):
     """
 
     UNVERIFIABLE_ITEMS = {
-        'get_list': {},
-        'create': {},
+        'get_list': {'_href': IsVerifiable.NO},
+        'create': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
         'get_usage_all': {},
         'delete': {},
-        'get': {},
-        'update': {},
+        'get': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
+        'update': {
+            '_href': IsVerifiable.NO,
+            'id': IsVerifiable.NO,
+            'dns_id': IsVerifiable.NO,
+            'location_id': IsVerifiable.NO,
+            'openstack': IsVerifiable.NO,
+            'openstack_id': IsVerifiable.NO,
+            'owner_group_id': IsVerifiable.NO,
+            'satellite_id': IsVerifiable.NO,
+            'tower_id': IsVerifiable.NO
+        },
         'remove_product': {},
         'get_products': {},
         'update_products': {},
-        'get_region_usage': {}
+        'get_usage': {
+            "total_quota": IsVerifiable.NO, # can be null
+            "total_quota_usage": {
+                "num_vcpus": IsVerifiable.NO,
+                "num_volumes": IsVerifiable.NO,
+                "ram_mb": IsVerifiable.NO,
+                "volumes_gb": IsVerifiable.NO
+            },
+            "user_quota": IsVerifiable.NO, # can be null
+            "user_quota_usage": {
+                "num_vcpus": IsVerifiable.NO,
+                "num_volumes": IsVerifiable.NO,
+                "ram_mb": IsVerifiable.NO,
+                "volumes_gb": IsVerifiable.NO
+            }
+        }
     }
 
     def url(self, suffix: str = '') -> str:
@@ -28,10 +72,10 @@ class LabRegionEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -47,23 +91,24 @@ class LabRegionEndpoint(BaseEndpoint):
         openstack_id: int,
         owner_group_id: str,
         tower_id: int,
-        banner: str = None,
-        description: str = None,
-        enabled: bool = None,
-        lifespan_length: int = None,
-        location_id: int = None,
-        openstack_keyname: str = None,
-        reservation_expiration_max: int = None,
-        reservations_enabled: bool = None,
-        satellite_id: int = None,
-        total_quota: dict = None,
-        user_quota: dict = None,
-        users_group_id: str = None
+        banner: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        lifespan_length: int | None = None,
+        location_id: int | None = None,
+        openstack_keyname: str | None = None,
+        reservation_expiration_max: int | None = None,
+        reservations_enabled: bool | None = None,
+        satellite_id: int | None = None,
+        dns_id: int | None = None,
+        total_quota: dict | None = None,
+        user_quota: dict | None = None,
+        users_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(url=self.url(), json=body)
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -85,7 +130,6 @@ class LabRegionEndpoint(BaseEndpoint):
     def get(self, id: int) -> requests.Response:
         url = self.url(suffix=f"/{id}")
         response = super().get(url)
-        print(url)
 
         return response
 
@@ -93,28 +137,28 @@ class LabRegionEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        openstack_id: int = None,
-        owner_group_id: str = None,
-        tower_id: int = None,
-        banner: str = None,
-        description: str = None,
-        enabled: bool = None,
-        lifespan_length: int = None,
-        location_id: int = None,
-        openstack_keyname: str = None,
-        reservation_expiration_max: int = None,
-        reservations_enabled: bool = None,
-        satellite_id: int = None,
-        total_quota: dict = None,
-        user_quota: dict = None,
-        users_group_id: str = None
+        name: str | None = None,
+        openstack_id: int | None = None,
+        owner_group_id: str | None = None,
+        tower_id: int | None = None,
+        banner: str | None = None,
+        description: str | None = None,
+        enabled: bool | None = None,
+        lifespan_length: int | None = None,
+        location_id: int | None = None,
+        openstack_keyname: str | None = None,
+        reservation_expiration_max: int | None = None,
+        reservations_enabled: bool | None = None,
+        satellite_id: int | None = None,
+        total_quota: dict | None = None,
+        user_quota: dict | None = None,
+        users_group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-
-        url = self.url(suffix=f"/{id}")
-        response = self.patch(url, json=body)
+        cleanup_args = self.get_values_before_update(self.get, id, args)
+        response = self.patch(self.url(f"/{id}"), json=body)
+        self.log_cleanup(response, method=self.update, method_args=cleanup_args)
 
         return response
 
@@ -127,7 +171,7 @@ class LabRegionEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_products'])
-    def get_products(self, id: int, filter: dict = None) -> requests.Response:
+    def get_products(self, id: int, filter: dict | None = None) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'id', '__class__'])
         params = self.create_params(args)
@@ -142,7 +186,7 @@ class LabRegionEndpoint(BaseEndpoint):
         self,
         region_id: int,
         product_id: int,
-        enabled: bool = None
+        enabled: bool | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', 'region_id'])
@@ -157,8 +201,8 @@ class LabRegionEndpoint(BaseEndpoint):
 
         return response
 
-    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_region_usage'])
-    def get_region_usage(self, id: int) -> requests.Response:
+    @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_usage'])
+    def get_usage(self, id: int) -> requests.Response:
         url = self.url(suffix=f"/{id}/usage")
         response = super().get(url)
 

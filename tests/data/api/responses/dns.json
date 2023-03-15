@@ -8,9 +8,9 @@
         "credentials": "kv/dns/dns-rdu",
         "description": "DNS server for RDU site.",
         "id": 1,
-        "hostname": "string",
+        "hostname": "localhost",
         "name": "dns-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_id": 1,
         "zone": "string"
       },
       "get": {
@@ -19,11 +19,11 @@
         },
         "credentials": "kv/dns/dns-rdu",
         "description": "DNS server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "name": "dns-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group",
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
         "zone": "string"
       },
       "create": {
@@ -32,11 +32,11 @@
         },
         "credentials": "kv/dns/dns-rdu",
         "description": "DNS server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "name": "dns-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group",
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
         "zone": "string"
       },
       "update": {
@@ -45,11 +45,11 @@
         },
         "credentials": "kv/dns/dns-rdu",
         "description": "DNS server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "id": 1,
         "name": "new-name",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "owner_group_name": "new-group",
+        "owner_group_id": 1,
+        "owner_group_name": "rhub-admin",
         "zone": "string"
       }
     }

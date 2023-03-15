@@ -25,10 +25,10 @@ class TowerTemplateEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_list'])
     def get_list(
         self,
-        filter: dict = None,
-        sort: str = None,
-        page: int = None,
-        limit: int = None
+        filter: dict | None = None,
+        sort: str | None = None,
+        page: int | None = None,
+        limit: int | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__'])
@@ -44,7 +44,7 @@ class TowerTemplateEndpoint(BaseEndpoint):
         server_id: int,
         tower_template_id: int,
         tower_template_is_workflow: bool,
-        description: str = None,
+        description: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
@@ -70,11 +70,11 @@ class TowerTemplateEndpoint(BaseEndpoint):
     def update(
         self,
         id: int,
-        name: str = None,
-        server_id: int = None,
-        tower_template_id: int = None,
-        tower_template_is_workflow: bool = None,
-        description: str = None,
+        name: str | None = None,
+        server_id: int | None = None,
+        tower_template_id: int | None = None,
+        tower_template_is_workflow: bool | None = None,
+        description: str | None = None,
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
@@ -83,7 +83,12 @@ class TowerTemplateEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['get_jobs'])
-    def get_jobs(self, id: int, filter: dict = None, page: str = None, limit: str = None) -> requests.Response:
+    def get_jobs(
+        self,
+        id: int, filter: dict | None = None,
+        page: str | None = None,
+        limit: str | None = None
+    ) -> requests.Response:
         args = self.get_function_arguments(
             locals(), skip_args=['self', '__class__', 'id'])
         params = self.create_params(args)
@@ -93,7 +98,11 @@ class TowerTemplateEndpoint(BaseEndpoint):
         return response
 
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['launch'])
-    def launch(self, id: int, extra_vars: dict = None) -> requests.Response:
+    def launch(
+        self,
+        id: int,
+        extra_vars: dict | None = None
+    ) -> requests.Response:
         url = self.url(suffix=f"/{id}/launch")
         body = {'extra_vars': extra_vars}
         response = self.post(url, json=body)

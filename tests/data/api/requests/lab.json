@@ -1,0 +1,106 @@
+{
+  "lab": {
+    "region": {
+      "create": {
+        "name": "test-region",
+        "enabled": true,
+        "banner": "",
+        "reservations_enabled": true,
+        "reservation_expiration_max": null,
+        "lifespan_length": null,
+        "tower_id": "",
+        "location_id": "",
+        "total_quota": null,
+        "user_quota": {
+          "num_vcpus": 40,
+          "num_volumes": 40,
+          "ram_mb": 200000,
+          "volumes_gb": 540
+        },
+        "openstack_id": "",
+        "dns_id": null,
+        "satellite_id": null,
+        "owner_group_id": ""
+      },
+      "update": {
+        "description": "description"
+      }
+    },
+    "location": {
+      "create": {
+        "description": "description",
+        "name": "name"
+      },
+      "update": {
+        "name": "new-name"
+      }
+    },
+    "product": {
+      "create": {
+        "enabled": true,
+        "flavors": {
+          "additionalProp1": {
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        },
+        "name": "test",
+        "parameters": [
+          {
+            "advanced": false,
+            "default": "3.3",
+            "description": "Version to install.",
+            "enum": ["3.1", "3.2", "3.3"],
+            "name": "Version",
+            "required": true,
+            "type": "string",
+            "variable": "version"
+          }
+        ],
+        "tower_template_name_create": "test-create",
+        "tower_template_name_delete": "test-delete"
+      },
+      "update": {
+        "description": "description"
+      }
+    },
+    "cluster": {
+      "create": {
+        "name": "qageneric",
+        "product_id": "",
+        "product_params": {
+          "image_name": "RHEL7.9",
+          "node_flavor": "g.standard.xs",
+          "num_nodes": 1,
+          "rhsm_method": "satellite6",
+          "virtual_disk_count": 0,
+          "virtual_disk_size": 1,
+          "yum_update": false
+        },
+        "region_id": "",
+        "shared": false,
+        "reservation_expiration": null
+      },
+      "update": {
+        "description": "description"
+      },
+      "update_hosts": {
+        "hosts": [
+          {
+            "fqdn": "localhost",
+            "ipaddr": ["127.0.0.1"],
+            "num_vcpus": 0,
+            "num_volumes": 0,
+            "ram_mb": 0,
+            "volumes_gb": 0
+          }
+        ]
+      },
+      "reboot_hosts": {
+        "hosts": "all"
+      }
+    }
+  }
+}

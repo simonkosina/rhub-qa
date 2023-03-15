@@ -11,8 +11,3 @@ Feature: API - /tower/server POST requests
         Given I am authenticated with an invalid token
         When I send a "create" request to "tower/server" endpoint with body "tower.server.create"
         Then I receive an invalid token response
-
-    Scenario: Create a new tower with a refreshed token
-        Given I am authenticated with a refreshed token
-        When I send a "create" request to "tower/server" endpoint with body "tower.server.create"
-        Then I receive the following response "tower.server.create"

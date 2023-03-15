@@ -7,9 +7,9 @@
           "secret": "string"
         },
         "description": "DNS server for RDU site.",
-        "hostname": "string",
+        "hostname": "localhost",
         "name": "dns-rdu",
-        "owner_group_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "owner_group_id": 1,
         "zone": "string"
       },
       "update": {

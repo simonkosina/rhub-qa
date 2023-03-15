@@ -1,5 +1,6 @@
 import re
 import requests
+import random
 
 from steps.api.api import filter_dict
 from pprint import pformat
@@ -80,7 +81,7 @@ def find_function_from_url(context, url: str, method: str, id: str = None) -> Ca
     return fn
 
 
-def get_nested(d: dict, key_list: str):
+def get_nested(d: dict, key_list: list[str]):
     """
     Recursively find the nested value in the provided dictionary
     based on the keys in the list.
@@ -182,6 +183,50 @@ def step_impl(context, id_key: str):
         context.saved_ids[id_key] = response.json()['id']
 
 
+@when(u'I lookup the "{kw}" "{attrib}" from an item named "{name}" in the last response')
+def step_impl(context, kw, attrib, name):
+    response = context.api.logger.last_response
+
+    assert not response is None
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    if type(data) is dict:
+        data = data['data']
+
+    for item in data:
+        assert 'name' in item.keys()
+
+        if item['name'] == name:
+            context.saved_ids[kw] = item[attrib]
+            break
+    else:
+        assert False, f"Couldn't find an item with name '{name}'."
+
+
+@when(u'I lookup the "{kw}" "{attrib}" from an item in the last response')
+def step_impl(context, kw, attrib):
+    response = context.api.logger.last_response
+
+    assert not response is None
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    if type(data) is dict:
+        data = data['data']
+
+    if len(data) == 0:
+        assert False, f"Last response didn't contain any items."
+
+    item = random.choice(data)
+
+    context.saved_ids[kw] = item[attrib]
+
+
 @when(u'I use the received access token')
 def step_impl(context):
     response = context.api.logger.last_response
@@ -193,6 +238,33 @@ def step_impl(context):
         raise e
 
     context.api.update_token(response.json()['access_token'])
+
+
+@then(u'I receive the following SSH keys "{data_key}"')
+def step_impl(context, data_key: str):
+    try:
+        response = context.api.logger.last_response
+        response.raise_for_status()
+
+        received = response.text
+        excepted = get_nested(context.api.response_data, data_key.split('.'))
+
+        # from uthorized_keys format to list of SSH keys
+        received = received.splitlines() if received != '\n' else []
+
+        # received.sort()
+        excepted.sort()
+
+        print_vars(
+            ('received', received),
+            ('expected', excepted)
+        )
+
+        assert excepted == received
+
+    except requests.exceptions.RequestException as e:
+        print_request_error(e)
+        raise e
 
 
 @then(u'I receive the following response "{data_key}"')
@@ -271,11 +343,7 @@ def step_impl(context):
         response = context.api.logger.last_response
         response.raise_for_status()
 
-        data = response.json()
-
-        print_vars(
-            ('received data', data)
-        )
+        print(response.content)
 
         assert False
 
