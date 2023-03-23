@@ -1,0 +1,14 @@
+{
+  "monitor": {
+    "bm": {
+      "get_hosts": {
+        "node": {
+          "host_type": "node"
+        },
+        "app": {
+          "host_type": "app"
+        }
+      }
+    }
+  }
+}

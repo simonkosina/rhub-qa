@@ -1,0 +1,54 @@
+{
+  "monitor": {
+    "bm": {
+      "get_hosts": {
+        "name": "string"
+      },
+      "get_metrics": {
+        "all": 0,
+        "available": 0,
+        "cpus_available": 0,
+        "cpus_used": 0,
+        "memory_available": 0,
+        "memory_used": 0,
+        "platform": "string",
+        "provisioned": 0,
+        "requested": 0
+      },
+      "get_power_states_metrics": {
+        "all": 0,
+        "off": 0,
+        "on": 0,
+        "platform": "string",
+        "wattage_off": 0,
+        "wattage_on": 0
+      }
+    },
+    "lab": {
+      "get_metrics": {
+        "all": 0,
+        "available": 0,
+        "cpus_available": 0,
+        "cpus_used": 0,
+        "memory_available": 0,
+        "memory_used": 0,
+        "platform": "string",
+        "provisioned": 0,
+        "requested": 0
+      }
+    },
+    "vm": {
+      "get_metrics": {
+        "all": 0,
+        "available": 0,
+        "cpus_available": 0,
+        "cpus_used": 0,
+        "memory_available": 0,
+        "memory_used": 0,
+        "platform": "string",
+        "provisioned": 0,
+        "requested": 0
+      }
+    }
+  }
+}
