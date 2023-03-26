@@ -21,22 +21,20 @@ from base64 import b64encode
 
 def filter_dict(dictionary: dict, keys_to_remove: dict) -> dict:
     """
-    Removes keys from the original dictionary which are not compared during verification.
+    Modifies the passed in dictionary by removing keys are not compared during verification.
     """
-
-    dict_copy = copy.deepcopy(dictionary)
 
     for k, v in keys_to_remove.items():
         if type(v) is dict:
             # recursively remove nested fields
-            filter_dict(dict_copy[k], v)
+            filter_dict(dictionary[k], v)
         elif v is IsVerifiable.NO:
-            del dict_copy[k]
+            del dictionary[k]
         elif v is IsVerifiable.NOT_REQUIRED:
-            if k in dict_copy.keys():
-                del dict_copy[k]
+            if k in dictionary.keys():
+                del dictionary[k]
 
-    return dict_copy
+    return dictionary
 
 
 class API(object):

@@ -1,0 +1,143 @@
+{
+  "openstack": {
+    "cloud": {
+      "get_list": {
+        "_href": {
+          "cloud": "/v0/openstack/cloud/1",
+          "owner_group": "/v0/auth/group/1"
+        },
+        "credentials": "kv/openstack/rhub-rdu",
+        "description": "Private cloud for RHub located in RDU.",
+        "domain_id": "default",
+        "domain_name": "Default",
+        "id": 1,
+        "name": "rhub-rdu",
+        "networks": ["provider_net_rhub"],
+        "owner_group_id": 1,
+        "owner_group_name": "string",
+        "url": "https://rhub-cloud.rdu.example.com:13000"
+      },
+      "get": {
+        "_href": {},
+        "id": 1,
+        "name": "test",
+        "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3",
+        "credentials": "kv/openstack/test",
+        "description": "",
+        "domain_id": "default",
+        "domain_name": "Default",
+        "networks": ["provider_net_rhub"],
+        "owner_group_id": "",
+        "owner_group_name": "rhub-admin"
+      },
+      "create": {
+        "_href": {},
+        "id": 1,
+        "name": "test",
+        "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3",
+        "credentials": "kv/openstack/test",
+        "description": "",
+        "domain_id": "default",
+        "domain_name": "Default",
+        "networks": ["provider_net_rhub"],
+        "owner_group_id": "",
+        "owner_group_name": "rhub-admin"
+      },
+      "update": {
+        "_href": {},
+        "id": 1,
+        "name": "test",
+        "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3",
+        "credentials": "kv/openstack/test",
+        "description": "description",
+        "domain_id": "default",
+        "domain_name": "Default",
+        "networks": ["provider_net_rhub"],
+        "owner_group_id": "",
+        "owner_group_name": "rhub-admin"
+      }
+    },
+    "project": {
+      "get_list": {
+        "_href": {
+          "cloud": "/v0/openstack/cloud/1",
+          "owner": "/v0/auth/user/1",
+          "project": "/v0/openstack/project/2",
+          "project_limits": "/v0/openstack/project/2/limits"
+        },
+        "cloud_id": 1,
+        "cloud_name": "string",
+        "description": "string",
+        "group_id": 1,
+        "group_name": "string",
+        "id": 1,
+        "name": "myproject",
+        "owner_id": 1,
+        "owner_name": "string"
+      },
+      "get": {
+        "_href": {
+          "cloud": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "project": "/v0/openstack/project/1",
+          "project_limits": "/v0/openstack/project/1/limits"
+        },
+        "cloud_id": 4,
+        "cloud_name": "osp_lab-pnq2-a",
+        "description": "Project created by QuickCluster playbooks",
+        "group_id": null,
+        "group_name": null,
+        "id": 1,
+        "name": "ql_admin",
+        "owner_id": 1,
+        "owner_name": "admin"
+      },
+      "get_limits": {
+        "_href": {
+          "cloud": "/v0/openstack/cloud/4",
+          "owner": "/v0/auth/user/1",
+          "project": "/v0/openstack/project/1",
+          "project_limits": "/v0/openstack/project/1/limits"
+        },
+        "absolute": {
+          "floating_ips": 10,
+          "floating_ips_used": 0,
+          "id": null,
+          "image_meta": 128,
+          "instances": 20,
+          "instances_used": 1,
+          "keypairs": 100,
+          "location": null,
+          "name": null,
+          "personality": 5,
+          "personality_size": 10240,
+          "security_group_rules": 20,
+          "security_groups": 10,
+          "security_groups_used": 1,
+          "server_group_members": 10,
+          "server_groups": 10,
+          "server_groups_used": 1,
+          "server_meta": 128,
+          "total_cores": 40,
+          "total_cores_used": 4,
+          "total_ram": 200000,
+          "total_ram_used": 8192
+        },
+        "id": 1,
+        "location": {
+          "cloud": "defaults",
+          "project": {
+            "domain_id": null,
+            "domain_name": "Default",
+            "id": 1,
+            "name": "ql_admin"
+          },
+          "region_name": "regionOne",
+          "zone": null
+        },
+        "name": null,
+        "rate": []
+      }
+    }
+  }
+}

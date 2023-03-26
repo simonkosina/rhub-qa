@@ -5,6 +5,7 @@ import json
 
 from pathlib import Path
 from steps.api.api import filter_dict
+from copy import deepcopy
 
 
 class ResourceHubCLI:
@@ -83,7 +84,7 @@ class ResourceHubCLI:
             return False
 
         if type(api_output) is dict:
-            api_output = filter_dict(api_output, unverifiable_items)
-            cli_output = filter_dict(cli_output, unverifiable_items)
+            api_output = filter_dict(deepcopy(api_output), unverifiable_items)
+            cli_output = filter_dict(deepcopy(cli_output), unverifiable_items)
 
         return api_output == cli_output
