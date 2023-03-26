@@ -7,6 +7,7 @@ from pprint import pformat
 from textwrap import indent
 from typing import Callable
 from behave import given, when, then
+from copy import deepcopy
 
 ID_REGEXES = [
     # matches ids for /auth endpoint
@@ -277,9 +278,9 @@ def step_impl(context, data_key: str):
         expected = get_nested(context.api.response_data, data_key.split('.'))
 
         data_filtered = filter_dict(
-            data, context.api.logger.last_unverifiable_items)
+            deepcopy(data), context.api.logger.last_unverifiable_items)
         expected_filtered = filter_dict(
-            expected, context.api.logger.last_unverifiable_items)
+            deepcopy(expected), context.api.logger.last_unverifiable_items)
 
         print_vars(
             ('data_filtered', data_filtered),
@@ -308,9 +309,9 @@ def step_impl(context, data_key: str):
         expected = get_nested(context.api.response_data, data_key.split('.'))
 
         expected_filtered = filter_dict(
-            expected, context.api.logger.last_unverifiable_items)
+            deepcopy(expected), context.api.logger.last_unverifiable_items)
         data_filtered = [filter_dict(
-            x, context.api.logger.last_unverifiable_items) for x in data]
+            deepcopy(x), context.api.logger.last_unverifiable_items) for x in data]
 
         print_vars(
             ('data_filtered', data_filtered),

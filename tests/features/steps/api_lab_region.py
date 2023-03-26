@@ -95,9 +95,9 @@ def step_impl(context):
                               "lab", "region", "get_usage_all"])
 
         expected_filtered = filter_dict(
-            expected, context.api.logger.last_unverifiable_items)
+            deepcopy(expected), context.api.logger.last_unverifiable_items)
         usages_filtered = [filter_dict(
-            x, context.api.logger.last_unverifiable_items) for x in data.values()]
+            deepcopy(x), context.api.logger.last_unverifiable_items) for x in data.values()]
 
         print_vars(
             ('usages_filtered', usages_filtered),

@@ -1,4 +1,3 @@
-# TODO: log cleanups, find unverifiable items
 import requests
 
 from steps.api.base_endpoint import BaseEndpoint, log_call, IsVerifiable
@@ -11,11 +10,21 @@ class OpenstackProjectEndpoint(BaseEndpoint):
 
     UNVERIFIABLE_ITEMS = {
         'get_list': {},
-        'create': {'id': IsVerifiable.NO},
+        'create': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'cloud_id': IsVerifiable.NO, 'owner_id': IsVerifiable.NO},
         'delete': {},
-        'get': {},
-        'update': {},
-        'get_limits': {}
+        'get': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'cloud_id': IsVerifiable.NO, 'owner_id': IsVerifiable.NO},
+        'update': {'id': IsVerifiable.NO, '_href': IsVerifiable.NO, 'cloud_id': IsVerifiable.NO, 'owner_id': IsVerifiable.NO},
+        'get_limits': {
+            'id': IsVerifiable.NO,
+            '_href': IsVerifiable.NO,
+            'location': {
+                'project': {
+                    'domain_id': IsVerifiable.NO,
+                    'id': IsVerifiable.NO
+                }
+            },
+            'absolute': IsVerifiable.NO
+        }
     }
 
     def url(self, suffix: str = '') -> str:
@@ -47,8 +56,8 @@ class OpenstackProjectEndpoint(BaseEndpoint):
     ) -> requests.Response:
         args = self.get_function_arguments(locals(), skip_args=['self'])
         body = self.create_body(args)
-
         response = self.post(self.url(), json=body)
+        self.log_cleanup(response, method=self.delete)
 
         return response
 
@@ -69,7 +78,7 @@ class OpenstackProjectEndpoint(BaseEndpoint):
     @log_call(BaseEndpoint.LOGGER, UNVERIFIABLE_ITEMS['update'])
     def update(
         self,
-        project_id: int,
+        id: int,
         cloud_id: int | None = None,
         name: str | None = None,
         owner_id: str | None = None,
@@ -77,11 +86,12 @@ class OpenstackProjectEndpoint(BaseEndpoint):
         group_id: str | None = None
     ) -> requests.Response:
         args = self.get_function_arguments(
-            locals(), skip_args=['self', 'project_id'])
+            locals(), skip_args=['self', 'id'])
         body = self.create_body(args)
-        url = self.url(suffix=f"/{project_id}")
+        cleanup_args = self.get_values_before_update(self.get, id, args)
 
-        response = self.patch(url, json=body)
+        response = self.patch(self.url(f"/{id}"), json=body)
+        self.log_cleanup(response, method=self.update, method_args=cleanup_args)
 
         return response
 

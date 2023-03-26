@@ -1,0 +1,21 @@
+{
+  "openstack": {
+    "cloud": {
+      "create": {
+        "name": "test",
+        "url": "https://dashboard.rhos-01.prod.psi.pnq2.redhat.com:13000/v3",
+        "credentials": {
+          "username": "test",
+          "password": "test"
+        },
+        "domain_id": "default",
+        "domain_name": "Default",
+        "networks": ["provider_net_rhub"],
+        "owner_group_id": ""
+      },
+      "update": {
+        "description": "description"
+      }
+    }
+  }
+}
